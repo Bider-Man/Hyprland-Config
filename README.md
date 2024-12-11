@@ -1,2 +1,1 @@
 # Hyprland-Config
- 
