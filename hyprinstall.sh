@@ -1,18 +1,45 @@
 #!/bin/bash
 
-# Set variables for config file directories
+# Define target directories
 CONFIG_DIR="$HOME/.config/hypr"
 HYPRLAND_DIR="$CONFIG_DIR/hyprland"
+SCRIPTS_DIR="$CONFIG_DIR/scripts"
+WAYBAR_DIR="$HOME/.config/waybar"
 
-# Create necessary directories if they don't exist
+# Clean up old configurations
+echo "Cleaning up old configurations in $CONFIG_DIR..."
+rm -rf "$CONFIG_DIR"
 mkdir -p "$HYPRLAND_DIR"
-mkdir -p "$CONFIG_DIR/scripts"
+mkdir -p "$SCRIPTS_DIR"
 
-# Remove existing config files in ~/.config/hypr (optional)
-echo "Removing old config files from $CONFIG_DIR..."
-rm -rf "$CONFIG_DIR/hyprland/*"
+# Copy Hyprland folder
+if [ -d "./hypr/hyprland" ]; then
+  echo "Copying hyprland folder to $HYPRLAND_DIR..."
+  cp -r ./hypr/hyprland/* "$HYPRLAND_DIR/"
+else
+  echo "Error: ./hypr/hyprland directory not found!"
+  exit 1
+fi
 
-# Install necessary dependencies
+# Copy scripts folder
+if [ -d "./hypr/scripts" ]; then
+  echo "Copying scripts to $SCRIPTS_DIR..."
+  cp -r ./hypr/scripts/* "$SCRIPTS_DIR/"
+else
+  echo "Error: ./hypr/scripts directory not found!"
+  exit 1
+fi
+
+# Overwrite the auto-generated hyprland.conf
+if [ -f "./hypr/hyprland.conf" ]; then
+  echo "Overwriting hyprland.conf with the provided file..."
+  cp ./hypr/hyprland.conf "$CONFIG_DIR/hyprland.conf"
+else
+  echo "Error: Provided hyprland.conf file not found in ./hypr!"
+  exit 1
+fi
+
+# Install dependencies
 echo "Installing dependencies..."
 sudo pacman -Syu --noconfirm \
     hyprland \
@@ -25,39 +52,53 @@ sudo pacman -Syu --noconfirm \
     fcitx5 \
     swaylock \
     swayidle \
-    nm-applet
+    wl-clipboard
 
-# Copy configuration files into the config directory
-echo "Copying config files..."
-cp -r ./hyprland/* "$HYPRLAND_DIR"
+# Handle Waybar configuration
+if command -v waybar &> /dev/null; then
+  echo "Waybar is installed. Configuring Waybar..."
+  
+  if [ -d "$WAYBAR_DIR" ]; then
+    echo "Copying existing Waybar configuration to $WAYBAR_DIR..."
+    cp -r "$WAYBAR_DIR" "$CONFIG_DIR/"
+  else
+    echo "Warning: Waybar configuration folder not found in ~/.config/waybar. Creating a new folder."
+    mkdir -p "$WAYBAR_DIR"
+    DEFAULT_WAYBAR_CONFIG="/etc/xdg/waybar/config"
+    DEFAULT_WAYBAR_STYLE="/etc/xdg/waybar/style.css"
 
-# Copy the wallpaper chooser script to the scripts directory
-cp ./scripts/wallpaper_chooser.sh "$CONFIG_DIR/scripts/"
+    if [ -f "$DEFAULT_WAYBAR_CONFIG" ]; then
+      echo "Copying default Waybar config to $WAYBAR_DIR..."
+      cp "$DEFAULT_WAYBAR_CONFIG" "$WAYBAR_DIR/config"
+    else
+      echo "Warning: Default Waybar config not found. Creating an empty config file."
+      touch "$WAYBAR_DIR/config"
+    fi
 
-# Set the correct permissions for configuration files
-chmod -R 755 "$HYPRLAND_DIR"
-chmod +x "$CONFIG_DIR/scripts/wallpaper_chooser.sh"
+    if [ -f "$DEFAULT_WAYBAR_STYLE" ]; then
+      echo "Copying default Waybar style to $WAYBAR_DIR..."
+      cp "$DEFAULT_WAYBAR_STYLE" "$WAYBAR_DIR/style.css"
+    else
+      echo "Warning: Default Waybar style not found. Creating an empty style file."
+      touch "$WAYBAR_DIR/style.css"
+    fi
+  fi
+else
+  echo "Waybar is not installed. Skipping Waybar configuration."
+fi
 
-# Create symbolic links to ensure the config files are loaded (optional)
-ln -sf "$HYPRLAND_DIR/hyprland.conf" "$HOME/.config/hyprland.conf"
-ln -sf "$HYPRLAND_DIR/execs.conf" "$HOME/.config/hypr/execs.conf"
-ln -sf "$HYPRLAND_DIR/colors.conf" "$HOME/.config/hypr/colors.conf"
-ln -sf "$HYPRLAND_DIR/keybinds.conf" "$HOME/.config/hypr/keybinds.conf"
-ln -sf "$HYPRLAND_DIR/rules.conf" "$HOME/.config/hypr/rules.conf"
-ln -sf "$HYPRLAND_DIR/themes.conf" "$HOME/.config/hypr/themes.conf"
-ln -sf "$HYPRLAND_DIR/env.conf" "$HOME/.config/hypr/env.conf"
+# Set correct permissions
+echo "Setting permissions for configuration files..."
+chmod -R 755 "$CONFIG_DIR"
+chmod +x "$SCRIPTS_DIR/"*
 
-# Create symbolic links for Waybar config if necessary
-ln -sf "$HOME/.config/waybar/config" "$HOME/.config/waybar/config"
-ln -sf "$HOME/.config/waybar/styles.css" "$HOME/.config/waybar/styles.css"
-
-# Restart services if necessary
+# Restart Waybar and Hyprland to apply the new configurations
 echo "Restarting Waybar and Hyprland..."
 
-# Restart Waybar to load the new config
+# Restart Waybar
 pkill waybar && waybar &
 
-# Restart Hyprland (you can also use `hyprctl reload` for specific config reloading)
+# Reload Hyprland
 hyprctl reload
 
-echo "Installation and configuration are complete!"
+echo "Installation and configuration complete!"
