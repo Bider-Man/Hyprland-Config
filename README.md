@@ -1,2 +1,2 @@
-# Hyrland-Config
+# Hyprland-Config
  
