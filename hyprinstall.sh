@@ -5,6 +5,7 @@ CONFIG_DIR="$HOME/.config/hypr"
 HYPRLAND_DIR="$CONFIG_DIR/hyprland"
 SCRIPTS_DIR="$CONFIG_DIR/scripts"
 WAYBAR_DIR="$HOME/.config/waybar"
+FOOT_DIR="$HOME/.config/foot"
 
 # Clean up old configurations
 echo "Cleaning up old configurations in $CONFIG_DIR..."
@@ -37,6 +38,22 @@ if [ -f "./hypr/hyprland.conf" ]; then
 else
   echo "Error: Provided hyprland.conf file not found in ./hypr!"
   exit 1
+fi
+
+# Create and copy foot configuration
+if [ -d "$FOOT_DIR" ]; then
+  echo "Foot configuration directory already exists at $FOOT_DIR."
+else
+  echo "Creating foot configuration directory at $FOOT_DIR..."
+  mkdir -p "$FOOT_DIR"
+fi
+
+if [ -f "/etc/xdg/foot/foot.ini" ]; then
+  echo "Copying /etc/xdg/foot/foot.ini to $FOOT_DIR..."
+  cp /etc/xdg/foot/foot.ini "$FOOT_DIR/foot.ini"
+else
+  echo "Error: Default foot.ini not found in /etc/xdg/foot. Creating an empty configuration file."
+  touch "$FOOT_DIR/foot.ini"
 fi
 
 # Install dependencies
