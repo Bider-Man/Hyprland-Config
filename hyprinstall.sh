@@ -43,6 +43,7 @@ fi
 echo "Installing dependencies..."
 sudo pacman -Syu --noconfirm \
     hyprland \
+    rofi \
     foot \
     waybar \
     dunst \
