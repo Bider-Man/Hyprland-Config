@@ -72,6 +72,11 @@ sudo pacman -Syu --noconfirm \
     swayidle \
     wl-clipboard
 
+# Create Rofi configuration
+echo "Creating Rofi configuration directory and dumping default config..."
+mkdir -p ~/.config/rofi
+rofi -dump-config > ~/.config/rofi/config.rasi
+
 # Handle Waybar configuration
 if command -v waybar &> /dev/null; then
   echo "Waybar is installed. Configuring Waybar..."
