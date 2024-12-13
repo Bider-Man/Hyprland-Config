@@ -1,13 +1,13 @@
 {
     "height": 30,
-    "spacing": 12,
+    "spacing": 12, // Slightly increased spacing for visual appeal
     "modules-left": [
         "cpu",
         "memory",
         "swap"
     ],
     "modules-center": [
-        "sway/workspaces"  // This is where we put the workspace display
+        "hyprland/workspaces"  // This is where the workspace display will appear
     ],
     "modules-right": [
         "network",
@@ -15,15 +15,19 @@
         "clock"
     ],
     "hyprland/workspaces": {
-        "disable-scroll": true,
-        "format": "{name}",  // Display the current workspace name or number
+        "format": "{name} : {icon}",
         "format-icons": {
-            "default": "",  // Icon for non-focused workspaces
-            "focused": ""  // Icon for the focused workspace
+            "1": "",  // Workspace 1 icon
+            "2": "",  // Workspace 2 icon
+            "3": "",  // Workspace 3 icon
+            "4": "",  // Workspace 4 icon
+            "5": "",  // Workspace 5 icon
+            "active": "",  // Icon for the active workspace
+            "default": ""  // Default icon for other workspaces
         },
-        "border-width": 2,
-        "border-color": "#00FFFF",  // Cyan color for the focused workspace
-        "padding": 10  // Added padding for better appearance
+        "persistent-workspaces": {
+            "eDP-1": [1, 2, 3, 4, 5]  // Define workspaces for eDP-1 monitor
+        }
     },
     "hyprland/window": {
         "format": "{title}"
