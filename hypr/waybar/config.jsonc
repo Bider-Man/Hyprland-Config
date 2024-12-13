@@ -1,14 +1,7 @@
 // -*- mode: jsonc -*-
 {
     "height": 30,
-    "spacing": 8,
-    "layer": "top",
-    "margin": 0,
-    "padding": 5,
-    "border": {
-        "size": 1,
-        "color": "#00000000"
-    },
+    "spacing": 12, // Slightly increased spacing
     "modules-left": [
         "sway/workspaces",
         "cpu",
@@ -30,67 +23,46 @@
             "default": "",
             "focused": "",
             "urgent": ""
-        },
-        "tooltip": false
+        }
     },
     "sway/window": {
-        "format": "{title}",
-        "max-length": 80,
-        "truncate": true
+        "format": "{title}"
     },
     "network": {
-        "format-wifi": "Wi-Fi: {signalStrength}% ",
+        "format-wifi": "{signalStrength}% ",
         "format-disconnected": "Disconnected ⚠",
-        "icon-size": 16,
-        "tooltip": true,
-        "max-length": 25,
-        "spacing": 8
+        "icon-size": 18, // Increased icon size
+        "tooltip": true // Enable a tooltip for additional info
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
-        "format-muted": "",
+        "format-muted": "Muted ",
         "format-icons": {
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol",
-        "spacing": 8
+        "icon-size": 16
     },
     "cpu": {
         "format": "CPU: {usage}% ",
-        "tooltip": true,
-        "max-length": 20
+        "tooltip": false
     },
     "memory": {
-        "format": "RAM: {percentage_used}% ",
-        "tooltip": true,
-        "max-length": 20
+        "format": "RAM: {used} MiB / {total} MiB ",
+        "tooltip": false
     },
     "swap": {
-        "format": "SWAP: {percentage_used}% ",
-        "tooltip": true,
-        "max-length": 20
+        "format": "SWAP: {used} MiB / {total} MiB",
+        "tooltip": false
     },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
-        "tooltip": false,
-        "on-click": "zenity --calendar"
+        "interval": 1 // Updates every second
     },
     "style": {
-        "bar": {
-            "background": "rgba(0, 0, 0, 0.8)",
-            "border-color": "#00000000",
-            "color": "#ffffff",
-            "font": "monospace 12",
-            "height": 30
-        },
-        "tooltip": {
-            "background": "#1e1e2e",
-            "color": "#ffffff",
-            "font": "monospace 10"
-        },
-        "module": {
-            "margin": 4,
-            "padding": 5
-        }
+        "background": "rgba(0, 0, 0, 0.5)", // Black with 50% opacity
+        "border": "1px solid rgba(255, 255, 255, 0.3)", // Light border
+        "border-radius": 5, // Rounded corners
+        "padding": 5 // Added padding for better spacing
     }
 }
