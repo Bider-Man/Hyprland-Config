@@ -78,7 +78,8 @@ sudo pacman -Syu --noconfirm \
     swayidle \
     wl-clipboard \
     grim \
-    slurp
+    slurp \
+    procps-ng
 
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
