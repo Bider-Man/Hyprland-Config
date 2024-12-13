@@ -7,7 +7,7 @@
         "swap"
     ],
     "modules-center": [
-        "hyprland/workspaces"  // This is where the workspace display will appear
+        "hyprland/workspaces"  // Workspace display will appear here
     ],
     "modules-right": [
         "network",
@@ -15,20 +15,20 @@
         "clock"
     ],
     "hyprland/workspaces": {
-        "format": "{name} : {icon}",
+        "format": "{name}",
         "format-icons": {
-            "1": "",  // Workspace 1 icon
-            "2": "",  // Workspace 2 icon
-            "3": "",  // Workspace 3 icon
-            "4": "",  // Workspace 4 icon
-            "5": "",  // Workspace 5 icon
-            "6": "",  // Workspace 6 icon
-            "7": "",  // Workspace 7 icon
-            "8": "",  // Workspace 8 icon
-            "9": "",  // Workspace 9 icon
-            "10": "", // Workspace 10 icon
-            "active": "",  // Icon for the active workspace
-            "default": ""  // Default icon for other workspaces
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            "active": "",
+            "default": ""
         },
         "persistent-workspaces": {
             "eDP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  // Define workspaces for eDP-1 monitor
@@ -74,5 +74,14 @@
         "border": "1px solid rgba(255, 255, 255, 0.3)",  // Light border
         "border-radius": 5,  // Rounded corners
         "padding": 5  // Padding for better spacing
+    },
+    "hyprland/workspaces-style": {
+        "font-size": "16px",  // Adjusted font size
+        "color": "rgba(0, 255, 255, 1)",  // Neon cyan text
+        "border": "2px solid rgba(255, 0, 255, 0.6)",  // Neon pink border
+        "border-radius": "10px",  // Rounded box corners
+        "padding": "10px",  // Space inside the box
+        "background": "rgba(0, 0, 0, 0.7)",  // Translucent black background for the box
+        "box-shadow": "0px 0px 15px rgba(255, 0, 255, 0.6)"  // Neon pink glow
     }
 }
