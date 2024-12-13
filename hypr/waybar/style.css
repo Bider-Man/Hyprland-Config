@@ -7,12 +7,12 @@
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.7); /* Translucent black background */
+    background-color: rgba(0, 0, 0, 0.7); /* Translucent background */
     padding: 5px;
     color: #fff; /* Default text color */
     transition-property: background-color;
     transition-duration: 0.5s;
-    box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.6); /* Neon pink glow */
+    box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.6); /* Soft neon glow */
 }
 
 /* Workspaces */
@@ -23,7 +23,7 @@ window#waybar {
     font-weight: 600;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    color: inherit; /* Inherit color from gradient */
+    color: inherit;
     text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.6); /* Soft glow */
     border-left: none; /* Remove vertical lines between buttons */
 }
@@ -48,7 +48,6 @@ window#waybar > * {
         #8000ff,  /* Purple */
         #0000ff   /* Blue */
     );
-    -webkit-background-clip: text; /* Use the gradient only on text */
     background-clip: text; /* Apply gradient to text */
     font-weight: 600;
     font-size: 16px; /* Font size for icons and text */
