@@ -83,7 +83,7 @@
             "background": "rgba(255, 0, 0, 0.8)",  // Red background for active workspace
             "border": "4px solid rgba(255, 0, 0, 1)",  // Red border
             "border-radius": "50%",  // Circular shape for active workspace
-            "padding": "8px",  // Padding for circle effect
+            "padding": "10px",  // Padding for circle effect
             "box-shadow": "0 0 15px rgba(255, 0, 0, 1)"  // Red glow effect
         }
     }
