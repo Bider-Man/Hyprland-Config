@@ -65,6 +65,7 @@ sudo pacman -Syu --noconfirm \
     zenity \
     otf-font-awesome \
     ttf-arimo-nerd \
+    noto-fonts-emoji \
     noto-fonts \
     foot \
     waybar \
