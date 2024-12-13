@@ -46,39 +46,13 @@ window#waybar {
 #memory,
 #clock,
 #window {
-    position: relative;
     font-weight: 600;
     font-size: 16px; /* Font size for icons and text */
     padding: 5px;
-}
-
-/* Use pseudo-element to create gradient effect */
-#pulseaudio::before,
-#network::before,
-#cpu::before,
-#memory::before,
-#clock::before,
-#window::before {
-    content: attr(data-text); /* Use the text content of the icon */
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background: linear-gradient(to right, #ff00ff, #8000ff, #0000ff); /* Pink to purple to blue */
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
-    z-index: -1;
-}
-
-#pulseaudio,
-#network,
-#cpu,
-#memory,
-#clock,
-#window {
-    color: transparent; /* Make text transparent to show gradient */
+    color: transparent; /* Make the text color transparent so the gradient is visible */
 }
 
 /* Remove the dotted vertical lines between icons */
