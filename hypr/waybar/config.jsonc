@@ -56,9 +56,15 @@
         "format": "CPU: {usage}% "
     },
     "memory": {
-        "format": "RAM: {percentage_used}% "
+        "format": "RAM: {used} MiB / {total} MiB "
     },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}"
+    },
+    "style": {
+        "background": "rgba(0, 0, 0, 0.5)", // Black with 50% opacity for translucency
+        "border": "1px solid rgba(255, 255, 255, 0.3)", // Optional border
+        "border-radius": 5, // Rounded edges
+        "padding": 4 // Padding for better spacing
     }
 }
