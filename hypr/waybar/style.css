@@ -7,9 +7,9 @@
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.7); /* Translucent black */
+    background-color: rgba(0, 0, 0, 0.7); /* Translucent background */
     padding: 5px;
-    color: #00ffff; /* Default cyan text color */
+    color: #00ffff; /* Default neon cyan text */
     transition-property: background-color;
     transition-duration: 0.5s;
     box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.6); /* Neon pink glow */
@@ -23,9 +23,9 @@ window#waybar {
     font-weight: 600;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    transition: color 0.3s ease-in-out;
     color: inherit; /* Inherit color from gradient */
     text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.6); /* Soft glow */
+    border-left: none; /* Remove vertical lines between buttons */
 }
 
 /* Hover effect for workspaces */
@@ -39,14 +39,7 @@ window#waybar {
     text-shadow: 0 0 8px #00ff00; /* Neon green glow for focused */
 }
 
-/* Gradient for icons and text */
-window#waybar {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-/* Gradient applied to all items within Waybar */
+/* Gradient for text/icons */
 window#waybar > * {
     display: inline-block;
     position: relative;
@@ -59,14 +52,9 @@ window#waybar > * {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;  /* Ensures gradient shows through text */
-}
-
-/* Additional styling for items */
-#pulseaudio, #network, #cpu, #memory, #clock, #window {
-    padding-left: 8px;
-    padding-right: 8px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 16px; /* Font size for icons and text */
+    padding: 5px;
 }
 
 /* Remove the dotted vertical lines between icons */
