@@ -51,8 +51,9 @@ window#waybar > * {
         #8000ff,  /* Purple */
         #0000ff   /* Blue */
     );
-    -webkit-background-clip: text; /* For WebKit-based browsers */
-    background-clip: text; /* For other browsers */
+    /* Removed background-clip: text */
+    -webkit-background-clip: unset; /* Ensure it’s unset */
+    background-clip: unset; /* Ensure it’s unset */
 }
 
 /* Remove the dotted vertical lines between icons */
