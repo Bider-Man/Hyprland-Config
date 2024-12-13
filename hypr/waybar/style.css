@@ -23,9 +23,17 @@ window#waybar {
     font-weight: 600;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    color: inherit; /* Inherit color from gradient */
+    color: transparent; /* Make the text transparent */
     text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.6); /* Soft glow */
     border-left: none; /* Remove vertical lines between buttons */
+    background: linear-gradient(
+        to right,
+        #ff00ff,  /* Pink */
+        #8000ff,  /* Purple */
+        #0000ff   /* Blue */
+    );
+    background-size: 100% 100%;
+    background-clip: content-box;
 }
 
 /* Hover effect for workspaces */
@@ -40,7 +48,6 @@ window#waybar {
 }
 
 /* Apply gradient text to icons and elements directly */
-#workspaces button,
 #pulseaudio,
 #network,
 #cpu,
@@ -54,12 +61,12 @@ window#waybar {
         #8000ff,  /* Purple */
         #0000ff   /* Blue */
     );
-    background-clip: text; /* Apply the gradient to the text */
-    -webkit-background-clip: text; /* Ensure compatibility with WebKit */
+    background-size: 100% 100%;
+    background-clip: content-box; /* Apply the gradient */
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.6); /* Soft glow */
     font-weight: 600;
     font-size: 16px; /* Font size for icons and text */
     padding: 5px;
-    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.6); /* Soft glow */
 }
 
 /* Remove the dotted vertical lines between icons */
