@@ -1,6 +1,6 @@
 {
     "height": 30,
-    "spacing": 12, // Slightly increased spacing for visual appeal
+    "spacing": 12,  // Slightly increased spacing for visual appeal
     "modules-left": [
         "cpu",
         "memory",
@@ -82,6 +82,13 @@
         "border-radius": "10px",  // Rounded box corners
         "padding": "10px",  // Space inside the box
         "background": "rgba(0, 0, 0, 0.7)",  // Translucent black background for the box
-        "box-shadow": "0px 0px 15px rgba(255, 0, 255, 0.6)"  // Neon pink glow
+        "box-shadow": "0px 0px 15px rgba(255, 0, 255, 0.6)",  // Neon pink glow
+        "active-style": {
+            "background": "rgba(255, 0, 0, 0.8)",  // Red background for active workspace
+            "border": "4px solid rgba(255, 0, 0, 1)",  // Red border for active workspace
+            "box-shadow": "0 0 15px rgba(255, 0, 0, 1)",  // Red glow around the active workspace
+            "border-radius": "50%",  // Circular shape for the active workspace box
+            "padding": "8px"  // Adjust padding for circle effect
+        }
     }
 }
