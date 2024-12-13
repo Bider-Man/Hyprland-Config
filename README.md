@@ -14,4 +14,4 @@ I plan to make this a fully-configured setup, but since I'm learning Hyprland an
 
 I'm doing this in my free time, so as you can expect it'll be slow to update (major updates at least).
 
-Any criticism is also welcome :)
+Any criticism is also welcome :D
