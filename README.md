@@ -1,8 +1,10 @@
 # Hyprland-Config
 
+##  I AM NOT PROFICIENT in Hyprland or Linux.
+
 My very first Hyprland rice. It's not really good or anything, I have just made a github config just so that I can easily access it whenever I change my laptop/desktop in the future and to test out the rice (in case something goes wrong, I can just clone this and fix the mistake rather than retyping everything from scratch).
 
-You are welcome to use it, but I'm not really gonna solve any bugs you might encounter or anything. I AM NOT PROFICIENT in Hyprland or Linux.
+You are welcome to use it, but I'm not really gonna solve any bugs you might encounter or anything.
 
 So whatever you do, do it at your own discretion.
 
