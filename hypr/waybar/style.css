@@ -7,9 +7,9 @@
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.7); /* Translucent background */
+    background-color: rgba(0, 0, 0, 0.7); /* Translucent black background */
     padding: 5px;
-    color: #00ffff; /* Default neon cyan text */
+    color: #fff; /* Default text color */
     transition-property: background-color;
     transition-duration: 0.5s;
     box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.6); /* Neon pink glow */
@@ -39,21 +39,20 @@ window#waybar {
     text-shadow: 0 0 8px #00ff00; /* Neon green glow for focused */
 }
 
-/* Gradient for text/icons */
+/* Gradient for icons and text */
 window#waybar > * {
-    color: #ff00ff; /* Default pink */
-    font-weight: 600;
-    font-size: 16px; /* Font size for icons and text */
-    padding: 5px;
+    color: transparent; /* Make text transparent */
     background: linear-gradient(
         to right,
         #ff00ff,  /* Pink */
         #8000ff,  /* Purple */
         #0000ff   /* Blue */
     );
-    /* Removed background-clip: text */
-    -webkit-background-clip: unset; /* Ensure it’s unset */
-    background-clip: unset; /* Ensure it’s unset */
+    -webkit-background-clip: text; /* Use the gradient only on text */
+    background-clip: text; /* Apply gradient to text */
+    font-weight: 600;
+    font-size: 16px; /* Font size for icons and text */
+    padding: 5px;
 }
 
 /* Remove the dotted vertical lines between icons */
