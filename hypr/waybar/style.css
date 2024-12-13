@@ -20,84 +20,74 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
+/* Workspaces */
 #workspaces button {
     padding-left: 10px;
     padding-right: 10px;
     background-color: transparent;
-    color: #00ffff; /* Neon cyan */
     font-weight: 600;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    transition: background-color 0.3s, color 0.3s;
+    transition: color 0.3s ease-in-out;
+    color: inherit; /* Text color inherits gradient */
 }
 
+/* Hover effect for workspaces */
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.6);
-    color: #ff00ff; /* Neon pink hover */
-    border-bottom: 4px solid #ff00ff; /* Neon pink border */
-    border-top: 4px solid #00ffff; /* Neon cyan border */
-    box-shadow: 0 0 8px #ff00ff; /* Glow effect on hover */
+    color: rgba(255, 255, 255, 0.8); /* White glow on hover */
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.6);
 }
 
 #workspaces button.focused {
-    background: rgba(0, 0, 0, 0.6);
-    color: #00ff00; /* Neon green for focused */
-    border-top: 4px solid #ff00ff; /* Neon pink */
-    border-bottom: 4px solid #00ffff; /* Neon cyan */
-    box-shadow: 0 0 10px #00ff00; /* Neon green glow */
-}
-
-#pulseaudio, #network, #cpu, #memory, #clock, #window {
-    padding-left: 8px;
-    padding-right: 8px;
-    background-color: transparent;
-    font-weight: 600;
-    background: linear-gradient(90deg, #ff00ff, #8000ff, #0000ff); /* Gradient from pink to purple to blue */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Gradient applies to text */
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-#tray {
-    padding-left: 8px;
-    padding-right: 8px;
-    min-width: 40px;
-    font-size: 20px;
-    color: #ff00ff; /* Neon pink */
-    background: linear-gradient(90deg, #ff00ff, #8000ff, #0000ff); /* Gradient for text */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    box-shadow: 0 0 5px rgba(255, 0, 255, 0.8); /* Pink glow */
-}
-
-#clock {
-    font-size: 14px;
-    color: #00ffff; /* Neon cyan */
-    background: linear-gradient(90deg, #ff00ff, #8000ff, #0000ff); /* Gradient for text */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8); /* Cyan glow */
-}
-
-#mpd.playing {
-    background: repeating-linear-gradient(
-        45deg,
-        #ff00ff,
-        #ff00ff 12px,
-        #3d3540 12px,
-        #3d3540 24px
-    );
-    background-size: 120% 100%;
-    animation: scroll 0.5s linear infinite;
     color: #00ff00; /* Neon green */
-    box-shadow: 0 0 10px #ff00ff; /* Neon pink glow */
+    text-shadow: 0 0 8px #00ff00; /* Neon green glow for focused */
 }
 
-@keyframes scroll {
-    from {
-        background-position: -33.941125497px 0;
+/* Icons and Text Gradient: Pink to Purple to Blue */
+#pulseaudio, #network, #cpu, #memory, #clock, #tray, #window {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: inherit; /* Allows gradient to apply */
+    background: none;
+}
+
+/* Dynamic Gradient: Spans the full width of the Waybar */
+window#waybar {
+    --gradient-start: #ff00ff; /* Pink */
+    --gradient-mid: #8000ff; /* Purple */
+    --gradient-end: #0000ff; /* Blue */
+}
+
+/* Gradient Styling for Icons/Text */
+window#waybar > * {
+    display: inline-block;
+    position: relative;
+    background: linear-gradient(
+        to right,
+        var(--gradient-start),
+        var(--gradient-mid),
+        var(--gradient-end)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Waybar Animation Effect */
+@keyframes waybar-glow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
     }
-    to {
-        background-position: 0 0;
+    50% {
+        box-shadow: 0 0 15px rgba(128, 0, 255, 0.6);
     }
+    100% {
+        box-shadow: 0 0 10px rgba(0, 0, 255, 0.8);
+    }
+}
+
+window#waybar {
+    animation: waybar-glow 3s infinite;
 }
