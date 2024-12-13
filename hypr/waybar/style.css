@@ -41,8 +41,6 @@ window#waybar {
 
 /* Gradient for text/icons */
 window#waybar > * {
-    display: inline-block;
-    position: relative;
     background: linear-gradient(
         to right,
         #ff00ff,  /* Pink */
