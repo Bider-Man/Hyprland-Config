@@ -6,6 +6,7 @@ HYPRLAND_DIR="$CONFIG_DIR/hyprland"
 SCRIPTS_DIR="$CONFIG_DIR/scripts"
 WAYBAR_DIR="$HOME/.config/waybar"
 FOOT_DIR="$HOME/.config/foot"
+WAYBAR_SRC_DIR="./hypr/waybar"
 
 # Clean up old configurations
 echo "Cleaning up old configurations in $CONFIG_DIR..."
@@ -84,29 +85,14 @@ rofi -dump-config > ~/.config/rofi/config.rasi
 # Handle Waybar configuration
 if command -v waybar &> /dev/null; then
   echo "Waybar is installed. Configuring Waybar..."
-
-  # Copy Waybar folder if exists
-  if [ -d "./waybar" ]; then
-    echo "Copying Waybar configuration folder to $WAYBAR_DIR..."
-    rm -rf "$WAYBAR_DIR" # Remove any existing Waybar configuration
-    cp -r ./waybar "$WAYBAR_DIR"
+  
+  if [ -d "$WAYBAR_SRC_DIR" ]; then
+    echo "Copying Waybar configuration from $WAYBAR_SRC_DIR to $WAYBAR_DIR..."
+    mkdir -p "$WAYBAR_DIR"
+    cp -r "$WAYBAR_SRC_DIR"/* "$WAYBAR_DIR/"
   else
-    echo "Error: Waybar configuration folder ./waybar not found!"
+    echo "Error: Waybar configuration folder $WAYBAR_SRC_DIR not found!"
     exit 1
-  fi
-
-  # Check for default Waybar config and style
-  DEFAULT_WAYBAR_CONFIG="/etc/xdg/waybar/config"
-  DEFAULT_WAYBAR_STYLE="/etc/xdg/waybar/style.css"
-
-  if [ ! -f "$WAYBAR_DIR/config" ] && [ -f "$DEFAULT_WAYBAR_CONFIG" ]; then
-    echo "Copying default Waybar config to $WAYBAR_DIR..."
-    cp "$DEFAULT_WAYBAR_CONFIG" "$WAYBAR_DIR/config"
-  fi
-
-  if [ ! -f "$WAYBAR_DIR/style.css" ] && [ -f "$DEFAULT_WAYBAR_STYLE" ]; then
-    echo "Copying default Waybar style to $WAYBAR_DIR..."
-    cp "$DEFAULT_WAYBAR_STYLE" "$WAYBAR_DIR/style.css"
   fi
 else
   echo "Waybar is not installed. Skipping Waybar configuration."
