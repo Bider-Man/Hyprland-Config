@@ -15,27 +15,19 @@
         "clock"
     ],
     "hyprland/workspaces": {
-        "format": "{name}",  // Only show workspace number, no icons
+        "format": "{icon}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            "active": "",  // No icon for active workspace
-            "default": ""  // No icon for default workspace
+            "1": "😎",
+            "2": "🌐",
+            "3": "👩🏽‍💻",
+            "4": "📒",
+            "5": "🎵"
         },
-        "persistent-workspaces": {
-            "eDP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  // Define workspaces for eDP-1 monitor
+        "persistent_workspaces": {
+            "*": 1
         }
-    },
-    "hyprland/window": {
-        "format": "{title}"
     },
     "network": {
         "format-wifi": "{signalStrength}% ",
