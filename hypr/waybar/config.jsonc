@@ -1,7 +1,7 @@
 // -*- mode: jsonc -*-
 {
     "height": 30,
-    "spacing": 10, // Space between modules
+    "spacing": 12, // Slightly increased spacing
     "modules-left": [
         "sway/workspaces",
         "cpu",
@@ -29,18 +29,19 @@
         "format": "{title}"
     },
     "network": {
-        "format-wifi": "{signalStrength}% ", // Ensures Wi-Fi icon displays properly
+        "format-wifi": "{signalStrength}% ",
         "format-disconnected": "Disconnected ⚠",
-        "icon-size": 16 // Adjust size to prevent cut-off
+        "icon-size": 18, // Increased icon size
+        "tooltip": true // Enable a tooltip for additional info
     },
     "pulseaudio": {
-        "format": "{volume}% {icon}", // Ensures audio displays correctly
+        "format": "{volume}% {icon}",
         "format-muted": "Muted ",
         "format-icons": {
-            "default": ["", "", ""] // Matches PulseAudio levels
+            "default": ["", "", ""]
         },
         "on-click": "pavucontrol",
-        "icon-size": 16 // Adjust size of icons for consistency
+        "icon-size": 16
     },
     "cpu": {
         "format": "CPU: {usage}% ",
@@ -55,7 +56,8 @@
         "tooltip": false
     },
     "clock": {
-        "format": "{:%Y-%m-%d %H:%M:%S}"
+        "format": "{:%Y-%m-%d %H:%M:%S}",
+        "interval": 1 // Updates every second
     },
     "style": {
         "background": "rgba(0, 0, 0, 0.5)", // Black with 50% opacity
