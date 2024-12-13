@@ -84,31 +84,29 @@ rofi -dump-config > ~/.config/rofi/config.rasi
 # Handle Waybar configuration
 if command -v waybar &> /dev/null; then
   echo "Waybar is installed. Configuring Waybar..."
-  
-  if [ -d "$WAYBAR_DIR" ]; then
-    echo "Copying existing Waybar configuration to $WAYBAR_DIR..."
-    cp -r "$WAYBAR_DIR" "$CONFIG_DIR/"
+
+  # Copy Waybar folder if exists
+  if [ -d "./waybar" ]; then
+    echo "Copying Waybar configuration folder to $WAYBAR_DIR..."
+    rm -rf "$WAYBAR_DIR" # Remove any existing Waybar configuration
+    cp -r ./waybar "$WAYBAR_DIR"
   else
-    echo "Warning: Waybar configuration folder not found in ~/.config/waybar. Creating a new folder."
-    mkdir -p "$WAYBAR_DIR"
-    DEFAULT_WAYBAR_CONFIG="/etc/xdg/waybar/config"
-    DEFAULT_WAYBAR_STYLE="/etc/xdg/waybar/style.css"
+    echo "Error: Waybar configuration folder ./waybar not found!"
+    exit 1
+  fi
 
-    if [ -f "$DEFAULT_WAYBAR_CONFIG" ]; then
-      echo "Copying default Waybar config to $WAYBAR_DIR..."
-      cp "$DEFAULT_WAYBAR_CONFIG" "$WAYBAR_DIR/config"
-    else
-      echo "Warning: Default Waybar config not found. Creating an empty config file."
-      touch "$WAYBAR_DIR/config"
-    fi
+  # Check for default Waybar config and style
+  DEFAULT_WAYBAR_CONFIG="/etc/xdg/waybar/config"
+  DEFAULT_WAYBAR_STYLE="/etc/xdg/waybar/style.css"
 
-    if [ -f "$DEFAULT_WAYBAR_STYLE" ]; then
-      echo "Copying default Waybar style to $WAYBAR_DIR..."
-      cp "$DEFAULT_WAYBAR_STYLE" "$WAYBAR_DIR/style.css"
-    else
-      echo "Warning: Default Waybar style not found. Creating an empty style file."
-      touch "$WAYBAR_DIR/style.css"
-    fi
+  if [ ! -f "$WAYBAR_DIR/config" ] && [ -f "$DEFAULT_WAYBAR_CONFIG" ]; then
+    echo "Copying default Waybar config to $WAYBAR_DIR..."
+    cp "$DEFAULT_WAYBAR_CONFIG" "$WAYBAR_DIR/config"
+  fi
+
+  if [ ! -f "$WAYBAR_DIR/style.css" ] && [ -f "$DEFAULT_WAYBAR_STYLE" ]; then
+    echo "Copying default Waybar style to $WAYBAR_DIR..."
+    cp "$DEFAULT_WAYBAR_STYLE" "$WAYBAR_DIR/style.css"
   fi
 else
   echo "Waybar is not installed. Skipping Waybar configuration."
