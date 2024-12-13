@@ -2,7 +2,7 @@
     border: none;
     border-radius: 0;
     font-family: Inter Light;
-    font-size: 16px;
+    font-size: 14px; /* Reduced font size for smaller icons */
     min-height: 0;
 }
 
@@ -29,6 +29,7 @@ window#waybar.hidden {
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
     transition: background-color 0.3s, color 0.3s;
+    font-size: 14px; /* Reduced font size for workspace icons */
 }
 
 #workspaces button:hover {
@@ -47,38 +48,33 @@ window#waybar.hidden {
     box-shadow: 0 0 10px #00ff00; /* Neon green glow */
 }
 
+/* Removed gradient and reverted to default icon color */
 #pulseaudio, #network, #cpu, #memory, #clock, #window {
     padding-left: 8px;
     padding-right: 8px;
     background-color: transparent;
     font-weight: 600;
-    background: linear-gradient(90deg, #ff00ff, #8000ff, #0000ff); /* Gradient from pink to purple to blue */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Gradient applies to text */
+    font-size: 14px; /* Reduced font size for icons */
+    color: #ffffff; /* Default white text */
     transition: background-color 0.3s, border-color 0.3s;
 }
 
+/* Tray icon styling */
 #tray {
     padding-left: 8px;
     padding-right: 8px;
     min-width: 40px;
-    font-size: 20px;
+    font-size: 16px; /* Slightly smaller font for tray icons */
     color: #ff00ff; /* Neon pink */
-    background: linear-gradient(90deg, #ff00ff, #8000ff, #0000ff); /* Gradient for text */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    box-shadow: 0 0 5px rgba(255, 0, 255, 0.8); /* Pink glow */
 }
 
+/* Clock styling */
 #clock {
     font-size: 14px;
     color: #00ffff; /* Neon cyan */
-    background: linear-gradient(90deg, #ff00ff, #8000ff, #0000ff); /* Gradient for text */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8); /* Cyan glow */
 }
 
+/* MPD (Music Player Daemon) styling */
 #mpd.playing {
     background: repeating-linear-gradient(
         45deg,
