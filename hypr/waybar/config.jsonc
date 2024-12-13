@@ -1,13 +1,13 @@
 {
     "height": 30,
-    "spacing": 12,  // Increased spacing
+    "spacing": 12, // Slightly increased spacing for visual appeal
     "modules-left": [
         "cpu",
         "memory",
         "swap"
     ],
     "modules-center": [
-        "hyprland/workspaces"
+        "hyprland/workspaces"  // This is where the workspace display will appear
     ],
     "modules-right": [
         "network",
@@ -15,24 +15,27 @@
         "clock"
     ],
     "hyprland/workspaces": {
-        "format": "{name}",
+        "format": "{name} : {icon}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            "active": "",  // No icons
-            "default": ""
+            "1": "",  // Workspace 1 icon
+            "2": "",  // Workspace 2 icon
+            "3": "",  // Workspace 3 icon
+            "4": "",  // Workspace 4 icon
+            "5": "",  // Workspace 5 icon
+            "6": "",  // Workspace 6 icon
+            "7": "",  // Workspace 7 icon
+            "8": "",  // Workspace 8 icon
+            "9": "",  // Workspace 9 icon
+            "10": "", // Workspace 10 icon
+            "active": "",  // Icon for the active workspace
+            "default": ""  // Default icon for other workspaces
         },
         "persistent-workspaces": {
-            "eDP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            "eDP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  // Define workspaces for eDP-1 monitor
         }
+    },
+    "hyprland/window": {
+        "format": "{title}"
     },
     "network": {
         "format-wifi": "{signalStrength}% ",
@@ -67,22 +70,9 @@
         "interval": 1  // Updates every second
     },
     "style": {
-        "background": "rgba(0, 0, 0, 0.5)",  // Semi-transparent background
+        "background": "rgba(0, 0, 0, 0.5)",  // Translucent background
         "border": "1px solid rgba(255, 255, 255, 0.3)",  // Light border
         "border-radius": 5,  // Rounded corners
-        "padding": 5,  // Padding
-        "workspaces": {
-            "font-size": "16px",
-            "color": "rgba(0, 255, 255, 1)",
-            "background": "rgba(0, 0, 0, 0.7)",  // Dark background
-            "box-shadow": "0 0 15px rgba(0, 255, 255, 0.6)"  // Glow effect
-        },
-        "active-workspace": {
-            "background": "rgba(255, 0, 0, 0.8)",  // Red background for active workspace
-            "border": "4px solid rgba(255, 0, 0, 1)",  // Red border
-            "border-radius": "50%",  // Circular shape for active workspace
-            "padding": "8px",  // Padding for circle effect
-            "box-shadow": "0 0 15px rgba(255, 0, 0, 1)"  // Red glow effect
-        }
+        "padding": 5  // Padding for better spacing
     }
 }
