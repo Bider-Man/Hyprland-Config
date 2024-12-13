@@ -61,6 +61,7 @@ echo "Installing dependencies..."
 sudo pacman -Syu --noconfirm \
     hyprland \
     rofi \
+    zenity\
     foot \
     waybar \
     dunst \
