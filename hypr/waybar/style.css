@@ -41,18 +41,18 @@ window#waybar {
 
 /* Gradient for text/icons */
 window#waybar > * {
+    color: #ff00ff; /* Default pink */
+    font-weight: 600;
+    font-size: 16px; /* Font size for icons and text */
+    padding: 5px;
     background: linear-gradient(
         to right,
         #ff00ff,  /* Pink */
         #8000ff,  /* Purple */
         #0000ff   /* Blue */
     );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;  /* Ensures gradient shows through text */
-    font-weight: 600;
-    font-size: 16px; /* Font size for icons and text */
-    padding: 5px;
+    -webkit-background-clip: text; /* For WebKit-based browsers */
+    background-clip: text; /* For other browsers */
 }
 
 /* Remove the dotted vertical lines between icons */
