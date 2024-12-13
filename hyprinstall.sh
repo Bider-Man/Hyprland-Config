@@ -75,7 +75,9 @@ sudo pacman -Syu --noconfirm \
     fcitx5 \
     swaylock \
     swayidle \
-    wl-clipboard
+    wl-clipboard \
+    grim \
+    slurp
 
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
