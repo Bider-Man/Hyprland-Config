@@ -14,20 +14,19 @@
         "pulseaudio",
         "clock"
     ],
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "format": "{name}",  // Display the current workspace name or number
         "format-icons": {
             "default": "",  // Icon for non-focused workspaces
             "focused": "",  // Icon for the focused workspace
-            "urgent": ""   // Icon for urgent workspaces
         },
         "on-click": "swaymsg workspace {name}",  // Click to switch workspace
         "border-width": 2,
         "border-color": "#00FFFF",  // Cyan color for the focused workspace
         "padding": 10  // Added padding for better appearance
     },
-    "sway/window": {
+    "hyprland/window": {
         "format": "{title}"
     },
     "network": {
