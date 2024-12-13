@@ -61,7 +61,10 @@ echo "Installing dependencies..."
 sudo pacman -Syu --noconfirm \
     hyprland \
     rofi \
-    zenity\
+    zenity \
+    otf-font-awesome \
+    ttf-arimo-nerd \
+    noto-fonts \
     foot \
     waybar \
     dunst \
