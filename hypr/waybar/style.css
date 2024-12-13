@@ -5,129 +5,89 @@
     font-size: 16px;
     min-height: 0;
 }
+
 window#waybar {
-    background-color: #3d3540;
-    border-bottom: 2px dashed #a678d3;
-    border-top: 2px dashed #a678d3;
-    padding-top: 5px;
-    color: #a678d3; 
-    transition-property: background-color;
-    transition-duration: .5s;
+    background-color: rgba(0, 0, 0, 0.7); /* Translucent black */
+    border: 2px solid rgba(255, 0, 255, 0.8); /* Neon pink border */
+    padding: 5px;
+    color: #00ffff; /* Neon cyan text */
+    transition-property: background-color, border-color;
+    transition-duration: 0.5s;
+    box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.6); /* Neon pink glow */
 }
 
 window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
 #workspaces button {
     padding-left: 10px;
     padding-right: 10px;
-    /*padding-top: 5px;
-    padding-bottom: 5px;*/
-
     background-color: transparent;
-    color: inherit;
+    color: #00ffff; /* Neon cyan */
     font-weight: 600;
     border-top: 4px solid transparent;
-    border-bottom: 3px solid transparent;
-    border-left: 2px dashed #a678d3;
-
+    border-bottom: 4px solid transparent;
+    border-left: 2px dashed rgba(0, 255, 255, 0.8); /* Neon cyan border */
+    transition: background-color 0.3s, color 0.3s;
 }
 
-#workspaces button:first-child {
-    border-left: 0;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: inherit;
-    text-shadow: inherit;
-    border-bottom: 3px solid #a678d3;
-    border-top: 3px solid #a678d3;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ff00ff; /* Neon pink hover */
+    border-bottom: 4px solid #ff00ff; /* Neon pink border */
+    border-top: 4px solid #00ffff; /* Neon cyan border */
+    box-shadow: 0 0 8px #ff00ff; /* Glow effect on hover */
 }
 
 #workspaces button.focused {
-    background: rgba(0, 0, 0, 0.2);
-
-    border-top: 3px solid #9730fd;
-    border-bottom: 3px solid #9730fd;
-    border-left: 2px dashed #9730fd;
-    border-right: 2px dashed #9730fd;
-
-    color: #9730fd;
-}
-
-#workspaces button.focused + button {
-    border-left: none;
-}
-
-#workspaces button.focused:first-child {
-    border-left: none;
-}
-
-#workspaces button.focused:last-child {
-    border-right: none;
-}
-
-
-#workspaces button.urgent {
-    background-color: #eb4d4b;
+    background: rgba(0, 0, 0, 0.6);
+    color: #00ff00; /* Neon green for focused */
+    border-top: 4px solid #ff00ff; /* Neon pink */
+    border-bottom: 4px solid #00ffff; /* Neon cyan */
+    box-shadow: 0 0 10px #00ff00; /* Neon green glow */
 }
 
 #pulseaudio, #network, #cpu, #memory, #clock, #window {
     padding-left: 8px;
     padding-right: 8px;
-    /*
-    padding-top: 5px;
-    padding-bottom: 5px;
-    */
-
     background-color: transparent;
     color: inherit;
     font-weight: 600;
     border-top: 4px solid transparent;
     border-bottom: 3px solid transparent;
-    border-left: 2px dashed #a678d3;
+    border-left: 2px dashed rgba(0, 255, 255, 0.8); /* Neon cyan */
+    transition: color 0.3s, border-color 0.3s;
 }
 
 #tray {
     padding-left: 8px;
-    padding-right:8px;
+    padding-right: 8px;
     min-width: 40px;
-    border-left: 2px dashed #a678d3;
+    border-left: 2px dashed rgba(255, 0, 255, 0.8); /* Neon pink */
     font-size: 20px;
-}
-
-#window {
-    min-width: 500px;
+    color: #ff00ff; /* Neon pink */
+    box-shadow: 0 0 5px rgba(255, 0, 255, 0.8); /* Pink glow */
 }
 
 #clock {
     font-size: 14px;
+    color: #00ffff; /* Neon cyan */
+    box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8); /* Cyan glow */
 }
 
 #mpd.playing {
-
     background: repeating-linear-gradient(
-          45deg,
-          #453e48,
-	  #453e48 12px,
-	  #3d3540 12px,
-	  #3d3540 24px
+        45deg,
+        #ff00ff,
+        #ff00ff 12px,
+        #3d3540 12px,
+        #3d3540 24px
     );
     background-size: 120% 100%;
     animation: scroll 0.5s linear infinite;
-
+    color: #00ff00; /* Neon green */
+    box-shadow: 0 0 10px #ff00ff; /* Neon pink glow */
 }
 
 @keyframes scroll {
