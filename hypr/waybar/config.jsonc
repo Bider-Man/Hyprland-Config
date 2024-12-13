@@ -1,13 +1,13 @@
 {
     "height": 30,
-    "spacing": 12,  // Slightly increased spacing for visual appeal
+    "spacing": 12,  // Adjusting for spacing
     "modules-left": [
         "cpu",
         "memory",
         "swap"
     ],
     "modules-center": [
-        "hyprland/workspaces"  // This is where the workspace display will appear
+        "hyprland/workspaces"
     ],
     "modules-right": [
         "network",
@@ -15,51 +15,24 @@
         "clock"
     ],
     "hyprland/workspaces": {
-        "format": "{icon}",
-        "on-scroll-up": "hyprctl dispatch workspace e+1",
-        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "format": "{name}",  // Display workspace name (number)
         "format-icons": {
-            "1": "😎",
-            "2": "🌐",
-            "3": "👩🏽‍💻",
-            "4": "📒",
-            "5": "🎵"
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            "active": "",  // No icon for active workspace
+            "default": ""   // No icon for default workspace
         },
-        "persistent_workspaces": {
-            "*": 1
+        "persistent-workspaces": {
+            "eDP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         }
-    },
-    "network": {
-        "format-wifi": "{signalStrength}% ",
-        "format-disconnected": "Disconnected ⚠",
-        "icon-size": 18,
-        "tooltip": true
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-muted": "Muted ",
-        "max-volume": 100,
-        "format-icons": {
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol",
-        "icon-size": 16
-    },
-    "cpu": {
-        "format": "CPU: {usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "RAM: {used} MiB / {total} MiB ",
-        "tooltip": false
-    },
-    "swap": {
-        "format": "SWAP: {used} MiB / {total} MiB",
-        "tooltip": false
-    },
-    "clock": {
-        "format": "{:%Y-%m-%d %H:%M:%S}",
-        "interval": 1  // Updates every second
     },
     "style": {
         "background": "rgba(0, 0, 0, 0.5)",  // Translucent background
@@ -67,8 +40,8 @@
         "border-radius": 5,  // Rounded corners
         "padding": 5,  // Padding for better spacing
         "workspaces": {
-            "font-size": "16px",
-            "color": "rgba(255, 255, 255, 1)",  // White color for workspace numbers
+            "font-size": "16px",  // Adjust font size
+            "color": "rgba(255, 255, 255, 0.8)",  // White color for workspace numbers
             "background": "rgba(0, 0, 0, 0.5)"  // Semi-transparent background
         },
         "active-workspace": {
