@@ -1,7 +1,7 @@
 // -*- mode: jsonc -*-
 {
     "height": 30,
-    "spacing": 10, // Increased spacing between modules
+    "spacing": 10, // Space between modules
     "modules-left": [
         "sway/workspaces",
         "cpu",
@@ -29,16 +29,18 @@
         "format": "{title}"
     },
     "network": {
-        "format-wifi": "{signalStrength}% ",
-        "format-disconnected": "Disconnected ⚠"
+        "format-wifi": "{signalStrength}% ", // Ensures Wi-Fi icon displays properly
+        "format-disconnected": "Disconnected ⚠",
+        "icon-size": 16 // Adjust size to prevent cut-off
     },
     "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-muted": "",
+        "format": "{volume}% {icon}", // Ensures audio displays correctly
+        "format-muted": "Muted ",
         "format-icons": {
-            "default": ["", "", ""]
+            "default": ["", "", ""] // Matches PulseAudio levels
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "icon-size": 16 // Adjust size of icons for consistency
     },
     "cpu": {
         "format": "CPU: {usage}% ",
