@@ -3,12 +3,12 @@
     "height": 30,
     "spacing": 12, // Slightly increased spacing
     "modules-left": [
-        "sway/workspaces",
         "cpu",
         "memory",
         "swap"
     ],
     "modules-center": [
+        "sway/workspaces",
         "sway/window"
     ],
     "modules-right": [
@@ -23,7 +23,11 @@
             "default": "",
             "focused": "",
             "urgent": ""
-        }
+        },
+        "on-click": "swaymsg workspace {name}",  // Click to switch workspace
+        "border-width": 2, // Optional: add a border around the workspace button
+        "border-color": "#00FFFF",  // Cyan border for focused workspace
+        "padding": 5 // Adjust padding as needed for center alignment
     },
     "sway/window": {
         "format": "{title}"
