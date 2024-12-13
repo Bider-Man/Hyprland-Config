@@ -21,7 +21,6 @@
             "default": "",  // Icon for non-focused workspaces
             "focused": ""  // Icon for the focused workspace
         },
-        "on-click": "swaymsg workspace {name}",  // Click to switch workspace
         "border-width": 2,
         "border-color": "#00FFFF",  // Cyan color for the focused workspace
         "padding": 10  // Added padding for better appearance
