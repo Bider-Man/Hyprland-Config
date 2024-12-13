@@ -17,18 +17,8 @@
     "hyprland/workspaces": {
         "format": "{name}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            "active": "",  // No icon for active workspace
-            "default": ""   // No icon for default workspace
+            "active": "🟢",  // Active workspace icon (green circle)
+            "default": "⚪"   // Default workspace icon (white circle)
         },
         "persistent-workspaces": {
             "eDP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -43,13 +33,6 @@
             "font-size": "16px",
             "color": "rgba(255, 255, 255, 0.8)",
             "background": "rgba(0, 0, 0, 0.5)"
-        },
-        "active-workspace": {
-            "background": "rgba(255, 0, 0, 0.8)",  // Red background for active workspace
-            "border": "3px solid red",  // Red border for active workspace
-            "border-radius": "50%",  // Circular shape for active workspace
-            "padding": "10px",  // Padding for circle effect
-            "box-shadow": "0 0 10px rgba(255, 0, 0, 1)"  // Red glow effect
         }
     }
 }
