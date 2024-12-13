@@ -19,7 +19,7 @@
         "format": "{name}",  // Display the current workspace name or number
         "format-icons": {
             "default": "",  // Icon for non-focused workspaces
-            "focused": "",  // Icon for the focused workspace
+            "focused": ""  // Icon for the focused workspace
         },
         "on-click": "swaymsg workspace {name}",  // Click to switch workspace
         "border-width": 2,
