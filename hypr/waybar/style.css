@@ -8,7 +8,7 @@
 
 window#waybar {
     background-color: rgba(0, 0, 0, 0.7); /* Translucent black */
-    border: 2px solid rgba(255, 0, 255, 0.8); /* Neon pink border */
+    border: none; /* Removed purple outline */
     padding: 5px;
     color: #00ffff; /* Neon cyan text */
     transition-property: background-color, border-color;
@@ -68,10 +68,10 @@ window#waybar.hidden {
     color: #ff00ff; /* Neon pink */
 }
 
-/* Clock styling */
+/* Removed the blue color from the clock */
 #clock {
     font-size: 14px;
-    color: #00ffff; /* Neon cyan */
+    color: #ffffff; /* White color for the clock */
 }
 
 /* MPD (Music Player Daemon) styling */
