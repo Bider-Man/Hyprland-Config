@@ -1,6 +1,6 @@
 {
     "height": 30,
-    "spacing": 12,  // Adjusting for spacing
+    "spacing": 12,
     "modules-left": [
         "cpu",
         "memory",
@@ -15,7 +15,7 @@
         "clock"
     ],
     "hyprland/workspaces": {
-        "format": "{name}",  // Display workspace name (number)
+        "format": "{name}",
         "format-icons": {
             "1": "",
             "2": "",
@@ -35,14 +35,14 @@
         }
     },
     "style": {
-        "background": "rgba(0, 0, 0, 0.5)",  // Translucent background
-        "border": "1px solid rgba(255, 255, 255, 0.3)",  // Light border
-        "border-radius": 5,  // Rounded corners
-        "padding": 5,  // Padding for better spacing
+        "background": "rgba(0, 0, 0, 0.5)",
+        "border": "1px solid rgba(255, 255, 255, 0.3)",
+        "border-radius": 5,
+        "padding": 5,
         "workspaces": {
-            "font-size": "16px",  // Adjust font size
-            "color": "rgba(255, 255, 255, 0.8)",  // White color for workspace numbers
-            "background": "rgba(0, 0, 0, 0.5)"  // Semi-transparent background
+            "font-size": "16px",
+            "color": "rgba(255, 255, 255, 0.8)",
+            "background": "rgba(0, 0, 0, 0.5)"
         },
         "active-workspace": {
             "background": "rgba(255, 0, 0, 0.8)",  // Red background for active workspace
