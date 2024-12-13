@@ -1,13 +1,13 @@
 {
     "height": 30,
-    "spacing": 12,  // Slightly increased spacing for visual appeal
+    "spacing": 12,  // Increased spacing
     "modules-left": [
         "cpu",
         "memory",
         "swap"
     ],
     "modules-center": [
-        "hyprland/workspaces"  // Workspace display will appear here
+        "hyprland/workspaces"
     ],
     "modules-right": [
         "network",
@@ -27,15 +27,12 @@
             "8": "",
             "9": "",
             "10": "",
-            "active": "",  // No icons for workspaces
+            "active": "",  // No icons
             "default": ""
         },
         "persistent-workspaces": {
-            "eDP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  // Define workspaces for eDP-1 monitor
+            "eDP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         }
-    },
-    "hyprland/window": {
-        "format": "{title}"
     },
     "network": {
         "format-wifi": "{signalStrength}% ",
@@ -70,25 +67,22 @@
         "interval": 1  // Updates every second
     },
     "style": {
-        "background": "rgba(0, 0, 0, 0.5)",  // Translucent background
+        "background": "rgba(0, 0, 0, 0.5)",  // Semi-transparent background
         "border": "1px solid rgba(255, 255, 255, 0.3)",  // Light border
         "border-radius": 5,  // Rounded corners
-        "padding": 5,  // Padding for better spacing
+        "padding": 5,  // Padding
         "workspaces": {
-            "font-size": "16px",  // Adjusted font size
-            "color": "rgba(0, 255, 255, 1)",  // Neon cyan text
-            "border": "2px solid rgba(255, 0, 255, 0.6)",  // Neon pink border
-            "border-radius": "10px",  // Rounded box corners
-            "padding": "10px",  // Space inside the box
-            "background": "rgba(0, 0, 0, 0.7)",  // Translucent black background for the box
-            "box-shadow": "0px 0px 15px rgba(255, 0, 255, 0.6)"  // Neon pink glow
+            "font-size": "16px",
+            "color": "rgba(0, 255, 255, 1)",
+            "background": "rgba(0, 0, 0, 0.7)",  // Dark background
+            "box-shadow": "0 0 15px rgba(0, 255, 255, 0.6)"  // Glow effect
+        },
+        "active-workspace": {
+            "background": "rgba(255, 0, 0, 0.8)",  // Red background for active workspace
+            "border": "4px solid rgba(255, 0, 0, 1)",  // Red border
+            "border-radius": "50%",  // Circular shape for active workspace
+            "padding": "8px",  // Padding for circle effect
+            "box-shadow": "0 0 15px rgba(255, 0, 0, 1)"  // Red glow effect
         }
-    },
-    "active-workspace-style": {
-        "background": "rgba(255, 0, 0, 0.8)",  // Red background for active workspace
-        "border": "4px solid rgba(255, 0, 0, 1)",  // Red border for active workspace
-        "box-shadow": "0 0 15px rgba(255, 0, 0, 1)",  // Red glow around the active workspace
-        "border-radius": "50%",  // Circular shape for the active workspace box
-        "padding": "8px"  // Adjust padding for circle effect
     }
 }
