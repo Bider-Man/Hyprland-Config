@@ -39,20 +39,26 @@ window#waybar {
     text-shadow: 0 0 8px #00ff00; /* Neon green glow for focused */
 }
 
-/* Gradient for text/icons */
+/* Gradient for text/icons using pseudo-elements */
 window#waybar > * {
     color: transparent; /* Make text and icons transparent */
     font-weight: 600;
     font-size: 16px; /* Font size for icons and text */
     padding: 5px;
+}
+
+window#waybar > *::before {
+    content: attr(data-text); /* Use the text content for the gradient */
+    color: transparent; /* Make text transparent */
     background: linear-gradient(
         to right,
         #ff00ff,  /* Pink */
         #8000ff,  /* Purple */
         #0000ff   /* Blue */
     );
-    background-clip: text; /* Apply gradient to text */
     -webkit-background-clip: text; /* Apply gradient to text (for WebKit browsers) */
+    background-clip: text; /* Apply gradient to text */
+    padding: 5px;
 }
 
 /* Remove the dotted vertical lines between icons */
