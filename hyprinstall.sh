@@ -97,8 +97,6 @@ sudo pacman -Syu --noconfirm \
     noto-fonts \
     noto-fonts-cjk \
     otf-ipafont \
-    swaylock \
-    swayidle \
     wl-clipboard \
     grim \
     slurp \
@@ -106,7 +104,7 @@ sudo pacman -Syu --noconfirm \
     hypridle \
     hyprpaper \
     hyprlock \
-    fcitx5
+    fcitx5 \
 
 yay -Syu --noconfirm \
     hyprsunset
