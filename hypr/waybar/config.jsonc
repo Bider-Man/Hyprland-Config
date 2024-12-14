@@ -33,7 +33,7 @@
         },
         "tooltip": false
     },
-    "sway/window": {
+    "hyprland/window": {
         "format": "{title}",
         "max-length": 80,
         "truncate": true
