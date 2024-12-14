@@ -31,7 +31,8 @@
         },
         "sort-by-number": true,
         "only-active": false,
-        "all-outputs": true
+        "all-outputs": true,
+        
         "persistent_workspaces": {
             "1": [],
             "2": [],
