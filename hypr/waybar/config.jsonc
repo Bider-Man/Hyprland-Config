@@ -1,31 +1,30 @@
 {
     "layer": "top",
-    "modules-left": ["workspaces"],
-    "modules-center": [],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "clock", "tray"],
+    "modules-left": ["cpu", "memory"],
+    "modules-center": ["workspaces"],
+    "modules-right": ["clock", "network", "pulseaudio"],
     "workspaces": {
         "format": "{name}",
         "disable-scroll": true,
         "buttons": true,
         "format-icons": {}
     },
-    "pulseaudio": {
-        "format": " {volume}%"
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": " {used} MiB",
+        "tooltip": false
+    },
+    "clock": {
+        "format": "{:%Y-%m-%d %H:%M}"
     },
     "network": {
         "format-connected": " {ip}",
         "format-disconnected": "睊"
     },
-    "cpu": {
-        "format": " {usage}%"
-    },
-    "memory": {
-        "format": " {used} MiB"
-    },
-    "clock": {
-        "format": "{:%Y-%m-%d %H:%M}"
-    },
-    "tray": {
-        "icon-size": 16
+    "pulseaudio": {
+        "format": " {volume}%"
     }
 }
