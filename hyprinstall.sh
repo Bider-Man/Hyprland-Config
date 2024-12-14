@@ -79,7 +79,8 @@ sudo pacman -Syu --noconfirm \
     wl-clipboard \
     grim \
     slurp \
-    procps-ng
+    procps-ng \
+    cava 
 
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
