@@ -13,8 +13,6 @@ window#waybar {
     transition-property: background-color;
     transition-duration: .5s;
 }
-#workspaces {
-}
 
 #workspaces button.active {
     background-color: #8ec07c;
