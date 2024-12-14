@@ -85,6 +85,9 @@ sudo pacman -Syu --noconfirm \
     hyprpaper \
     hyprlock
 
+yay -Syu --noconfirm \
+    hyprsunset
+
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
 mkdir -p ~/.config/rofi
