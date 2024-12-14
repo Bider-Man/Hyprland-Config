@@ -8,11 +8,11 @@ You are welcome to use it, but I'm not really gonna solve any bugs you might enc
 
 So whatever you do, do it at your own discretion.
 
-But if you do choose to install this, just FYI, many of the things don't work (for now), so it'll be more problems for you to setup and execute.
+But if you do choose to install this, any problem you run into you're gonna have to solve it yourself. I am not going to be able to help (most likely)
 
-Basic keybinds and all work, but you cannot choose wallpaper (yet). Or have a fully configured waybar config and style file. As a few examples.
+A few things don't work, like being able to switch wallpapers or being able to press a button and have the shutdown menu appear. I plan to add that, but slowly since I'm still learning.
 
-I plan to make this a fully-configured setup, but since I'm learning Hyprland and Waybar, it'll be slow progress.
+I plan to make this a fully-configured setup. But since I'm new, it'll be slow progress.
 
 I'm doing this in my free time, so as you can expect it'll be slow to update (major updates at least).
 
