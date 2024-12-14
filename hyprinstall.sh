@@ -112,7 +112,8 @@ sudo pacman -Syu --noconfirm \
     hypridle \
     hyprpaper \
     hyprlock \
-    nautilus
+    nautilus \
+    dunst 
 
 yay -Syu --noconfirm \
     hyprsunset \
