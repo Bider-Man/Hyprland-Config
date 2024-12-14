@@ -13,6 +13,7 @@
         "hyprland/window"
     ],
     "modules-center": [
+        "custom-purple-bar", // New semi-translucent purple bar module
         "hyprland/workspaces"
     ],
     "modules-right": [
@@ -22,6 +23,10 @@
         "network",
         "clock"
     ],
+    "custom-purple-bar": {
+        "exec": "echo ' '", // Placeholder for the static bar
+        "interval": 3600 // Minimal updates
+    },
     "hyprland/workspaces": {
         "disable-scroll": true,
         "format": "{name}",
