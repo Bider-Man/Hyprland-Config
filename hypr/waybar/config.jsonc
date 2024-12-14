@@ -16,11 +16,11 @@
         "hyprland/workspaces"
     ],
     "modules-right": [
-        "network",
-        "pulseaudio",
-        "clock",
         "cpu",
-        "memory"
+        "memory",
+        "pulseaudio",
+        "network",
+        "clock"
     ],
     "hyprland/workspaces": {
         "disable-scroll": true,
