@@ -23,11 +23,14 @@
         "clock"
     ],
     "hyprland/workspaces": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "all-outputs": true,
-        "persistent_workspaces" : 10
-      },
+      "format": "{name}",
+      "format": "{icon}",
+      "tooltip": false,
+      "all-outputs": true,
+      "format-icons": {
+        "active": "",
+        "default": ""
+    },
     "hyprland/window": {
         "format": "{title}",
         "max-length": 80,
