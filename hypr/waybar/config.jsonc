@@ -29,7 +29,8 @@
             "9": "九",
             "10": "十"
         },
-        "sort-by-number": true
+        "sort-by-number": true,
+        "only-active": true
     },
     "hyprland/window": {
         "format": "{title}"
