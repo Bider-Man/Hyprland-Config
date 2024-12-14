@@ -1,30 +1,96 @@
+// -*- mode: jsonc -*-
 {
+    "height": 30,
+    "spacing": 8,
     "layer": "top",
-    "modules-left": ["cpu", "memory"],
-    "modules-center": ["workspaces"],
-    "modules-right": ["clock", "network", "pulseaudio"],
-    "workspaces": {
-        "format": "{name}",
+    "margin": 0,
+    "padding": 5,
+    "border": {
+        "size": 1,
+        "color": "#00000000"
+    },
+    "modules-left": [
+        "sway/workspaces",
+        "cpu",
+        "memory",
+        "swap"
+    ],
+    "modules-center": [
+        "sway/window"
+    ],
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "clock"
+    ],
+    "sway/workspaces": {
         "disable-scroll": true,
-        "buttons": true,
-        "spacing": 20
-    },
-    "cpu": {
-        "format": " {usage}%",
+        "format": "{name}",
+        "format-icons": {
+            "default": "",
+            "focused": "",
+            "urgent": ""
+        },
         "tooltip": false
     },
-    "memory": {
-        "format": " {used} MiB",
-        "tooltip": false
-    },
-    "clock": {
-        "format": "{:%Y-%m-%d %H:%M}"
+    "sway/window": {
+        "format": "{title}",
+        "max-length": 80,
+        "truncate": true
     },
     "network": {
-        "format-connected": " {ip}",
-        "format-disconnected": "睊"
+        "format-wifi": "Wi-Fi: {signalStrength}% ",
+        "format-disconnected": "Disconnected ⚠",
+        "icon-size": 16,
+        "tooltip": true,
+        "max-length": 25,
+        "spacing": 8
     },
     "pulseaudio": {
-        "format": " {volume}%"
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "spacing": 8
+    },
+    "cpu": {
+        "format": "CPU: {usage}% ",
+        "tooltip": true,
+        "max-length": 20
+    },
+    "memory": {
+        "format": "RAM: {percentage_used}% ",
+        "tooltip": true,
+        "max-length": 20
+    },
+    "swap": {
+        "format": "SWAP: {percentage_used}% ",
+        "tooltip": true,
+        "max-length": 20
+    },
+    "clock": {
+        "format": "{:%Y-%m-%d %H:%M:%S}",
+        "tooltip": false,
+        "on-click": "zenity --calendar"
+    },
+    "style": {
+        "bar": {
+            "background": "rgba(0, 0, 0, 0.8)",
+            "border-color": "#00000000",
+            "color": "#ffffff",
+            "font": "monospace 12",
+            "height": 30
+        },
+        "tooltip": {
+            "background": "#1e1e2e",
+            "color": "#ffffff",
+            "font": "monospace 10"
+        },
+        "module": {
+            "margin": 4,
+            "padding": 5
+        }
     }
 }
