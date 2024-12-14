@@ -103,7 +103,8 @@ sudo pacman -Syu --noconfirm \
     hyprlock
 
 yay -Syu --noconfirm \
-    hyprsunset
+    hyprsunset \
+    uwsm 
 
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
