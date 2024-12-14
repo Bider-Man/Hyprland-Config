@@ -36,7 +36,7 @@
         "format": "{title}",
         "max-length": 80,
         "truncate": true,
-        "spacing": 8
+        "spacing": 2
     },
     "network": {
         "format-wifi": "Wi-Fi: {signalStrength}% ",
