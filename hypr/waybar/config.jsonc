@@ -61,12 +61,12 @@
         "max-length": 20
     },
     "memory": {
-        "format": "RAM: {percentage_used}% ",
+        "format": "RAM: {percentage}% ",
         "tooltip": true,
         "max-length": 20
     },
     "swap": {
-        "format": "SWAP: {percentage_used}% ",
+        "format": "SWAP: {percentage}% ",
         "tooltip": true,
         "max-length": 20
     },
