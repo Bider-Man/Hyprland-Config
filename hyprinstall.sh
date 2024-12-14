@@ -81,6 +81,9 @@ sudo pacman -Syu --noconfirm \
     slurp \
     procps-ng \
 
+sudo yay -Syu --noconfirm \
+    cava
+
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
 mkdir -p ~/.config/rofi
