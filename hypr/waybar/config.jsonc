@@ -29,7 +29,8 @@
       "format-icons": {
         "active": "",
         "default": ""
-      }
+      },
+      "max-workspaces": 10
     },
     "hyprland/window": {
         "format": "{title}",
