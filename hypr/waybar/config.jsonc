@@ -30,7 +30,8 @@
             "10": "十"
         },
         "sort-by-number": true,
-        "only-active": false
+        "only-active": false,
+        "all-outputs": true
     },
     "hyprland/window": {
         "format": "{title}"
