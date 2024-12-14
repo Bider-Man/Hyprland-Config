@@ -16,24 +16,21 @@
         "clock"
     ],
     "hyprland/workspaces": {
-        "format": "{name}",
+        "format": "{icon}",
+        "on-click": "activate",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            "active": "",
-            "default": ""
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "十",
         },
-        "persistent-workspaces": {
-            "eDP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  // Define workspaces for eDP-1 monitor
-        }
+        "sort-by-number": true
     },
     "hyprland/window": {
         "format": "{title}"
