@@ -81,7 +81,9 @@ sudo pacman -Syu --noconfirm \
     grim \
     slurp \
     procps-ng \
-
+    hypridle \
+    hyprpaper \
+    hyprlock
 
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
