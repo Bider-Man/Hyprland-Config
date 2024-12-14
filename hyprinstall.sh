@@ -41,6 +41,23 @@ else
   exit 1
 fi
 
+# Copy hyprlock.conf and hypridle.conf
+if [ -f "./hypr/hyprlock.conf" ]; then
+  echo "Copying hyprlock.conf to $CONFIG_DIR..."
+  cp ./hypr/hyprlock.conf "$CONFIG_DIR/hyprlock.conf"
+else
+  echo "Error: Provided hyprlock.conf file not found in ./hypr!"
+  exit 1
+fi
+
+if [ -f "./hypr/hypridle.conf" ]; then
+  echo "Copying hypridle.conf to $CONFIG_DIR..."
+  cp ./hypr/hypridle.conf "$CONFIG_DIR/hypridle.conf"
+else
+  echo "Error: Provided hypridle.conf file not found in ./hypr!"
+  exit 1
+fi
+
 # Create and copy foot configuration
 if [ -d "$FOOT_DIR" ]; then
   echo "Foot configuration directory already exists at $FOOT_DIR."
