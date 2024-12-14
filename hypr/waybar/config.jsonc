@@ -12,8 +12,7 @@
     "modules-left": [
         "hyprland/window",
         "cpu",
-        "memory",
-        "swap"
+        "memory"
     ],
     "modules-center": [
         "hyprland/workspaces"
@@ -65,12 +64,7 @@
         "format": "RAM: {percentage}% ",
         "tooltip": true,
         "max-length": 20
-    },
-    "swap": {
-        "format": "SWAP: {percentage}% ",
-        "tooltip": true,
-        "max-length": 20
-    },
+    }
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
         "tooltip": false,
