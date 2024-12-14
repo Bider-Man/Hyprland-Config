@@ -10,20 +10,20 @@
         "color": "#00000000"
     },
     "modules-left": [
-        "sway/workspaces",
+        "hyprland/window",
         "cpu",
         "memory",
         "swap"
     ],
     "modules-center": [
-        "sway/window"
+        "hyprland/workspaces"
     ],
     "modules-right": [
         "network",
         "pulseaudio",
         "clock"
     ],
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "format": "{name}",
         "format-icons": {
