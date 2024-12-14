@@ -60,6 +60,7 @@ fi
 # Install dependencies
 echo "Installing dependencies..."
 sudo pacman -Syu --noconfirm \
+    yay \
     hyprland \
     rofi \
     zenity \
