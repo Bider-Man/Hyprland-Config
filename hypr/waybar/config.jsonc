@@ -7,7 +7,7 @@
         "format": "{name}",
         "disable-scroll": true,
         "buttons": true,
-        "format-icons": {}
+        "spacing": 20
     },
     "cpu": {
         "format": " {usage}%",
