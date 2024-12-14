@@ -1,91 +1,73 @@
-// -*- mode: jsonc -*-
 {
     "height": 30,
-    "spacing": 8,
-    "layer": "top",
-    "margin": 0,
-    "padding": 5,
-    "border": {
-        "size": 1,
-        "color": "#00000000"
-    },
+    "spacing": 12, // Slightly increased spacing for visual appeal
     "modules-left": [
-        "hyprland/window"
-    ],
-    "modules-center": [
-        "hyprland/workspaces"
-    ],
-    "modules-right": [
         "cpu",
         "memory",
-        "pulseaudio",
+        "swap"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"  // This is where the workspace display will appear
+    ],
+    "modules-right": [
         "network",
+        "pulseaudio",
         "clock"
     ],
     "hyprland/workspaces": {
-      "format": "{name}",
-      "tooltip": false,
-      "all-outputs": true,
-      "format-icons": {
-        "active": "",
-        "default": ""
-      },
-      "max-workspaces": 10
+        "format": "{name} : {icon}",
+        "format-icons": {
+            "1": "",  // Workspace 1 icon
+            "2": "",  // Workspace 2 icon
+            "3": "",  // Workspace 3 icon
+            "4": "",  // Workspace 4 icon
+            "5": "",  // Workspace 5 icon
+            "active": "",  // Icon for the active workspace
+            "default": ""  // Default icon for other workspaces
+        },
+        "persistent-workspaces": {
+            "eDP-1": [1, 2, 3, 4, 5]  // Define workspaces for eDP-1 monitor
+        }
     },
     "hyprland/window": {
-        "format": "{title}",
-        "max-length": 80,
-        "truncate": false
+        "format": "{title}"
     },
     "network": {
-        "format-wifi": "Wi-Fi: {signalStrength}% ",
+        "format-wifi": "{signalStrength}% ",
         "format-disconnected": "Disconnected ⚠",
-        "icon-size": 16,
-        "tooltip": true,
-        "max-length": 25,
-        "spacing": 8
+        "icon-size": 18,
+        "tooltip": true
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
-        "format-muted": "",
+        "format-muted": "Muted ",
+        "max-volume": 100,
         "format-icons": {
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol",
-        "spacing": 8
+        "icon-size": 16
     },
     "cpu": {
         "format": "CPU: {usage}% ",
-        "tooltip": true,
-        "max-length": 20
+        "tooltip": false
     },
     "memory": {
-        "format": "RAM: {percentage}% ",
-        "tooltip": true,
-        "max-length": 20
+        "format": "RAM: {used} MiB / {total} MiB ",
+        "tooltip": false
+    },
+    "swap": {
+        "format": "SWAP: {used} MiB / {total} MiB",
+        "tooltip": false
     },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
-        "tooltip": false,
-        "on-click": "zenity --calendar",
-        "interval": 1
+        "interval": 1  // Updates every second
     },
     "style": {
-        "bar": {
-            "background": "rgba(0, 0, 0, 0.8)",
-            "border-color": "#00000000",
-            "color": "#ffffff",
-            "font": "monospace 12",
-            "height": 30
-        },
-        "tooltip": {
-            "background": "#1e1e2e",
-            "color": "#ffffff",
-            "font": "monospace 10"
-        },
-        "module": {
-            "margin": 4,
-            "padding": 5
-        }
+        "background": "rgba(0, 0, 0, 0.5)",  // Translucent background
+        "border": "1px solid rgba(255, 255, 255, 0.3)",  // Light border
+        "border-radius": 5,  // Rounded corners
+        "padding": 5  // Padding for better spacing
     }
 }
