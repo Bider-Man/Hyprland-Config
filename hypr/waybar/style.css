@@ -91,3 +91,15 @@ window#waybar.solo {
         background-position: 0 0;
     }
 }
+
+/* Custom Semi-Translucent Purple Bar */
+#custom-purple-bar {
+    background-color: rgba(151, 48, 253, 0.4); /* Semi-translucent purple */
+    height: 20px;
+    width: 300px; /* Adjust width as needed */
+    margin: 0 auto; /* Center horizontally */
+    border-radius: 10px; /* Rounded corners */
+    color: transparent; /* Hide any text */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
