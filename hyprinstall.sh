@@ -3,8 +3,8 @@
 # Define target directories
 CONFIG_DIR="$HOME/.config/hypr"
 HYPRLAND_DIR="$CONFIG_DIR/hyprland"
-HYPRLOCK_DIR="$CONFIG_DIR/hyprlock"
 SCRIPTS_DIR="$CONFIG_DIR/scripts"
+HYPRLOCK_DIR="$CONFIG_DIR/hyprlock"
 WAYBAR_DIR="$HOME/.config/waybar"
 FOOT_DIR="$HOME/.config/foot"
 WAYBAR_SRC_DIR="./hypr/waybar"
@@ -14,6 +14,7 @@ echo "Cleaning up old configurations in $CONFIG_DIR..."
 rm -rf "$CONFIG_DIR"
 mkdir -p "$HYPRLAND_DIR"
 mkdir -p "$SCRIPTS_DIR"
+mkdir -p "$HYPRLOCK_DIR"  # Ensure the hyprlock directory exists
 
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
@@ -24,21 +25,21 @@ else
   exit 1
 fi
 
-# Copy scripts folder
-if [ -d "./hypr/scripts" ]; then
-  echo "Copying scripts to $SCRIPTS_DIR..."
-  cp -r ./hypr/scripts/* "$SCRIPTS_DIR/"
-else
-  echo "Error: ./hypr/scripts directory not found!"
-  exit 1
-fi
-
 # Copy hyprlock folder
 if [ -d "./hypr/hyprlock" ]; then
   echo "Copying hyprlock folder to $HYPRLOCK_DIR..."
   cp -r ./hypr/hyprlock/* "$HYPRLOCK_DIR/"
 else
   echo "Error: ./hypr/hyprlock directory not found!"
+  exit 1
+fi
+
+# Copy scripts folder
+if [ -d "./hypr/scripts" ]; then
+  echo "Copying scripts to $SCRIPTS_DIR..."
+  cp -r ./hypr/scripts/* "$SCRIPTS_DIR/"
+else
+  echo "Error: ./hypr/scripts directory not found!"
   exit 1
 fi
 
@@ -95,16 +96,22 @@ sudo pacman -Syu --noconfirm \
     ttf-arimo-nerd \
     noto-fonts-emoji \
     noto-fonts \
-    noto-fonts-cjk \
-    otf-ipafont \
+    foot \
+    waybar \
+    dunst \
+    xdg-desktop-portal-hyprland \
+    swww \
+    pasystray \
+    fcitx5 \
+    swaylock \
+    swayidle \
     wl-clipboard \
     grim \
     slurp \
     procps-ng \
     hypridle \
     hyprpaper \
-    hyprlock \
-    fcitx5 \
+    hyprlock
 
 yay -Syu --noconfirm \
     hyprsunset
@@ -133,7 +140,7 @@ fi
 # Set correct permissions
 echo "Setting permissions for configuration files..."
 chmod -R 755 "$CONFIG_DIR"
-chmod +x "$HYPRLOCK_DIR/"*.sh
+chmod +x "$SCRIPTS_DIR/"*
 
 # Restart Waybar and Hyprland to apply the new configurations
 echo "Restarting Waybar and Hyprland..."
