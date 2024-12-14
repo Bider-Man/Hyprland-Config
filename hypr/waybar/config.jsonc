@@ -8,7 +8,6 @@
     ],
     "modules-center": [
         "hyprland/workspaces",  // Workspace display will appear here
-        "center-box"
     ],
     "modules-right": [
         "network",
