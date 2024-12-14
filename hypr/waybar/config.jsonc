@@ -22,10 +22,6 @@
         "network",
         "clock"
     ],
-    "custom-purple-bar": {
-        "exec": "echo ' '", // Placeholder for the static bar
-        "interval": 3600 // Minimal updates
-    },
     "hyprland/workspaces": {
         "disable-scroll": true,
         "format": "{name}",
