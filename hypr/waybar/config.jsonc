@@ -5,7 +5,7 @@
         "hyprland/window"
     ],
     "modules-center": [
-        "hyprland/workspaces",  // Workspace display will appear here
+        "hyprland/workspaces"  // Workspace display will appear here
     ],
     "modules-right": [
         "cpu",
@@ -27,7 +27,7 @@
             "7": "七",
             "8": "八",
             "9": "九",
-            "10": "十",
+            "10": "十"
         },
         "sort-by-number": true
     },
@@ -71,5 +71,5 @@
         "border": "1px solid rgba(255, 255, 255, 0.3)",  // Light border
         "border-radius": 5,  // Rounded corners
         "padding": 5  // Padding for better spacing
-    },   
+    }   
 }
