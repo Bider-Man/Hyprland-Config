@@ -13,15 +13,12 @@ window#waybar {
     color: #00ffff;
     transition: background-color 0.5s, border-color 0.5s;
     box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.6);
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
+    justify-content: space-between; /* Ensure items are evenly spaced */
 }
 
 #workspaces button {
     padding: 5px 10px;
-    margin: 0 2px;
+    margin: 0 10px; /* Add spacing between workspace buttons */
     background-color: transparent;
     color: #00ffff;
     font-weight: 600;
@@ -42,18 +39,8 @@ window#waybar.hidden {
 }
 
 #cpu, #memory, #clock, #network, #pulseaudio {
-    padding: 0 8px;
+    padding: 0 10px; /* Add spacing around modules */
     background-color: transparent;
     color: #ffffff;
     font-size: 14px;
-}
-
-#tray {
-    padding: 0 8px;
-    min-width: 40px;
-    color: #ff00ff;
-}
-
-#clock {
-    color: #ffffff;
 }
