@@ -2,16 +2,16 @@
     "height": 30,
     "spacing": 12, // Slightly increased spacing for visual appeal
     "modules-left": [
-        "cpu",
-        "memory",
-        "swap"
+        "hyprland/window"
     ],
     "modules-center": [
         "hyprland/workspaces",  // Workspace display will appear here
     ],
     "modules-right": [
-        "network",
+        "cpu",
+        "memory",
         "pulseaudio",
+        "network",
         "clock"
     ],
     "hyprland/workspaces": {
@@ -71,14 +71,5 @@
         "border": "1px solid rgba(255, 255, 255, 0.3)",  // Light border
         "border-radius": 5,  // Rounded corners
         "padding": 5  // Padding for better spacing
-    },
-    "hyprland/workspaces-style": {
-        "font-size": "16px",  // Adjusted font size
-        "color": "rgba(0, 255, 255, 1)",  // Neon cyan text
-        "border": "2px solid rgba(255, 0, 255, 0.6)",  // Neon pink border
-        "border-radius": "10px",  // Rounded box corners
-        "padding": "10px",  // Space inside the box
-        "background": "rgba(0, 0, 0, 0.7)",  // Translucent black background for the box
-        "box-shadow": "0px 0px 15px rgba(255, 0, 255, 0.6)"  // Neon pink glow
-    }
+    },   
 }
