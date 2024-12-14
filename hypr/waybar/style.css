@@ -50,10 +50,10 @@ window#waybar {
     font-size: 14px;
 }
 
-/* Semi-translucent purple bar for custom module */
 #custom-purple-bar {
     background-color: rgba(151, 48, 253, 0.4); /* Semi-translucent purple */
-    margin: 0 auto; /* Center horizontally */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto;
     border-radius: 10px; /* Rounded corners */
     color: transparent; /* Hide text */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
