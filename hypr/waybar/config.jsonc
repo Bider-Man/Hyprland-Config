@@ -24,7 +24,7 @@
     ],
     "hyprland/workspaces": {
         "format": "{name}",
-        "sort-by-number": true
+        "strip": 10
     },
     "hyprland/window": {
         "format": "{title}",
