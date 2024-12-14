@@ -115,7 +115,8 @@ sudo pacman -Syu --noconfirm \
     nautilus
 
 yay -Syu --noconfirm \
-    hyprsunset
+    hyprsunset \
+    hyprshot 
 
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
