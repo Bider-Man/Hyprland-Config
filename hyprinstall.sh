@@ -111,7 +111,8 @@ sudo pacman -Syu --noconfirm \
     procps-ng \
     hypridle \
     hyprpaper \
-    hyprlock
+    hyprlock \
+    nautilus
 
 yay -Syu --noconfirm \
     hyprsunset
