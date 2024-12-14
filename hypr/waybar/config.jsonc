@@ -23,15 +23,34 @@
         "clock"
     ],
     "hyprland/workspaces": {
-        "disable-scroll": true,
-        "format": "{name}",
-        "format-icons": {
-            "default": "",
-            "focused": "",
-            "urgent": ""
-        },
-        "tooltip": true
-    },
+        "format": "{icon}",
+        "on-click": "activate",
+        "all-outputs": true,
+        "persistent_workspaces" :{
+            "1": [],
+                   "2": [],
+                   "3": [],
+                   "4": [],
+                   "5": [],
+                   "6": [],
+                   "7": [],
+                   "8": [],
+                   "9": [],
+                   "10": []
+          },
+          "format-icons": {
+                  "1": "1",
+                       "2": "2",
+                       "3": "3",
+                       "4": "4",
+                       "5": "5",
+                       "6": "6",
+                       "7": "7",
+                       "8": "8",
+                       "9": "9",
+                       "10": "1〇"
+            }
+      },
     "hyprland/window": {
         "format": "{title}",
         "max-length": 80,
