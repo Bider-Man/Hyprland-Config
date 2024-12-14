@@ -82,7 +82,7 @@ sudo pacman -Syu --noconfirm \
     slurp \
     procps-ng \
 
-sudo yay -Syu --noconfirm \
+yay -Syu --noconfirm \
     cava
 
 # Create Rofi configuration
