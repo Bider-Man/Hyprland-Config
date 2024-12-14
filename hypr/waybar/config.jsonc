@@ -34,9 +34,8 @@
     },
     "hyprland/window": {
         "format": "{title}",
-        "max-length": 40,
-        "truncate": true,
-        "icon-size": 8
+        "max-length": 20,
+        "truncate": false
     },
     "network": {
         "format-wifi": "Wi-Fi: {signalStrength}% ",
