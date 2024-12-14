@@ -6,7 +6,9 @@ HYPRLAND_DIR="$CONFIG_DIR/hyprland"
 SCRIPTS_DIR="$CONFIG_DIR/scripts"
 WAYBAR_DIR="$HOME/.config/waybar"
 FOOT_DIR="$HOME/.config/foot"
+HYPRLOCK_DIR="$CONFIG_DIR/hyprlock"
 WAYBAR_SRC_DIR="./hypr/waybar"
+HYPRLOCK_SRC_DIR="./hypr/hyprlock"
 
 # Clean up old configurations
 echo "Cleaning up old configurations in $CONFIG_DIR..."
@@ -23,13 +25,21 @@ else
   exit 1
 fi
 
+# Copy hyprlock folder
+if [ -d "$HYPRLOCK_SRC_DIR" ]; then
+  echo "Copying hyprlock folder to $HYPRLOCK_DIR..."
+  cp -r "$HYPRLOCK_SRC_DIR" "$HYPRLOCK_DIR/"
+else
+  echo "Error: ./hypr/hyprlock directory not found!"
+  exit 1
+fi
+
 # Copy scripts folder
 if [ -d "./hypr/scripts" ]; then
-  echo "Copying scripts to $SCRIPTS_DIR..."
+  echo "Copying additional scripts to $SCRIPTS_DIR..."
   cp -r ./hypr/scripts/* "$SCRIPTS_DIR/"
 else
-  echo "Error: ./hypr/scripts directory not found!"
-  exit 1
+  echo "Warning: ./hypr/scripts directory not found! Skipping additional scripts."
 fi
 
 # Overwrite the auto-generated hyprland.conf
@@ -41,15 +51,7 @@ else
   exit 1
 fi
 
-# Copy hyprlock.conf and hypridle.conf
-if [ -f "./hypr/hyprlock.conf" ]; then
-  echo "Copying hyprlock.conf to $CONFIG_DIR..."
-  cp ./hypr/hyprlock.conf "$CONFIG_DIR/hyprlock.conf"
-else
-  echo "Error: Provided hyprlock.conf file not found in ./hypr!"
-  exit 1
-fi
-
+# Copy hypridle.conf
 if [ -f "./hypr/hypridle.conf" ]; then
   echo "Copying hypridle.conf to $CONFIG_DIR..."
   cp ./hypr/hypridle.conf "$CONFIG_DIR/hypridle.conf"
@@ -129,6 +131,7 @@ fi
 # Set correct permissions
 echo "Setting permissions for configuration files..."
 chmod -R 755 "$CONFIG_DIR"
+chmod +x "$HYPRLOCK_DIR/"*.sh
 chmod +x "$SCRIPTS_DIR/"*
 
 # Restart Waybar and Hyprland to apply the new configurations
