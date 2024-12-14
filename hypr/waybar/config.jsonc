@@ -1,74 +1,44 @@
 {
-    "height": 30,
-    "spacing": 12, // Slightly increased spacing for visual appeal
     "modules-left": [
         "cpu",
         "memory",
-        "swap"
+        "temperature"
     ],
     "modules-center": [
-        "hyprland/workspaces"  // This is where the workspace display will appear
+        "workspaces"
     ],
     "modules-right": [
         "network",
         "pulseaudio",
         "clock"
     ],
-    "hyprland/workspaces" : {
-        "on-scroll-up": "hyprctl dispatch workspace r-1",
-        "on-scroll-down": "hyprctl dispatch workspace r+1",        
-        "on-click": "activate",
-        "active-only": false,
+    "workspaces": {
+        "format": "{name}",
         "all-outputs": true,
-        "format": "{}",
-        "format-icons": {
-            "urgent": "",
-            "active": "",
-            "default": ""
-        },
-        "persistent-workspaces": {
-            "*": 10
-        }       
-    },
-    "hyprland/window": {
-        "format": "{title}"
-    },
-    "network": {
-        "format-wifi": "{signalStrength}% ",
-        "format-disconnected": "Disconnected ⚠",
-        "icon-size": 18,
-        "tooltip": true
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-muted": "Muted ",
-        "max-volume": 100,
-        "format-icons": {
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol",
-        "icon-size": 16
+        "disable-scroll": true,
+        "persistent": true,
+        "enable-icons": false
     },
     "cpu": {
-        "format": "CPU: {usage}% ",
-        "tooltip": false
+        "format": "CPU: {usage}%",
+        "max-length": 10
     },
     "memory": {
-        "format": "RAM: {used} MiB / {total} MiB ",
-        "tooltip": false
+        "format": "MEM: {used} MiB",
+        "max-length": 10
     },
-    "swap": {
-        "format": "SWAP: {used} MiB / {total} MiB",
-        "tooltip": false
+    "temperature": {
+        "format": "TEMP: {temperature}°C",
+        "max-length": 10
+    },
+    "network": {
+        "format": "{essid} {ipaddr}",
+        "max-length": 20
+    },
+    "pulseaudio": {
+        "format": " {volume}%"
     },
     "clock": {
-        "format": "{:%Y-%m-%d %H:%M:%S}",
-        "interval": 1  // Updates every second
-    },
-    "style": {
-        "background": "rgba(0, 0, 0, 0.5)",  // Translucent background
-        "border": "1px solid rgba(255, 255, 255, 0.3)",  // Light border
-        "border-radius": 5,  // Rounded corners
-        "padding": 5  // Padding for better spacing
+        "format": "{:%Y-%m-%d %H:%M:%S}"
     }
 }
