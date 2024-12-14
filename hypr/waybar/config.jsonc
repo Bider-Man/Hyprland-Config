@@ -22,6 +22,11 @@
             "3": "",  // Workspace 3 icon
             "4": "",  // Workspace 4 icon
             "5": "",  // Workspace 5 icon
+            "6": "",  // Workspace 6 icon
+            "7": "",  // Workspace 7 icon
+            "8": "",  // Workspace 8 icon
+            "9": "",  // Workspace 9 icon
+            "10": "", // Workspace 10 icon
             "active": "",  // Icon for the active workspace
             "default": ""  // Default icon for other workspaces
         },
