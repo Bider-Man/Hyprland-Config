@@ -13,7 +13,6 @@
         "hyprland/window"
     ],
     "modules-center": [
-        "custom-purple-bar", // New semi-translucent purple bar module
         "hyprland/workspaces"
     ],
     "modules-right": [
