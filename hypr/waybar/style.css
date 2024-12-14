@@ -14,19 +14,6 @@ window#waybar {
     transition-duration: .5s;
 }
 
-/* Center box container */
-#center-box {
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5); /* Translucent black */
-    border-radius: 5px;
-    margin: 0 20px; /* Space around the box */
-}
-
-/* Update workspaces to fit in the center box */
-#workspaces {
-    text-align: center;
-}
-
 #workspaces button {
     padding-left: 10px;
     padding-right: 10px;
