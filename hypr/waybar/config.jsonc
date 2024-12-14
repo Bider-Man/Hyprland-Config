@@ -10,9 +10,7 @@
         "color": "#00000000"
     },
     "modules-left": [
-        "hyprland/window",
-        "cpu",
-        "memory"
+        "hyprland/window"
     ],
     "modules-center": [
         "hyprland/workspaces"
@@ -20,7 +18,9 @@
     "modules-right": [
         "network",
         "pulseaudio",
-        "clock"
+        "clock",
+        "cpu",
+        "memory"
     ],
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -34,7 +34,7 @@
     },
     "hyprland/window": {
         "format": "{title}",
-        "max-length": 20,
+        "max-length": 80,
         "truncate": false
     },
     "network": {
