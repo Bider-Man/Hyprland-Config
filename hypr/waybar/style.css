@@ -58,7 +58,7 @@ window#waybar.solo {
     background-color: #eb4d4b;
 }
 
-#mpd, #pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window {
+#pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window {
     padding-left: 8px;
     padding-right: 8px;
     background-color: transparent;
@@ -81,18 +81,6 @@ window#waybar.solo {
 
 #clock {
     font-size: 14px;
-}
-
-#mpd.playing {
-    background: repeating-linear-gradient(
-        45deg,
-        #453e48,
-        #453e48 12px,
-        #3d3540 12px,
-        #3d3540 24px
-    );
-    background-size: 120% 100%;
-    animation: scroll 0.5s linear infinite;
 }
 
 @keyframes scroll {
