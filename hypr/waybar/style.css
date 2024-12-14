@@ -31,7 +31,7 @@ window#waybar {
 }
 
 .modules-center {
-    background-color: #282828;
+    background-color: rgba(61, 53, 64, 0.8); /* Translucent purple background */
 }
 
 #pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window {
