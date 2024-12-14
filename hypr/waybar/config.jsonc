@@ -64,7 +64,7 @@
         "format": "RAM: {percentage}% ",
         "tooltip": true,
         "max-length": 20
-    }
+    },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
         "tooltip": false,
