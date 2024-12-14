@@ -73,7 +73,8 @@
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
         "tooltip": false,
-        "on-click": "zenity --calendar"
+        "on-click": "zenity --calendar",
+        "interval": 1
     },
     "style": {
         "bar": {
