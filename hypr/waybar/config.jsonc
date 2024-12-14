@@ -36,7 +36,8 @@
     "hyprland/window": {
         "format": "{title}",
         "max-length": 80,
-        "truncate": true
+        "truncate": true,
+        "spacing": 8
     },
     "network": {
         "format-wifi": "Wi-Fi: {signalStrength}% ",
