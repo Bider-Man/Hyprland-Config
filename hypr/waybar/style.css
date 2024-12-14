@@ -2,18 +2,17 @@
     border: none;
     border-radius: 0;
     font-family: Inter Light;
-    font-size: 14px; /* Reduced font size for smaller icons */
+    font-size: 14px;
     min-height: 0;
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.7); /* Translucent black */
-    border: none; /* Removed purple outline */
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
     padding: 5px;
-    color: #00ffff; /* Neon cyan text */
-    transition-property: background-color, border-color;
-    transition-duration: 0.5s;
-    box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.6); /* Neon pink glow */
+    color: #00ffff;
+    transition: background-color 0.5s, border-color 0.5s;
+    box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.6);
 }
 
 window#waybar.hidden {
@@ -21,79 +20,40 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 5px 10px;
+    margin: 0 2px;
     background-color: transparent;
-    color: #00ffff; /* Neon cyan for default workspace text */
+    color: #00ffff;
     font-weight: 600;
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
+    border: none;
     transition: background-color 0.3s, color 0.3s;
-    font-size: 14px; /* Reduced font size for workspace icons */
 }
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.6);
-    color: #ff00ff; /* Neon pink hover */
-    border-bottom: 4px solid #ff00ff; /* Neon pink border */
-    border-top: 4px solid #00ffff; /* Neon cyan border */
-    box-shadow: 0 0 8px #ff00ff; /* Glow effect on hover */
+    color: #ff00ff;
+    border-bottom: 2px solid #ff00ff;
 }
 
 #workspaces button.focused {
     background: rgba(0, 0, 0, 0.6);
-    color: #00ff00; /* Neon green for focused workspace */
-    border-top: 4px solid #ff00ff; /* Neon pink */
-    border-bottom: 4px solid #00ffff; /* Neon cyan */
-    box-shadow: 0 0 10px #00ff00; /* Neon green glow */
+    color: #00ff00;
+    border-bottom: 2px solid #00ffff;
 }
 
-/* Styling for other modules */
-#pulseaudio, #network, #cpu, #memory, #clock, #window {
-    padding-left: 8px;
-    padding-right: 8px;
+#pulseaudio, #network, #cpu, #memory, #clock, #tray {
+    padding: 0 8px;
     background-color: transparent;
-    font-weight: 600;
-    font-size: 14px; /* Reduced font size for icons */
-    color: #ffffff; /* Default white text */
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-/* Tray icon styling */
-#tray {
-    padding-left: 8px;
-    padding-right: 8px;
-    min-width: 40px;
-    font-size: 16px; /* Slightly smaller font for tray icons */
-    color: #ff00ff; /* Neon pink */
-}
-
-/* Removed the blue color from the clock */
-#clock {
+    color: #ffffff;
     font-size: 14px;
-    color: #ffffff; /* White color for the clock */
 }
 
-/* MPD (Music Player Daemon) styling */
-#mpd.playing {
-    background: repeating-linear-gradient(
-        45deg,
-        #ff00ff,
-        #ff00ff 12px,
-        #3d3540 12px,
-        #3d3540 24px
-    );
-    background-size: 120% 100%;
-    animation: scroll 0.5s linear infinite;
-    color: #00ff00; /* Neon green */
-    box-shadow: 0 0 10px #ff00ff; /* Neon pink glow */
+#tray {
+    padding: 0 8px;
+    min-width: 40px;
+    color: #ff00ff;
 }
 
-@keyframes scroll {
-    from {
-        background-position: -33.941125497px 0;
-    }
-    to {
-        background-position: 0 0;
-    }
+#clock {
+    color: #ffffff;
 }

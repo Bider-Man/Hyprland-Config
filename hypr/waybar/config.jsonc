@@ -1,44 +1,31 @@
 {
-    "modules-left": [
-        "cpu",
-        "memory",
-        "temperature"
-    ],
-    "modules-center": [
-        "workspaces"
-    ],
-    "modules-right": [
-        "network",
-        "pulseaudio",
-        "clock"
-    ],
+    "layer": "top",
+    "modules-left": ["workspaces"],
+    "modules-center": [],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "clock", "tray"],
     "workspaces": {
         "format": "{name}",
-        "all-outputs": true,
         "disable-scroll": true,
-        "persistent": true,
-        "enable-icons": false
-    },
-    "cpu": {
-        "format": "CPU: {usage}%",
-        "max-length": 10
-    },
-    "memory": {
-        "format": "MEM: {used} MiB",
-        "max-length": 10
-    },
-    "temperature": {
-        "format": "TEMP: {temperature}°C",
-        "max-length": 10
-    },
-    "network": {
-        "format": "{essid} {ipaddr}",
-        "max-length": 20
+        "buttons": true,
+        "format-icons": {}
     },
     "pulseaudio": {
         "format": " {volume}%"
     },
+    "network": {
+        "format-connected": " {ip}",
+        "format-disconnected": "睊"
+    },
+    "cpu": {
+        "format": " {usage}%"
+    },
+    "memory": {
+        "format": " {used} MiB"
+    },
     "clock": {
-        "format": "{:%Y-%m-%d %H:%M:%S}"
+        "format": "{:%Y-%m-%d %H:%M}"
+    },
+    "tray": {
+        "icon-size": 16
     }
 }
