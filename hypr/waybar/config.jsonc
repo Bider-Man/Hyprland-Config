@@ -34,7 +34,7 @@
     },
     "hyprland/window": {
         "format": "{title}",
-        "max-length": 80,
+        "max-length": 40,
         "truncate": true,
         "spacing": 2
     },
