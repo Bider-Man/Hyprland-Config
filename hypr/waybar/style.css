@@ -41,7 +41,7 @@ window#waybar.hidden {
     border-bottom: 2px solid #00ffff;
 }
 
-#pulseaudio, #network, #cpu, #memory, #clock, #tray {
+#cpu, #memory, #clock, #network, #pulseaudio {
     padding: 0 8px;
     background-color: transparent;
     color: #ffffff;
