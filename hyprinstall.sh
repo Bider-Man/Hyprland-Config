@@ -117,7 +117,6 @@ sudo pacman -Syu --noconfirm \
 yay -Syu --noconfirm \
     hyprsunset \
     hyprshot \
-    swaync 
 
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
