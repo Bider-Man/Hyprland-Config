@@ -23,8 +23,14 @@
         "clock"
     ],
     "hyprland/workspaces": {
+        "disable-scroll": true,
         "format": "{name}",
-        "strip": 10
+        "format-icons": {
+            "default": "",
+            "focused": "",
+            "urgent": ""
+        },
+        "tooltip": true
     },
     "hyprland/window": {
         "format": "{title}",
