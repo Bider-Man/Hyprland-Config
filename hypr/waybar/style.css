@@ -13,28 +13,27 @@ window#waybar {
     transition-property: background-color;
     transition-duration: .5s;
 }
-
-#workspaces button {
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: transparent;
-    color: inherit;
-    font-weight: 600;
-    border-top: 4px solid transparent;
-    border-bottom: 3px solid transparent;
+#workspaces {
 }
 
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    border-bottom: 3px solid #a678d3;
-    border-top: 3px solid #a678d3;
+#workspaces button.active {
+    background-color: #8ec07c;
+    padding: 0 15px 0 15px;
+    color: #282828;
 }
 
-#workspaces button.focused {
-    background: rgba(0, 0, 0, 0.2);
-    border-top: 3px solid #9730fd;
-    border-bottom: 3px solid #9730fd;
-    color: #9730fd;
+.modules-left {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.modules-right {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.modules-center {
+    background-color: #282828;
 }
 
 #pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window {
