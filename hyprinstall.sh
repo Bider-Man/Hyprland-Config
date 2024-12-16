@@ -152,6 +152,17 @@ else
   echo "Swaync configuration not found in /etc/xdg/. Skipping."
 fi
 
+# Handle Swaync configuration
+echo "Copying Swaync configuration..."
+if [ -d "./hypr/swaync" ]; then
+  echo "Copying Swaync configuration from ./hypr/swaync to ~/.config/swaync..."
+  mkdir -p "$HOME/.config/swaync"
+  cp -r ./hypr/swaync/* "$HOME/.config/swaync/"
+else
+  echo "Error: ./hypr/swaync directory not found!"
+  exit 1
+fi
+
 # Set correct permissions
 echo "Setting permissions for configuration files..."
 chmod -R 755 "$CONFIG_DIR"
