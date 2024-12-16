@@ -12,7 +12,7 @@
     # Shrink window if smaller than width
     shrink = no
     # Set transparency of notifications
-    transparency = 0
+    transparency = 30
     # Height of whole notification    
     notification_height = 0
     # Height of seperators
