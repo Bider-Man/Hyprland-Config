@@ -16,6 +16,42 @@ mkdir -p "$HYPRLAND_DIR"
 mkdir -p "$SCRIPTS_DIR"
 mkdir -p "$HYPRLOCK_DIR"  # Ensure the hyprlock directory exists
 
+# Install dependencies
+echo "Installing dependencies..."
+sudo pacman -Syu --noconfirm \
+    yay \
+    hyprland \
+    rofi \
+    zenity \
+    otf-font-awesome \
+    ttf-arimo-nerd \
+    noto-fonts-emoji \
+    noto-fonts \
+    foot \
+    waybar \
+    dunst \
+    xdg-desktop-portal-hyprland \
+    swww \
+    pasystray \
+    fcitx5 \
+    swaylock \
+    swayidle \
+    wl-clipboard \
+    grim \
+    slurp \
+    procps-ng \
+    hypridle \
+    hyprpaper \
+    hyprlock \
+    nautilus \
+    swaync \
+    kate \
+    neovim 
+
+yay -Syu --noconfirm \
+    hyprsunset \
+    hyprshot \
+
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
   echo "Copying hyprland folder to $HYPRLAND_DIR..."
@@ -84,42 +120,6 @@ else
   echo "Error: Default foot.ini not found in /etc/xdg/foot. Creating an empty configuration file."
   touch "$FOOT_DIR/foot.ini"
 fi
-
-# Install dependencies
-echo "Installing dependencies..."
-sudo pacman -Syu --noconfirm \
-    yay \
-    hyprland \
-    rofi \
-    zenity \
-    otf-font-awesome \
-    ttf-arimo-nerd \
-    noto-fonts-emoji \
-    noto-fonts \
-    foot \
-    waybar \
-    dunst \
-    xdg-desktop-portal-hyprland \
-    swww \
-    pasystray \
-    fcitx5 \
-    swaylock \
-    swayidle \
-    wl-clipboard \
-    grim \
-    slurp \
-    procps-ng \
-    hypridle \
-    hyprpaper \
-    hyprlock \
-    nautilus \
-    swaync \
-    kate \
-    neovim 
-
-yay -Syu --noconfirm \
-    hyprsunset \
-    hyprshot \
 
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
