@@ -253,10 +253,6 @@
   font-size: 1.1rem;
 }
 
-/* Mpris widget */
-.widget-mpris {
-  /* The parent to all players */
-}
 
 .widget-mpris-player {
   padding: 8px;
