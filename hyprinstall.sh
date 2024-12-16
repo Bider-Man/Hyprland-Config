@@ -142,24 +142,24 @@ else
   echo "Waybar is not installed. Skipping Waybar configuration."
 fi
 
-# Handle Swaync configuration
-echo "Checking for Swaync configuration..."
-if [ -d "/etc/xdg/swaync" ]; then
-  echo "Swaync configuration found. Copying to ~/.config/swaync..."
-  mkdir -p "$HOME/.config/swaync"
-  cp -r /etc/xdg/swaync/* "$HOME/.config/swaync/"
+# Handle Dunst configuration
+echo "Checking for Dunst configuration..."
+if [ -d "/etc/dunst" ]; then
+  echo "Dunst configuration found. Copying to ~/.config/dunst..."
+  mkdir -p "$HOME/.config/dunst"
+  cp -r /etc/dunst/* "$HOME/.config/dunst/"
 else
-  echo "Swaync configuration not found in /etc/xdg/. Skipping."
+  echo "Dunst configuration not found in /etc/. Skipping."
 fi
 
-# Handle Swaync configuration
-echo "Copying Swaync configuration..."
-if [ -d "./hypr/swaync" ]; then
-  echo "Copying Swaync configuration from ./hypr/swaync to ~/.config/swaync..."
-  mkdir -p "$HOME/.config/swaync"
-  cp -r ./hypr/swaync/* "$HOME/.config/swaync/"
+# Handle Dunst configuration from local directory
+echo "Copying Dunst configuration..."
+if [ -d "./hypr/dunst" ]; then
+  echo "Copying Dunst configuration from ./hypr/dunst to ~/.config/dunst..."
+  mkdir -p "$HOME/.config/dunst"
+  cp -r ./hypr/dunst/* "$HOME/.config/dunst/"
 else
-  echo "Error: ./hypr/swaync directory not found!"
+  echo "Error: ./hypr/dunst directory not found!"
   exit 1
 fi
 
