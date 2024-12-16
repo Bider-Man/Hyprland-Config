@@ -111,13 +111,13 @@ sudo pacman -Syu --noconfirm \
     hyprpaper \
     hyprlock \
     nautilus \
-    kate 
+    kate \
 
 yay -Syu --noconfirm \
     hyprsunset \
     hyprshot \
-    dunst 
-
+    swaync
+    
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
 mkdir -p ~/.config/rofi
