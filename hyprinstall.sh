@@ -29,7 +29,23 @@ sudo pacman -Syu --noconfirm \
     noto-fonts \
     foot \
     waybar \
-    dunst \
+    vala \
+    meson \
+    git \
+    scdoc \
+    sassc \
+    gtk3 \
+    gtk-layer-shell \
+    dbus \
+    glib2 \
+    gobject-introspection \
+    libgee \
+    json-glib \
+    libhandy \
+    gvfs \
+    granite \
+    libpulse \
+    libnotify \
     xdg-desktop-portal-hyprland \
     swww \
     pasystray \
