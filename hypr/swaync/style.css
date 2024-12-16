@@ -1,13 +1,13 @@
-/* Dracula Theme */
-:root {
-  --foreground: rgb(248, 248, 242);
-  --background: rgb(40, 42, 54);
-  --background-alpha: rgba(40, 42, 54, 0.8);
-  --accent: rgba(189, 147, 249, 0.8);
-  --current-line: rgb(68, 71, 90);
-  --comment: rgb(98, 114, 164);
-}
+/* Japanese Cyberpunk Theme */
+@define-color foreground rgb(224, 224, 224); /* Light off-white for readability */
+@define-color background rgb(23, 28, 36); /* Dark, futuristic background */
+@define-color background-alpha rgba(23, 28, 36, 0.9); /* Slightly transparent background for floating windows */
+@define-color accent rgba(255, 0, 255, 0.8); /* Neon pink/purple for accents */
+@define-color current-line rgb(40, 40, 60); /* Darker grayish color for the current line */
+@define-color comment rgb(80, 120, 160); /* Muted blue-gray for comments */
+@define-color highlight rgb(0, 255, 255); /* Neon cyan for highlights */
 
+/* Notification Row */
 .notification-row {
   transition: all 200ms ease;
   outline: none;
@@ -26,8 +26,8 @@
 .notification-row:focus .notification,
 .notification-row:hover .notification {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.5);
-  border: 0px solid var(--accent);
-  background: var(--current-line);
+  border: 0px solid @accent;
+  background: @current-line;
 }
 
 .control-center .notification {
@@ -35,7 +35,7 @@
 }
 
 .control-center .notification-row {
-  opacity: 0.5;
+  opacity: 0.6;
   margin: -5px;
 }
 
@@ -47,6 +47,23 @@
   padding: 0;
 }
 
+/* Uncomment to enable specific urgency colors */
+.low {
+  background: rgba(255, 255, 0, 0.8); /* Neon yellow for low */
+  padding: 6px;
+  border-radius: 12px;
+}
+.normal {
+  background: rgba(0, 255, 0, 0.8); /* Neon green for normal */
+  padding: 6px;
+  border-radius: 12px;
+}
+.critical {
+  background: rgba(255, 0, 0, 0.8); /* Neon red for critical */
+  padding: 6px;
+  border-radius: 12px;
+}
+
 .notification-content {
   background: transparent;
   padding: 6px;
@@ -54,8 +71,8 @@
 }
 
 .close-button {
-  background: var(--current-line);
-  color: var(--foreground);
+  background: @current-line;
+  color: @foreground;
   text-shadow: none;
   padding: 0;
   border-radius: 100%;
@@ -69,7 +86,7 @@
 
 .close-button:hover {
   box-shadow: none;
-  background: var(--comment);
+  background: @highlight;
   transition: all 0.15s ease-in-out;
   border: none;
 }
@@ -79,22 +96,21 @@
   padding: 4px;
   margin: 0;
   box-shadow: none;
-  background: var(--current-line);
-  border: 2px solid var(--accent);
-  color: var(--foreground);
+  background: @current-line;
+  border: 2px solid @accent;
+  color: @foreground;
 }
 
 .notification-default-action:hover,
 .notification-action:hover {
   -gtk-icon-effect: none;
-  background: var(--current-line);
+  background: @current-line;
 }
 
 .notification-default-action {
   border-radius: 8px;
 }
 
-/* When alternative actions are visible */
 .notification-default-action:not(:only-child) {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -106,19 +122,22 @@
   border-right: none;
 }
 
-/* add bottom border radius to eliminate clipping */
 .notification-action:first-child {
   border-bottom-left-radius: 8px;
 }
 
 .notification-action:last-child {
   border-bottom-right-radius: 8px;
-  border-right: 1px solid var(--accent);
+  border-right: 1px solid @accent;
+}
+
+.image {
+  /* Future image styling */
 }
 
 .body-image {
   margin-top: 6px;
-  background-color: var(--foreground);
+  background-color: @foreground;
   border-radius: 8px;
 }
 
@@ -126,7 +145,7 @@
   font-size: 16px;
   font-weight: bold;
   background: transparent;
-  color: var(--foreground);
+  color: @foreground;
   text-shadow: none;
 }
 
@@ -134,7 +153,7 @@
   font-size: 16px;
   font-weight: bold;
   background: transparent;
-  color: var(--foreground);
+  color: @foreground;
   text-shadow: none;
   margin-right: 18px;
 }
@@ -143,54 +162,52 @@
   font-size: 15px;
   font-weight: normal;
   background: transparent;
-  color: var(--foreground);
+  color: @foreground;
   text-shadow: none;
 }
 
-/* The "Notifications" and "Do Not Disturb" text widget */
 .top-action-title {
-  color: var(--foreground);
+  color: @foreground;
   text-shadow: none;
 }
 
 .control-center-clear-all {
-  color: var(--foreground);
+  color: @foreground;
   text-shadow: none;
-  background: var(--background);
-  border: 2px solid var(--accent);
+  background: @background;
+  border: 2px solid @accent;
   box-shadow: none;
   border-radius: 8px;
 }
 
 .control-center-clear-all:hover {
-  background: var(--background);
+  background: @background;
 }
 
 .control-center-dnd {
   border-radius: 8px;
-  background: var(--background);
-  border: 1px solid var(--accent);
+  background: @background;
+  border: 1px solid @accent;
   box-shadow: none;
 }
 
 .control-center-dnd:checked {
-  background: var(--accent);
+  background: @accent;
 }
 
 .control-center-dnd slider {
-  background: var(--background);
+  background: @background;
   border-radius: 8px;
 }
 
 .control-center {
-  background: var(--background-alpha);
+  background: @background-alpha;
   border-radius: 10px;
   background-clip: border-box;
   padding: 4px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
-              0 2px 6px 2px rgba(0, 0, 0, 0.3);
-  color: var(--foreground);
-  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
+  color: @foreground;
+  border: 2px solid @accent;
 }
 
 .control-center-list {
@@ -201,27 +218,29 @@
   background: transparent;
 }
 
-/*** Widgets ***/
+/* Window behind control center */
+.blank-window {
+  background: transparent;
+}
 
-/* Title widget */
+/* Widgets */
 .widget-title {
   margin: 8px;
   font-size: 1.5rem;
 }
 .widget-title > button {
   font-size: initial;
-  color: var(--foreground);
+  color: @foreground;
   text-shadow: none;
-  background: var(--background);
-  border: 2px solid var(--accent);
+  background: @background;
+  border: 2px solid @accent;
   box-shadow: none;
   border-radius: 8px;
 }
 .widget-title > button:hover {
-  background: var(--background);
+  background: @background;
 }
 
-/* DND widget */
 .widget-dnd {
   margin: 8px;
   font-size: 1.1rem;
@@ -229,20 +248,19 @@
 .widget-dnd > switch {
   font-size: initial;
   border-radius: 8px;
-  background: var(--background);
-  border: 1px solid var(--accent);
+  background: @background;
+  border: 1px solid @accent;
   box-shadow: none;
 }
 .widget-dnd > switch:checked {
-  background: var(--accent);
+  background: @accent;
 }
 .widget-dnd > switch slider {
-  background: var(--background);
+  background: @background;
   border-radius: 8px;
-  border: 1px solid var(--foreground);
+  border: 1px solid @foreground;
 }
 
-/* Label widget */
 .widget-label {
   margin: 8px;
 }
@@ -250,14 +268,13 @@
   font-size: 1.1rem;
 }
 
-
 .widget-mpris-player {
   padding: 8px;
   margin: 8px;
-  background-color: var(--background);
+  background-color: @background;
   border-radius: 8px;
-  border: 2px solid var(--accent);
-  color: var(--foreground);
+  border: 2px solid @accent;
+  color: @foreground;
 }
 .widget-mpris-title {
   font-weight: bold;
