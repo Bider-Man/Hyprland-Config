@@ -44,13 +44,13 @@ sudo pacman -Syu --noconfirm \
     hyprpaper \
     hyprlock \
     nautilus \
-    swaync \
     kate \
-    neovim
+    neovim \
 
 yay -Syu --noconfirm \
     hyprsunset \
     hyprshot \
+    dunst
 
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
