@@ -46,8 +46,7 @@ sudo pacman -Syu --noconfirm \
     nautilus \
     swaync \
     kate \
-    neovim \
-    nm-applet
+    neovim
 
 yay -Syu --noconfirm \
     hyprsunset \
