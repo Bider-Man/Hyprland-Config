@@ -119,7 +119,7 @@ yay -Syu --noconfirm \
     hyprsunset \
     hyprshot \
     dunst 
-    
+
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
 mkdir -p ~/.config/rofi
@@ -139,6 +139,25 @@ if command -v waybar &> /dev/null; then
   fi
 else
   echo "Waybar is not installed. Skipping Waybar configuration."
+fi
+
+# Handle Dunst configuration
+DUNST_DIR="$HOME/.config/dunst"
+DUNST_SRC="/etc/dunst/dunstrc"
+
+if [ -d "$DUNST_DIR" ]; then
+  echo "Dunst configuration directory already exists at $DUNST_DIR."
+else
+  echo "Creating Dunst configuration directory at $DUNST_DIR..."
+  mkdir -p "$DUNST_DIR"
+fi
+
+if [ -f "$DUNST_SRC" ]; then
+  echo "Copying Dunst configuration from $DUNST_SRC to $DUNST_DIR..."
+  cp "$DUNST_SRC" "$DUNST_DIR/dunstrc"
+else
+  echo "Error: Dunst configuration file not found at $DUNST_SRC. Creating an empty configuration file."
+  touch "$DUNST_DIR/dunstrc"
 fi
 
 # Set correct permissions
