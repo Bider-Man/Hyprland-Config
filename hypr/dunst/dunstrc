@@ -33,7 +33,7 @@
     ### Text ###
     
     # Set font of notifications
-    font = Iosevka 10
+    font = "Share Tech Mono 10"
     # Spacing between lines 
     line-height = 0
     # Markup parsing
