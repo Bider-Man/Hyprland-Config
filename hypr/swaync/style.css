@@ -116,9 +116,6 @@
   border-right: 1px solid var(--accent);
 }
 
-.image {
-}
-
 .body-image {
   margin-top: 6px;
   background-color: var(--foreground);
