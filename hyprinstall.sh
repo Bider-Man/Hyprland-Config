@@ -113,12 +113,12 @@ sudo pacman -Syu --noconfirm \
     hyprpaper \
     hyprlock \
     nautilus \
+    swaync \
     kate 
 
 yay -Syu --noconfirm \
     hyprsunset \
     hyprshot \
-    swaync 
 
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
@@ -139,6 +139,16 @@ if command -v waybar &> /dev/null; then
   fi
 else
   echo "Waybar is not installed. Skipping Waybar configuration."
+fi
+
+# Handle Swaync configuration
+echo "Checking for Swaync configuration..."
+if [ -d "/etc/xdg/swaync" ]; then
+  echo "Swaync configuration found. Copying to ~/.config/swaync..."
+  mkdir -p "$HOME/.config/swaync"
+  cp -r /etc/xdg/swaync/* "$HOME/.config/swaync/"
+else
+  echo "Swaync configuration not found in /etc/xdg/. Skipping."
 fi
 
 # Set correct permissions
