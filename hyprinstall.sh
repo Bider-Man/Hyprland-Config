@@ -142,27 +142,6 @@ else
   echo "Waybar is not installed. Skipping Waybar configuration."
 fi
 
-# Handle Dunst configuration
-echo "Checking for Dunst configuration..."
-if [ -d "/etc/dunst" ]; then
-  echo "Dunst configuration found. Copying to ~/.config/dunst..."
-  mkdir -p "$HOME/.config/dunst"
-  cp -r /etc/dunst/* "$HOME/.config/dunst/"
-else
-  echo "Dunst configuration not found in /etc/. Skipping."
-fi
-
-# Handle Dunst configuration from local directory
-echo "Copying Dunst configuration..."
-if [ -d "./hypr/dunst" ]; then
-  echo "Copying Dunst configuration from ./hypr/dunst to ~/.config/dunst..."
-  mkdir -p "$HOME/.config/dunst"
-  cp -r ./hypr/dunst/* "$HOME/.config/dunst/"
-else
-  echo "Error: ./hypr/dunst directory not found!"
-  exit 1
-fi
-
 # Set correct permissions
 echo "Setting permissions for configuration files..."
 chmod -R 755 "$CONFIG_DIR"
