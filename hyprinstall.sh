@@ -103,8 +103,6 @@ sudo pacman -Syu --noconfirm \
     swww \
     pasystray \
     fcitx5 \
-    swaylock \
-    swayidle \
     wl-clipboard \
     grim \
     slurp \
