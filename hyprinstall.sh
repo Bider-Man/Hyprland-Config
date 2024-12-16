@@ -114,7 +114,8 @@ sudo pacman -Syu --noconfirm \
     hyprlock \
     nautilus \
     swaync \
-    kate 
+    kate \
+    neovim 
 
 yay -Syu --noconfirm \
     hyprsunset \
