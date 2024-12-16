@@ -50,7 +50,7 @@ sudo pacman -Syu --noconfirm \
 yay -Syu --noconfirm \
     hyprsunset \
     hyprshot \
-    dunst
+    swaync
 
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
