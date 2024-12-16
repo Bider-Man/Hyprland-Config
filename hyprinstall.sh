@@ -47,6 +47,7 @@ sudo pacman -Syu --noconfirm \
     kate \
     neovim \
     dunst 
+    
 yay -Syu --noconfirm \
     hyprsunset \
     hyprshot \
