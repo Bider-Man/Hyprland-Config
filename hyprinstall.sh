@@ -46,11 +46,10 @@ sudo pacman -Syu --noconfirm \
     nautilus \
     kate \
     neovim \
-
+    dunst 
 yay -Syu --noconfirm \
     hyprsunset \
     hyprshot \
-    swaync
 
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
