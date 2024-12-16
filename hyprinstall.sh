@@ -103,6 +103,8 @@ sudo pacman -Syu --noconfirm \
     swww \
     pasystray \
     fcitx5 \
+    swaylock \
+    swayidle \
     wl-clipboard \
     grim \
     slurp \
@@ -111,13 +113,13 @@ sudo pacman -Syu --noconfirm \
     hyprpaper \
     hyprlock \
     nautilus \
-    kate \
+    swaync \
+    kate 
 
 yay -Syu --noconfirm \
     hyprsunset \
     hyprshot \
-    swaync
-    
+
 # Create Rofi configuration
 echo "Creating Rofi configuration directory and dumping default config..."
 mkdir -p ~/.config/rofi
@@ -139,23 +141,14 @@ else
   echo "Waybar is not installed. Skipping Waybar configuration."
 fi
 
-# Handle Dunst configuration
-DUNST_DIR="$HOME/.config/dunst"
-DUNST_SRC="/etc/dunst/dunstrc"
-
-if [ -d "$DUNST_DIR" ]; then
-  echo "Dunst configuration directory already exists at $DUNST_DIR."
+# Handle Swaync configuration
+echo "Checking for Swaync configuration..."
+if [ -d "/etc/xdg/swaync" ]; then
+  echo "Swaync configuration found. Copying to ~/.config/swaync..."
+  mkdir -p "$HOME/.config/swaync"
+  cp -r /etc/xdg/swaync/* "$HOME/.config/swaync/"
 else
-  echo "Creating Dunst configuration directory at $DUNST_DIR..."
-  mkdir -p "$DUNST_DIR"
-fi
-
-if [ -f "$DUNST_SRC" ]; then
-  echo "Copying Dunst configuration from $DUNST_SRC to $DUNST_DIR..."
-  cp "$DUNST_SRC" "$DUNST_DIR/dunstrc"
-else
-  echo "Error: Dunst configuration file not found at $DUNST_SRC. Creating an empty configuration file."
-  touch "$DUNST_DIR/dunstrc"
+  echo "Swaync configuration not found in /etc/xdg/. Skipping."
 fi
 
 # Set correct permissions
