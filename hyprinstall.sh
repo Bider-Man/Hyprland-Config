@@ -142,6 +142,27 @@ else
   echo "Waybar is not installed. Skipping Waybar configuration."
 fi
 
+# Handle swaync configuration
+echo "Checking for swaync configuration..."
+if [ -d "/etc/xdg/swaync" ]; then
+  echo "swaync configuration found. Copying to ~/.config/swaync..."
+  mkdir -p "$HOME/.config/swaync"
+  cp -r /etc/dunst/* "$HOME/.config/dunst/"
+else
+  echo "swaync configuration not found in /etc/xdg. Skipping."
+fi
+
+# Handle swaync configuration from local directory
+echo "Copying swaync configuration..."
+if [ -d "./hypr/swaync" ]; then
+  echo "Copying swaync configurations from ./hypr/swaync to ~/.config/swaync..."
+  mkdir -p "$HOME/.config/swaync"
+  cp -r ./hypr/swaync/* "$HOME/.config/swaync/"
+else
+  echo "Error: ./hypr/swaync directory not found!"
+  exit 1
+fi
+
 # Set correct permissions
 echo "Setting permissions for configuration files..."
 chmod -R 755 "$CONFIG_DIR"
