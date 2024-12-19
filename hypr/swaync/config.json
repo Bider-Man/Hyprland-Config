@@ -29,6 +29,7 @@
   "timeout": 10,
   "timeout-critical": 0,
   "timeout-low": 5,
+  "max_history": 1,
   "transition-time": 100,
   "widget-config": {
     "buttons-grid": {
