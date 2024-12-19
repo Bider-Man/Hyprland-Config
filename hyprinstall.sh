@@ -20,7 +20,6 @@ mkdir -p "$HYPRLOCK_DIR"  # Ensure the hyprlock directory exists
 echo "Installing dependencies..."
 sudo pacman -Syu --noconfirm \
     yay \
-    hyprland \
     rofi \
     zenity \
     otf-font-awesome \
@@ -62,7 +61,9 @@ sudo pacman -Syu --noconfirm \
     nautilus \
     kate \
     neovim \
-    dunst 
+    dunst \
+    brightnessctl \
+    pamixer 
 
 yay -Syu --noconfirm \
     hyprsunset \
