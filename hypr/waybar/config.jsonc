@@ -44,6 +44,7 @@
         "tooltip": true
     },
     "pulseaudio": {
+        "max-volume": 100,
         "format": "{volume}% {icon}",
         "format-muted": "Muted ",
         "format-icons": {
