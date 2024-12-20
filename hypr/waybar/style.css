@@ -35,8 +35,8 @@ window#waybar {
 }
 
 #pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
     background-color: transparent;
     color: inherit;
     font-weight: 400;
