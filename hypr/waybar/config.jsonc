@@ -44,7 +44,7 @@
         "tooltip": true
     },
     "volume": {
-        "exec": "~/.config/waybar/volume_limit.sh",
+        "exec": "~/.config/waybar/scripts/volume.sh",
         "interval": 1,
         "tooltip": false
     },
