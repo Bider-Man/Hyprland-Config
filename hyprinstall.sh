@@ -63,7 +63,8 @@ sudo pacman -Syu --noconfirm \
     neovim \
     dunst \
     brightnessctl \
-    pamixer 
+    pamixer \
+    blueman
 
 yay -Syu --noconfirm \
     hyprsunset \
