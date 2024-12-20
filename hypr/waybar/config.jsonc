@@ -46,7 +46,6 @@
     "pulseaudio": {
         "format": "{volume}% {icon}",
         "format-muted": "Muted ",
-        "max-volume": 100,
         "format-icons": {
             "default": ["", "", ""]
         },
