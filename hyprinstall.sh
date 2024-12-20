@@ -64,7 +64,8 @@ sudo pacman -Syu --noconfirm \
     dunst \
     brightnessctl \
     pamixer \
-    blueman
+    blueman \
+    python
 
 yay -Syu --noconfirm \
     hyprsunset \
