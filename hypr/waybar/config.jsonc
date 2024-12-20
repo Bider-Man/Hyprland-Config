@@ -43,10 +43,12 @@
         "icon-size": 18,
         "tooltip": true
     },
-    "volume": {
-        "exec": "~/.config/waybar/scripts/volume.sh",
-        "interval": 1,
-        "tooltip": false
+    "pulseaudio": {
+        "format": "{volume}%",
+        "format-alt": "🔇",
+        "on-click": "pavucontrol",
+        "exec": "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | head -n 1 | tr -d '%' | awk '{print ($1 > 100 ? 100 : $1)}'",
+        "interval": 1
     },
     "cpu": {
         "format": "CPU: {usage}% ",
