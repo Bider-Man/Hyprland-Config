@@ -47,9 +47,7 @@
         "exec": "~/.config/waybar/volume_limit.sh",
         "interval": 1,
         "tooltip": false
-    }
-
-
+    },
     "cpu": {
         "format": "CPU: {usage}% ",
         "tooltip": false
