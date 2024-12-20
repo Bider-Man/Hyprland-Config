@@ -60,10 +60,6 @@
         "format": "RAM: {used} MiB / {total} MiB ",
         "tooltip": false
     },
-    "swap": {
-        "format": "SWAP: {used} MiB / {total} MiB",
-        "tooltip": false
-    },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
         "interval": 1  // Updates every second
