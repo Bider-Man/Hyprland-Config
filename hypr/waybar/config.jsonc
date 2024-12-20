@@ -44,11 +44,14 @@
         "tooltip": true
     },
     "pulseaudio": {
-        "format": "{volume}%",
-        "format-alt": "🔇",
+        "format": "{volume}% {icon}",
+        "format-muted": "Muted ",
+        "max-volume": 100,
+        "format-icons": {
+            "default": ["", "", ""]
+        },
         "on-click": "pavucontrol",
-        "exec": "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | head -n 1 | tr -d '%' | awk '{print ($1 > 100 ? 100 : $1)}'",
-        "interval": 1
+        "icon-size": 16
     },
     "cpu": {
         "format": "CPU: {usage}% ",
