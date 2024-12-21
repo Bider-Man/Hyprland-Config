@@ -14,10 +14,15 @@ window#waybar {
     transition-duration: .5s;
 }
 
+#workspaces button {
+    background-color: rgba(0, 0, 0, 0.5); /* Default background for inactive workspaces */
+    color: #ffffff; /* White text for better visibility */
+    padding: 0 10px; /* Adjust padding for better spacing */
+}
+
 #workspaces button.active {
-    background-color: #8ec07c;
-    padding: 0 15px 0 15px;
-    color: #282828;
+    background-color: #8ec07c; /* Highlight active workspace */
+    color: #282828; /* Dark text for active workspace */
 }
 
 .modules-left {
