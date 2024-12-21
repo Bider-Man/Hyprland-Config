@@ -14,6 +14,7 @@ cat << "EOF"
 EOF
 }
 
+# Create the dot bar
 function create_dot_bar {
     vol=$1
     full_dots=$((vol / 10))      # Number of full dots
@@ -40,16 +41,18 @@ function create_dot_bar {
     echo "$bar"
 }
 
+# Show notification for volume
 function notify_vol {
     # Get the current volume
     vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
     # Generate the volume progress bar using dots
     bar=$(create_dot_bar $vol)
     
-    # Update the notification with stack tag to prevent stacking
+    # Update or create a notification with stack tag to prevent stacking
     notify-send -i audio-volume-high "Volume: $vol%" "$bar" -t 2000 -u normal -h string:x-dunst-stack-tag:volume -h string:transient:1
 }
 
+# Show notification for mute status
 function notify_mute {
     # Get the mute status
     mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
