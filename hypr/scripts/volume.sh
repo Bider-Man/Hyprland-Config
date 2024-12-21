@@ -19,19 +19,29 @@ function notify_vol {
     vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
     # Calculate the volume level for the progress bar
     bar=$(seq -s "." $(($vol / 5)) | sed 's/[0-9]//g')
-    # Use swaync to show the volume notification with a progress bar
-    swaync -m "Volume: $vol%" -p "[$bar]" -t 1
+    
+    # Use font-based symbols for the notification
+    if [ "$vol" -ge 66 ]; then
+        icon="🔊"  # Full volume
+    elif [ "$vol" -ge 33 ]; then
+        icon="🔉"  # Medium volume
+    else
+        icon="🔈"  # Low volume
+    fi
+    
+    # Use swaync to show the volume notification with a progress bar and volume icon
+    swaync -m "$icon Volume: $vol%" -p "[$bar]" -t 1
 }
 
 function notify_mute {
     # Get the mute status
     mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
     if [ "$mute" == "yes" ]; then
-        # Send a mute notification with swaync
-        swaync -m "Muted" -i "/path/to/muted-icon.png" -t 1
+        # Send a mute notification with font-based symbols
+        swaync -m "🔇 Muted" -t 1
     else
-        # Send an unmute notification with swaync
-        swaync -m "Unmuted" -i "/path/to/unmuted-icon.png" -t 1
+        # Send an unmute notification with font-based symbols
+        swaync -m "🔊 Unmuted" -t 1
     fi
 }
 
@@ -55,7 +65,6 @@ fi
 # Set device action
 shift $((OPTIND -1))
 step="${2:-5}"
-icodir="~/.config/dunst/icons/vol"
 
 case $1 in
     i) pactl set-sink-volume $nsink +${step}%  # Increase volume
