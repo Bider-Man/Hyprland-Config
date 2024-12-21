@@ -16,16 +16,17 @@ mkdir -p "$HYPRLAND_DIR"
 mkdir -p "$SCRIPTS_DIR"
 mkdir -p "$HYPRLOCK_DIR"  # Ensure the hyprlock directory exists
 
-# Install dependencies
-echo "Installing dependencies..."
+# Install core dependencies
+echo "Installing core dependencies with pacman..."
 sudo pacman -Syu --noconfirm \
-    yay \
     rofi \
     zenity \
-    otf-font-awesome \
-    ttf-arimo-nerd \
-    noto-fonts-emoji \
+    otf-ipafont \
+    ttf-dejavu \
+    ttf-liberation \
     noto-fonts \
+    noto-fonts-cjk \
+    noto-fonts-emoji \
     foot \
     waybar \
     vala \
@@ -65,12 +66,15 @@ sudo pacman -Syu --noconfirm \
     brightnessctl \
     pamixer \
     blueman \
-    python
+    python \
+    obsidian
 
+# Install additional AUR packages using yay
+echo "Installing additional AUR packages with yay..."
 yay -Syu --noconfirm \
     hyprsunset \
     hyprshot \
-    swaync 
+    swaync \
 
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
@@ -203,8 +207,6 @@ else
   echo "Error: ./hypr/swaync directory not found!"
   exit 1
 fi
-
-
 
 # Set correct permissions
 echo "Setting permissions for configuration files..."
