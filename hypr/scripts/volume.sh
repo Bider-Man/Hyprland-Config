@@ -30,7 +30,8 @@ function notify_vol {
         icon="🔈"  
     fi
 
-    # Send or update the notification
+    # Send or update the notification with a delay to avoid missing it
+    sleep 0.1
     swaync -r "$NOTIFY_ID" -m "$icon Volume: $vol%" -p "[$bar]" -t 1
 }
 
