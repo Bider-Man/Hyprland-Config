@@ -78,7 +78,7 @@ yay -Syu --noconfirm \
     hyprshot \
     swaync \
     hyprland-qtutils \
-    swayosd-git
+    swayosd
 
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
