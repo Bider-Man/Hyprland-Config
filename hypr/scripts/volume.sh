@@ -9,7 +9,7 @@ source $ScrDir/globalcontrol.sh
 function print_error
 {
 cat << "EOF"
-    ./volumecontrol.sh -[device] <action>
+    ./volume.sh -[device] <action>
     ...valid device are...
         i -- [i]nput decive
         o -- [o]utput device
