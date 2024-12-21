@@ -1,54 +1,77 @@
 #!/usr/bin/env sh
 
-# Default settings
-nsink=$(pactl get-default-sink)
-step=5  # Volume step (increase/decrease by 5%)
-icodir="~/.config/dunst/icons/vol"
-font="Monospace 12"  # Font for the notification text
-
-# Function to display volume notifications
-function notify_vol {
-    vol=$(pactl get-sink-volume $nsink | awk '{print $5}' | sed 's/%//g')  # Get volume percentage
-    progress=$((vol / 10))  # Calculate progress (divide by 10 for 10 levels)
-
-    # Create a progress bar string
-    bar=$(seq -s "█" $progress | sed 's/[0-9]//g')  # 10 levels of █ for the progress bar
-    empty_bar=$(seq -s "░" $((10 - progress)) | sed 's/[0-9]//g')  # Remaining empty space
-
-    # Combine progress bar
-    full_bar="$bar$empty_bar"
-    
-    # Send notification using notify-send
-    notify-send -u low "Volume" "$vol% $full_bar" -i audio-volume-high -t 2000 -f "$font"
+# Define functions
+function print_error {
+cat << "EOF"
+    ./volume.sh -[device] <action>
+    ...valid device are...
+        i -- [i]nput device
+        o -- [o]utput device
+    ...valid actions are...
+        i -- <i>ncrease volume [+5]
+        d -- <d>ecrease volume [-5]
+        m -- <m>ute [x]
+EOF
 }
 
-# Function to display mute/unmute notifications
-function notify_mute {
-    mute=$(pactl get-sink-mute $nsink | awk '{print $2}')  # Get mute status
-    if [ "$mute" == "yes" ]; then
-        # Send muted notification
-        notify-send -u low "Muted" "Mute is ON" -i audio-volume-muted -t 2000 -f "$font"
+function notify_vol {
+    # Get the current volume
+    vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
+    # Calculate the volume level for the progress bar
+    bar=$(seq -s "." $(($vol / 5)) | sed 's/[0-9]//g')
+    
+    # Use font-based symbols for the notification
+    if [ "$vol" -ge 66 ]; then
+        icon="🔊"  # Full volume
+    elif [ "$vol" -ge 33 ]; then
+        icon="🔉"  # Medium volume
     else
-        # Send unmuted notification
-        notify-send -u low "Unmuted" "Mute is OFF" -i audio-volume-high -t 2000 -f "$font"
+        icon="🔈"  # Low volume
+    fi
+    
+    # Use swaync to show the volume notification with a progress bar and volume icon
+    swaync -m "$icon Volume: $vol%" -p "[$bar]" -t 1
+}
+
+function notify_mute {
+    # Get the mute status
+    mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+    if [ "$mute" == "yes" ]; then
+        # Send a mute notification with font-based symbols
+        swaync -m "🔇 Muted" -t 1
+    else
+        # Send an unmute notification with font-based symbols
+        swaync -m "🔊 Unmuted" -t 1
     fi
 }
 
-# Handle the volume and mute actions
+# Set device source
+while getopts io SetSrc
+do
+    case $SetSrc in
+    i) nsink=$(pactl list short sources | grep "input" | head -n 1 | awk '{print $2}')
+       srce="--default-source"
+       dvce="mic" ;;
+    o) nsink=$(pactl list short sinks | grep "output" | head -n 1 | awk '{print $2}')
+       srce=""
+       dvce="speaker" ;;
+    esac
+done
+
+if [ $OPTIND -eq 1 ] ; then
+    print_error
+fi
+
+# Set device action
+shift $((OPTIND -1))
+step="${2:-5}"
+
 case $1 in
-    i)  # Increase volume
-        pactl set-sink-volume $nsink +${step}%  # Increase volume by $step
-        notify_vol  # Update volume notification
-        ;;
-    d)  # Decrease volume
-        pactl set-sink-volume $nsink -${step}%  # Decrease volume by $step
-        notify_vol  # Update volume notification
-        ;;
-    m)  # Toggle mute/unmute
-        pactl set-sink-mute $nsink toggle  # Toggle mute
-        notify_mute  # Update mute/unmute notification
-        ;;
-    *)  # Invalid action
-        echo "Usage: $0 {i|d|m}"
-        ;;
+    i) pactl set-sink-volume $nsink +${step}%  # Increase volume
+        notify_vol ;;
+    d) pactl set-sink-volume $nsink -${step}%  # Decrease volume
+        notify_vol ;;
+    m) pactl set-sink-mute $nsink toggle  # Toggle mute
+        notify_mute ;;
+    *) print_error ;;
 esac
