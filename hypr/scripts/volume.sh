@@ -14,55 +14,32 @@ cat << "EOF"
 EOF
 }
 
-# Create the dot bar
-function create_dot_bar {
-    vol=$1
-    full_dots=$((vol / 10))      # Number of full dots
-    half_dots=$(( (vol % 10) >= 5 ? 1 : 0 ))  # 1 if there's a half dot
-    empty_dots=$((10 - full_dots - half_dots))
+# Initialize notification ID
+NOTIFY_ID="volume_notification"
 
-    bar=""
-
-    # Add full dots
-    for ((i = 0; i < full_dots; i++)); do
-        bar="${bar}●"
-    done
-
-    # Add half dot if necessary
-    if [ $half_dots -eq 1 ]; then
-        bar="${bar}◐"
+function notify_vol {
+    vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
+    bar=$(seq -s "." $(($vol / 5)) | sed 's/[0-9]//g')
+    
+    # Use font-based symbols for the notification
+    if [ "$vol" -ge 66 ]; then
+        icon="🔊"  
+    elif [ "$vol" -ge 33 ]; then
+        icon="🔉"  
+    else
+        icon="🔈"  
     fi
 
-    # Add empty dots
-    for ((i = 0; i < empty_dots; i++)); do
-        bar="${bar}○"
-    done
-
-    echo "$bar"
+    # Send or update the notification
+    swaync -r "$NOTIFY_ID" -m "$icon Volume: $vol%" -p "[$bar]" -t 1
 }
 
-# Show notification for volume
-function notify_vol {
-    # Get the current volume
-    vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
-    # Generate the volume progress bar using dots
-    bar=$(create_dot_bar $vol)
-    
-    # Create or update the notification
-    # Use a fixed stack tag 'volume' to overwrite the same notification
-    notify-send -i audio-volume-high "Volume: $vol%" "$bar" -t 2000 -u normal -h string:x-dunst-stack-tag:volume -h string:transient:1
-}
-
-# Show notification for mute status
 function notify_mute {
-    # Get the mute status
     mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
     if [ "$mute" == "yes" ]; then
-        # Send a mute notification (use the same stack tag to overwrite)
-        notify-send -i audio-volume-muted "🔇 Muted" -t 2000 -u normal -h string:x-dunst-stack-tag:mute -h string:transient:1
+        swaync -r "$NOTIFY_ID" -m "🔇 Muted" -t 1
     else
-        # Send an unmute notification (use the same stack tag to overwrite)
-        notify-send -i audio-volume-high "🔊 Unmuted" -t 2000 -u normal -h string:x-dunst-stack-tag:mute -h string:transient:1
+        swaync -r "$NOTIFY_ID" -m "🔊 Unmuted" -t 1
     fi
 }
 
@@ -88,11 +65,11 @@ shift $((OPTIND -1))
 step="${2:-5}"
 
 case $1 in
-    i) pactl set-sink-volume $nsink +${step}%  # Increase volume
+    i) pactl set-sink-volume $nsink +${step}%  
         notify_vol ;;
-    d) pactl set-sink-volume $nsink -${step}%  # Decrease volume
+    d) pactl set-sink-volume $nsink -${step}%  
         notify_vol ;;
-    m) pactl set-sink-mute $nsink toggle  # Toggle mute
+    m) pactl set-sink-mute $nsink toggle  
         notify_mute ;;
     *) print_error ;;
 esac
