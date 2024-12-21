@@ -46,7 +46,7 @@ function notify_vol {
     # Generate the volume progress bar using dots
     bar=$(create_dot_bar $vol)
     
-    # Send notification with the bar and volume
+    # Update the notification with stack tag to prevent stacking
     notify-send -i audio-volume-high "Volume: $vol%" "$bar" -t 2000 -u normal -h string:x-dunst-stack-tag:volume -h string:transient:1
 }
 
