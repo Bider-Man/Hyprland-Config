@@ -29,8 +29,8 @@ function notify_vol {
         icon="🔈"  # Low volume
     fi
     
-    # Use swaync to show the volume notification with a progress bar and volume icon
-    swaync -m "$icon Volume: $vol%" -p "[$bar]" -t 1
+    # Send notification using libnotify
+    notify-send -i audio-volume-high "$icon Volume: $vol%" -t 2000 -h string:x-dunst-stack-tag:volume -h string:transient:1
 }
 
 function notify_mute {
@@ -38,10 +38,10 @@ function notify_mute {
     mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
     if [ "$mute" == "yes" ]; then
         # Send a mute notification with font-based symbols
-        swaync -m "🔇 Muted" -t 1
+        notify-send -i audio-volume-muted "🔇 Muted" -t 2000 -h string:x-dunst-stack-tag:mute -h string:transient:1
     else
         # Send an unmute notification with font-based symbols
-        swaync -m "🔊 Unmuted" -t 1
+        notify-send -i audio-volume-high "🔊 Unmuted" -t 2000 -h string:x-dunst-stack-tag:mute -h string:transient:1
     fi
 }
 
