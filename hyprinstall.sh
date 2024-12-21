@@ -67,7 +67,8 @@ sudo pacman -Syu --noconfirm \
     pamixer \
     blueman \
     python \
-    obsidian
+    obsidian \
+    wlroots
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
