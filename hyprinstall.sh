@@ -75,6 +75,7 @@ yay -Syu --noconfirm \
     hyprsunset \
     hyprshot \
     swaync \
+    hyprland-qtutils
 
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
