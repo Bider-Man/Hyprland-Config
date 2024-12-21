@@ -14,23 +14,40 @@ cat << "EOF"
 EOF
 }
 
+function create_dot_bar {
+    vol=$1
+    full_dots=$((vol / 10))      # Number of full dots
+    half_dots=$(( (vol % 10) >= 5 ? 1 : 0 ))  # 1 if there's a half dot
+    empty_dots=$((10 - full_dots - half_dots))
+
+    bar=""
+
+    # Add full dots
+    for ((i = 0; i < full_dots; i++)); do
+        bar="${bar}●"
+    done
+
+    # Add half dot if necessary
+    if [ $half_dots -eq 1 ]; then
+        bar="${bar}◐"
+    fi
+
+    # Add empty dots
+    for ((i = 0; i < empty_dots; i++)); do
+        bar="${bar}○"
+    done
+
+    echo "$bar"
+}
+
 function notify_vol {
     # Get the current volume
     vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
-    # Calculate the volume level for the progress bar
-    bar=$(seq -s "." $(($vol / 5)) | sed 's/[0-9]//g')
+    # Generate the volume progress bar using dots
+    bar=$(create_dot_bar $vol)
     
-    # Use font-based symbols for the notification
-    if [ "$vol" -ge 66 ]; then
-        icon="🔊"  # Full volume
-    elif [ "$vol" -ge 33 ]; then
-        icon="🔉"  # Medium volume
-    else
-        icon="🔈"  # Low volume
-    fi
-    
-    # Send notification using libnotify with unique ID
-    notify-send -i audio-volume-high "$icon Volume: $vol%" -t 2000 -u normal -h string:x-dunst-stack-tag:volume -h string:transient:1
+    # Send notification with the bar and volume
+    notify-send -i audio-volume-high "Volume: $vol%" "$bar" -t 2000 -u normal -h string:x-dunst-stack-tag:volume -h string:transient:1
 }
 
 function notify_mute {
