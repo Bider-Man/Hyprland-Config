@@ -17,3 +17,7 @@ I plan to make this a fully-configured setup. But since I'm new, it'll be slow p
 I'm doing this in my free time, so as you can expect it'll be slow to update (major updates at least).
 
 Any criticism is also welcome :D
+
+# Installation Process
+
+Just make sure to have hyprutils and yay already installed before running the script. Everything else should be installed without any problems.
