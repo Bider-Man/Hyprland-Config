@@ -29,7 +29,7 @@ function notify_vol {
         icon="🔈"  # Low volume
     fi
     
-    # Send notification using libnotify
+    # Send notification using libnotify (replace old notifications with the same stack tag)
     notify-send -i audio-volume-high "$icon Volume: $vol%" -t 2000 -h string:x-dunst-stack-tag:volume -h string:transient:1
 }
 
@@ -37,10 +37,10 @@ function notify_mute {
     # Get the mute status
     mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
     if [ "$mute" == "yes" ]; then
-        # Send a mute notification with font-based symbols
+        # Send a mute notification with font-based symbols (replace old notifications with the same stack tag)
         notify-send -i audio-volume-muted "🔇 Muted" -t 2000 -h string:x-dunst-stack-tag:mute -h string:transient:1
     else
-        # Send an unmute notification with font-based symbols
+        # Send an unmute notification with font-based symbols (replace old notifications with the same stack tag)
         notify-send -i audio-volume-high "🔊 Unmuted" -t 2000 -h string:x-dunst-stack-tag:mute -h string:transient:1
     fi
 }
