@@ -48,7 +48,8 @@ function notify_vol {
     # Generate the volume progress bar using dots
     bar=$(create_dot_bar $vol)
     
-    # Update or create a notification with stack tag to prevent stacking
+    # Create or update the notification
+    # Use a fixed stack tag 'volume' to overwrite the same notification
     notify-send -i audio-volume-high "Volume: $vol%" "$bar" -t 2000 -u normal -h string:x-dunst-stack-tag:volume -h string:transient:1
 }
 
@@ -57,10 +58,10 @@ function notify_mute {
     # Get the mute status
     mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
     if [ "$mute" == "yes" ]; then
-        # Send a mute notification with font-based symbols (replace old notifications with the same stack tag)
+        # Send a mute notification (use the same stack tag to overwrite)
         notify-send -i audio-volume-muted "🔇 Muted" -t 2000 -u normal -h string:x-dunst-stack-tag:mute -h string:transient:1
     else
-        # Send an unmute notification with font-based symbols (replace old notifications with the same stack tag)
+        # Send an unmute notification (use the same stack tag to overwrite)
         notify-send -i audio-volume-high "🔊 Unmuted" -t 2000 -u normal -h string:x-dunst-stack-tag:mute -h string:transient:1
     fi
 }
