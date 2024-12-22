@@ -1,76 +1,82 @@
 #!/usr/bin/env sh
 
-# Define functions
+# Define notification ID for volume notifications
+NOTIFY_ID="volume_notification"
+
+# Print error message for incorrect usage
 function print_error {
 cat << "EOF"
-    ./volume.sh -[device] <action>
-    ...valid device are...
-        i -- [i]nput device
-        o -- [o]utput device
-    ...valid actions are...
-        i -- <i>ncrease volume [+5]
-        d -- <d>ecrease volume [-5]
-        m -- <m>ute [x]
+Usage: ./volume.sh -[device] <action>
+Valid devices are:
+    i -- Input device
+    o -- Output device
+Valid actions are:
+    i -- Increase volume [+5]
+    d -- Decrease volume [-5]
+    m -- Mute/unmute
 EOF
 }
 
-# Initialize notification ID
-NOTIFY_ID="volume_notification"
-
+# Function to send volume notification
 function notify_vol {
+    # Get the current volume percentage
     vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
-    bar=$(seq -s "." $(($vol / 5)) | sed 's/[0-9]//g')
     
-    # Use font-based symbols for the notification
+    # Create a volume bar with dots
+    full_dots=$((vol / 10))
+    half_dot=$((vol % 10 >= 5 ? 1 : 0))
+    bar=$(printf '●%.0s' $(seq 1 $full_dots))$( [ "$half_dot" -eq 1 ] && echo "◐" || echo "")$(printf '○%.0s' $(seq 1 $((10 - full_dots - half_dot))))
+    
+    # Choose an icon based on volume level
     if [ "$vol" -ge 66 ]; then
-        icon="🔊"  
+        icon="🔊"  # High volume
     elif [ "$vol" -ge 33 ]; then
-        icon="🔉"  
+        icon="🔉"  # Medium volume
     else
-        icon="🔈"  
+        icon="🔈"  # Low volume
     fi
 
-    # Send or update the notification with a delay to avoid missing it
-    sleep 0.1
-    swaync -r "$NOTIFY_ID" -m "$icon Volume: $vol%" -p "[$bar]" -t 1
+    # Update the volume notification
+    swaync client --id "$NOTIFY_ID" --content "$icon Volume: $vol% [$bar]" --timeout 2000
 }
 
+# Function to send mute notification
 function notify_mute {
     mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
     if [ "$mute" == "yes" ]; then
-        swaync -r "$NOTIFY_ID" -m "🔇 Muted" -t 1
+        swaync client --id "$NOTIFY_ID" --content "🔇 Muted" --timeout 2000
     else
-        swaync -r "$NOTIFY_ID" -m "🔊 Unmuted" -t 1
+        swaync client --id "$NOTIFY_ID" --content "🔊 Unmuted" --timeout 2000
     fi
 }
 
-# Set device source
+# Determine the device (input/output) from arguments
 while getopts io SetSrc
 do
     case $SetSrc in
     i) nsink=$(pactl list short sources | grep "input" | head -n 1 | awk '{print $2}')
-       srce="--default-source"
-       dvce="mic" ;;
+       ;;
     o) nsink=$(pactl list short sinks | grep "output" | head -n 1 | awk '{print $2}')
-       srce=""
-       dvce="speaker" ;;
+       ;;
     esac
 done
 
-if [ $OPTIND -eq 1 ] ; then
+if [ $OPTIND -eq 1 ]; then
     print_error
+    exit 1
 fi
 
-# Set device action
-shift $((OPTIND -1))
+# Shift positional arguments and get action
+shift $((OPTIND - 1))
 step="${2:-5}"
 
+# Perform the selected action
 case $1 in
-    i) pactl set-sink-volume $nsink +${step}%  
+    i) pactl set-sink-volume "$nsink" +${step}%  # Increase volume
         notify_vol ;;
-    d) pactl set-sink-volume $nsink -${step}%  
+    d) pactl set-sink-volume "$nsink" -${step}%  # Decrease volume
         notify_vol ;;
-    m) pactl set-sink-mute $nsink toggle  
+    m) pactl set-sink-mute "$nsink" toggle  # Toggle mute
         notify_mute ;;
     *) print_error ;;
 esac
