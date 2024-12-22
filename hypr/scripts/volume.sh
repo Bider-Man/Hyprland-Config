@@ -67,12 +67,23 @@ fi
 shift $((OPTIND -1))
 step="${2:-5}"
 
-case $1 in
-    i) pactl set-sink-volume $nsink +${step}%  
-        notify_vol ;;
-    d) pactl set-sink-volume $nsink -${step}%  
-        notify_vol ;;
-    m) pactl set-sink-mute $nsink toggle  
-        notify_mute ;;
-    *) print_error ;;
-esac
+# Get current volume
+current_vol=$(pactl get-sink-volume $nsink | awk '{print $5}' | sed 's/%//')
+
+# Ensure volume doesn't exceed 100%
+if [ "$1" == "i" ]; then
+    if [ $(($current_vol + $step)) -le 100 ]; then
+        pactl set-sink-volume $nsink +${step}%
+    else
+        pactl set-sink-volume $nsink 100%
+    fi
+    notify_vol
+elif [ "$1" == "d" ]; then
+    pactl set-sink-volume $nsink -${step}%
+    notify_vol
+elif [ "$1" == "m" ]; then
+    pactl set-sink-mute $nsink toggle
+    notify_mute
+else
+    print_error
+fi
