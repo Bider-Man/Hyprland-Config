@@ -69,7 +69,14 @@ sudo pacman -Syu --noconfirm \
     python \
     obsidian \
     wlroots \
-    wireplumber
+    wireplumber \
+    glibc \
+    pango \
+    gdk-pixbuf2 \
+    libdbusmenu-gtk3 \
+    cairo \
+    gcc-libs
+
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
