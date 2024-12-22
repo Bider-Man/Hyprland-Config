@@ -77,7 +77,8 @@ sudo pacman -Syu --noconfirm \
     cairo \
     gcc-libs \
     fish \
-    ttf-fira-code
+    ttf-fira-code \
+    feh
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
