@@ -75,7 +75,8 @@ sudo pacman -Syu --noconfirm \
     gdk-pixbuf2 \
     libdbusmenu-gtk3 \
     cairo \
-    gcc-libs
+    gcc-libs \
+    fish
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
