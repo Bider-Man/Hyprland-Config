@@ -3,8 +3,8 @@
 # Specify the default folder (adjust as needed)
 default_folder="$HOME/Pictures"
 
-# Open Thunar and let the user select a file
-wallpaper=$(thunar --no-desktop --select "$default_folder" | tail -n 1)
+# Open Zenity file picker to select an image file
+wallpaper=$(zenity --file-selection --title="Select a Wallpaper" --file-filter="Image files|*.jpg;*.jpeg;*.png;*.bmp;*.gif" --directory="$default_folder")
 
 # Check if the user selected a file
 if [ -n "$wallpaper" ]; then
