@@ -27,7 +27,7 @@ function notify_vol {
     # Build the progress bar
     bar=""
     for ((i=0; i<full_circles; i++)); do
-        bar+="◯"  # Full circle for every 10%
+        bar+="⚪"  # Filled circle for every 10%
     done
 
     if [ "$half_circles" -gt 0 ]; then
@@ -37,7 +37,7 @@ function notify_vol {
     # Fill remaining space with empty circles
     remaining=$((10 - full_circles - half_circles))
     for ((i=0; i<remaining; i++)); do
-        bar+="⚪"  # Empty circle for remaining part
+        bar+="◯"  # Unfilled circle for remaining part
     done
 
     # Adjust the length of the progress bar to fit the notification width
@@ -47,7 +47,7 @@ function notify_vol {
 
     # Add empty circles to the right to fill the remaining space
     for ((i=0; i<remaining_length; i++)); do
-        bar+="⚪"
+        bar+="◯"
     done
 
     # Use different icons based on the volume level
