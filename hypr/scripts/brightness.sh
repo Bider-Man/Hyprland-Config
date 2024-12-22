@@ -4,25 +4,33 @@
 NOTIFY_ID="brightness_notification"
 
 # Function to update the notification
-update_brightness_notify() {
+notify_brightness() {
     current_brightness=$(brightnessctl g | awk '{print int($1/100*100)}')
-    spikes=$((current_brightness / 10))  # Calculate the number of spikes based on brightness level
-    spikes_display=$(printf "★%.0s" $(seq 1 $spikes))  # Display stars as "spikes"
+    bar=$(seq -s "." $(($current_brightness / 10)) | sed 's/[0-9]//g')  # Build the progress bar with dots
 
-    # Send or update the notification with brightness and spikes
-    notify-send -r "$NOTIFY_ID" "☀ Brightness: $current_brightness%" "$spikes_display" -u low
+    # Use font-based symbol for brightness icon
+    if [ "$current_brightness" -ge 66 ]; then
+        icon="☀"  # Full brightness
+    elif [ "$current_brightness" -ge 33 ]; then
+        icon="🌞"  # Medium brightness
+    else
+        icon="🌑"  # Low brightness
+    fi
+
+    # Send or update the notification with brightness percentage and bar
+    notify-send -r "$NOTIFY_ID" "$icon Brightness: $current_brightness%" "[$bar]" -u low
 }
 
 # Increase brightness
 brightness_up() {
     brightnessctl set +10% -m
-    update_brightness_notify
+    notify_brightness
 }
 
 # Decrease brightness
 brightness_down() {
     brightnessctl set -10% -m
-    update_brightness_notify
+    notify_brightness
 }
 
 # Detect the type of brightness action
