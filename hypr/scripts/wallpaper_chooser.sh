@@ -5,6 +5,6 @@ chosen_wallpaper=$(zenity --file-selection --title="Select Wallpaper" --file-fil
 
 # Check if a file was chosen
 if [ -n "$chosen_wallpaper" ]; then
-    # Set the chosen wallpaper using hyprpaper
-    hyprctl dispatch background "$chosen_wallpaper" "1"
+    # Set the chosen wallpaper using swww
+    swww img "$chosen_wallpaper"
 fi
