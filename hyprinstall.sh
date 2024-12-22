@@ -87,7 +87,6 @@ yay -Syu --noconfirm \
     swaync \
     hyprland-qtutils \
     volnoti \
-    nerd-fonts-space-mono \
 
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
