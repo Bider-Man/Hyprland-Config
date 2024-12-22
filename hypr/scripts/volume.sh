@@ -20,16 +20,15 @@ NOTIFY_ID="volume_notification"
 function notify_vol {
     vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
     
-    # Define the maximum number of characters for the progress bar
-    bar_length=30  # You can change this to control the width of the bar in the notification
-    
-    # Calculate how many of the characters should be filled based on the volume
-    filled=$(($vol * $bar_length / 100))
-    
-    # Create the progress bar by repeating '.' for the filled part and spaces for the remaining part
-    bar=$(printf "%-${bar_length}s" "$(printf "%${filled}s" | tr ' ' '.')")
-    
-    # Use different icons based on volume
+    # Define the total width for the progress bar
+    total_width=30  # Total number of characters for the progress bar
+    filled_width=$(($vol * $total_width / 100))  # Calculate how many characters should be filled
+
+    # Create the progress bar: filled part (.) and empty part ( )
+    bar=$(printf "%-${filled_width}s" "$(printf "%${filled_width}s" | tr ' ' '.')")
+    bar=$(printf "%-${total_width}s" "$bar")  # Add spaces to the right to fill the full width
+
+    # Use different icons based on the volume
     if [ "$vol" -ge 66 ]; then
         icon="🔊"  
     elif [ "$vol" -ge 33 ]; then
@@ -38,7 +37,7 @@ function notify_vol {
         icon="🔈"  
     fi
 
-    # Send the notification using notify-send
+    # Send the notification with the progress bar
     notify-send -h int:transient:1 -h string:x-canonical-private-synchronous:"$NOTIFY_ID" \
                 "$icon Volume: $vol%" "$bar"
 }
