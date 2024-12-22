@@ -79,7 +79,8 @@ sudo pacman -Syu --noconfirm \
     fish \
     ttf-fira-code \
     feh \
-    wofi
+    wofi \
+    thunar
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
