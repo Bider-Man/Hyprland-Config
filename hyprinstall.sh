@@ -147,12 +147,12 @@ else
   mkdir -p "$FOOT_DIR"
 fi
 
-if [ -f "/etc/xdg/foot/foot.ini" ]; then
-  echo "Copying /etc/xdg/foot/foot.ini to $FOOT_DIR..."
-  cp /etc/xdg/foot/foot.ini "$FOOT_DIR/foot.ini"
+if [ -f "./hypr/foot/foot.ini" ]; then
+  echo "Copying foot.ini from ./hypr/foot/ to $FOOT_DIR..."
+  cp ./hypr/foot/foot.ini "$FOOT_DIR/foot.ini"
 else
-  echo "Error: Default foot.ini not found in /etc/xdg/foot. Creating an empty configuration file."
-  touch "$FOOT_DIR/foot.ini"
+  echo "Error: Provided foot.ini file not found in ./hypr/foot!"
+  exit 1
 fi
 
 # Create Rofi configuration
