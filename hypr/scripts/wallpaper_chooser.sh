@@ -1,16 +1,13 @@
 #!/bin/bash
 
-# Specify the default folder (adjust as needed)
-default_folder="$HOME/Pictures"
-
-# Use zenity to select a wallpaper file
-wallpaper=$(zenity --file-selection --title="Select a Wallpaper" --file-filter="Image files|*.jpg;*.jpeg;*.png;*.bmp;*.gif" --directory="$default_folder")
+# Open ranger in the Pictures directory and allow the user to select a file
+wallpaper=$(ranger --choosefile=/tmp/wallpaper.txt "$HOME/Pictures")
 
 # Check if a file was selected
-if [ -n "$wallpaper" ]; then
+if [ -f "$wallpaper" ]; then
   # Set the wallpaper using swww
   swww img "$wallpaper"
   echo "Wallpaper changed to: $wallpaper"
 else
-  echo "No wallpaper selected or dialog was canceled."
+  echo "No wallpaper selected."
 fi
