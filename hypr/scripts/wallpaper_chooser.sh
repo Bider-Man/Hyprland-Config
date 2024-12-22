@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Open Thunar to choose the wallpaper
-chosen_wallpaper=$(thunar --no-desktop --action="open" --display=$DISPLAY)
+# Open Thunar file manager to choose the wallpaper and get the selected file path
+chosen_wallpaper=$(thunar --choose --display=$DISPLAY)
 
 # Check if a file was chosen
 if [ -n "$chosen_wallpaper" ]; then
