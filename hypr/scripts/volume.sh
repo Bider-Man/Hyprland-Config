@@ -8,12 +8,18 @@ case $1 in
     up)
         pactl set-sink-volume @DEFAULT_SINK@ +5%
         volume=$((volume + 5))
-        if [ "$volume" -gt 100 ]; then volume=100; fi
+        if [ "$volume" -gt 100 ]; then
+            pactl set-sink-volume @DEFAULT_SINK@ 100%
+            volume=100
+        fi
         ;;
     down)
         pactl set-sink-volume @DEFAULT_SINK@ -5%
         volume=$((volume - 5))
-        if [ "$volume" -lt 0 ]; then volume=0; fi
+        if [ "$volume" -lt 0 ]; then
+            pactl set-sink-volume @DEFAULT_SINK@ 0%
+            volume=0
+        fi
         ;;
     mute)
         pactl set-sink-mute @DEFAULT_SINK@ toggle
