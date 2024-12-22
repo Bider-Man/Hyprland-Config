@@ -19,14 +19,14 @@ NOTIFY_ID="volume_notification"
 
 function notify_vol {
     vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
-    
-    # Define the total width for the progress bar
-    total_width=30  # Total number of characters for the progress bar
-    filled_width=$(($vol * $total_width / 100))  # Calculate how many characters should be filled
 
-    # Create the progress bar: filled part (.) and empty part ( )
+    # Define the total width for the progress bar
+    total_width=40  # Use more characters for the progress bar
+    filled_width=$((vol * total_width / 100))  # Calculate how many characters should be filled
+
+    # Generate the progress bar: filled part (.) and empty part ( )
     bar=$(printf "%-${filled_width}s" "$(printf "%${filled_width}s" | tr ' ' '.')")
-    bar=$(printf "%-${total_width}s" "$bar")  # Add spaces to the right to fill the full width
+    bar=$(printf "%-${total_width}s" "$bar")  # Pad the bar to the total width
 
     # Use different icons based on the volume
     if [ "$vol" -ge 66 ]; then
