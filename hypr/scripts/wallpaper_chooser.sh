@@ -1,13 +1,16 @@
 #!/bin/bash
 
-# Open ranger in the Pictures directory and allow the user to select a file
-wallpaper=$(ranger --choosefile=/tmp/wallpaper.txt "$HOME/Pictures")
+# Default folder to open in ranger
+default_folder="$HOME/Pictures"
+
+# Open ranger with foot terminal and allow the user to select a file
+wallpaper=$(foot -e ranger --choosefile="$default_folder")
 
 # Check if a file was selected
-if [ -f "$wallpaper" ]; then
+if [ -n "$wallpaper" ]; then
   # Set the wallpaper using swww
   swww img "$wallpaper"
   echo "Wallpaper changed to: $wallpaper"
 else
-  echo "No wallpaper selected."
+  echo "No wallpaper selected or dialog was canceled."
 fi
