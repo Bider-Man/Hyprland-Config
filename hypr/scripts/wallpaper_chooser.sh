@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Prompt the user to select a wallpaper using zenity
-wallpaper=$(zenity --file-selection --title="Select a Wallpaper" --file-filter="Image files|*.jpg;*.jpeg;*.png;*.bmp;*.gif")
+# Specify your default directory (adjust as needed)
+default_folder="$HOME/Pictures"
+
+# Use rofi to select a wallpaper
+wallpaper=$(find "$default_folder" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.bmp" -o -iname "*.gif" \) | rofi -dmenu -p "Select a Wallpaper")
 
 # Check if the user selected a file
 if [ -n "$wallpaper" ]; then
