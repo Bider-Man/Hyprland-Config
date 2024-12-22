@@ -76,7 +76,8 @@ sudo pacman -Syu --noconfirm \
     libdbusmenu-gtk3 \
     cairo \
     gcc-libs \
-    fish
+    fish \
+    ttf-fira-code
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
