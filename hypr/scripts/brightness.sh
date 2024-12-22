@@ -1,76 +1,65 @@
 #!/usr/bin/env bash
 
-# Set icon directory
-iDIR="$HOME/.config/hypr/mako/icons"
-
 # Initialize notification ID
 NOTIFY_ID="brightness_notification"
 
 # Get current brightness
 get_backlight() {
-    echo $(brightnessctl -m | cut -d, -f4)
+    brightness=$(brightnessctl -m | cut -d, -f4)
+    echo $brightness
 }
 
-# Get the corresponding icon based on brightness
+# Get the brightness icon based on the current value
 get_icon() {
     current=$(get_backlight | sed 's/%//')
     if [ "$current" -le "20" ]; then
-        icon="$iDIR/brightness-20.png"
+        icon="🔅"  # Dim brightness symbol
     elif [ "$current" -le "40" ]; then
-        icon="$iDIR/brightness-40.png"
+        icon="🔆"  # Low brightness symbol
     elif [ "$current" -le "60" ]; then
-        icon="$iDIR/brightness-60.png"
+        icon="☀️"  # Medium brightness symbol
     elif [ "$current" -le "80" ]; then
-        icon="$iDIR/brightness-80.png"
+        icon="🌞"  # High brightness symbol
     else
-        icon="$iDIR/brightness-100.png"
+        icon="🌟"  # Maximum brightness symbol
     fi
+    echo "$icon"
 }
 
-# Send the notification
+# Send the notification using notify-send
 notify_user() {
     current=$(get_backlight)
+    icon=$(get_icon)
     notify-send -h int:transient:1 -h string:x-canonical-private-synchronous:"$NOTIFY_ID" \
-                -u low -i "$icon" "Brightness : $current%"
+                -u low -i "dialog-information" "$icon Brightness: $current%"
 }
 
 # Change brightness
 change_backlight() {
-    brightnessctl set "$1" && get_icon && notify_user
+    brightnessctl set "$1" && notify_user
 }
 
 # Function to print error if no valid action is provided
 print_error() {
     cat << "EOF"
-    ./brightness.sh -[device] <action>
-    ...valid actions are...
-        i -- <i>ncrease brightness [+10]
-        d -- <d>ecrease brightness [-10]
-        g -- <g>et current brightness
+Usage: ./brightness.sh <action>
+Valid actions:
+    i  Increase brightness (+10%)
+    d  Decrease brightness (-10%)
+    g  Get current brightness
 EOF
 }
 
-# Set device action
-while getopts "b" SetSrc
-do
-    case $SetSrc in
-    b) nsink="brightnessctl" ;;
-    esac
-done
-
-# If no option provided, print error
-if [ $OPTIND -eq 1 ] ; then
+# Ensure an action is provided
+if [ $# -eq 0 ]; then
     print_error
     exit 1
 fi
 
 # Set action for brightness adjustment
-shift $((OPTIND -1))
-step="${2:-10}"
-
 case $1 in
-    i) change_backlight "+${step}%" ;;
-    d) change_backlight "${step}%-" ;;
-    g) get_backlight ;;
-    *) print_error ;;
+    i) change_backlight "+10%" ;;  # Increase brightness
+    d) change_backlight "10%-" ;;  # Decrease brightness
+    g) get_backlight ;;  # Get current brightness
+    *) print_error ;;  # Print error for invalid action
 esac
