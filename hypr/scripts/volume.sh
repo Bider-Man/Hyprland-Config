@@ -21,7 +21,7 @@ function notify_vol {
     vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
 
     # Define the total width for the progress bar
-    total_width=40  # Use more characters for the progress bar
+    total_width=30  # Use a smaller number to control the bar's overall width
     filled_width=$((vol * total_width / 100))  # Calculate how many characters should be filled
 
     # Generate the progress bar: filled part (.) and empty part ( )
