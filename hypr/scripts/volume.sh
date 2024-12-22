@@ -20,11 +20,11 @@ NOTIFY_ID="volume_notification"
 function notify_vol {
     vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
 
-    # Create the progress bar with half-circles (each half-circle is 5%)
+    # Calculate the number of full circles and half circles for the progress bar
     full_circles=$((vol / 10))
     half_circles=$(((vol % 10) / 5))
 
-    # Create the progress bar with the full and half circles
+    # Build the progress bar
     bar=""
     for ((i=0; i<full_circles; i++)); do
         bar+="◯"  # Full circle for every 10%
@@ -38,6 +38,16 @@ function notify_vol {
     remaining=$((10 - full_circles - half_circles))
     for ((i=0; i<remaining; i++)); do
         bar+="⚪"  # Empty circle for remaining part
+    done
+
+    # Adjust the length of the progress bar to fit the notification width
+    total_length=10
+    progress_length=${#bar}
+    remaining_length=$((total_length - progress_length))
+
+    # Add empty circles to the right to fill the remaining space
+    for ((i=0; i<remaining_length; i++)); do
+        bar+="⚪"
     done
 
     # Use different icons based on the volume level
