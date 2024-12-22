@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Specify your default directory (adjust as needed)
+# Specify the default folder (adjust as needed)
 default_folder="$HOME/Pictures"
 
-# Use rofi to select a wallpaper
-wallpaper=$(find "$default_folder" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.bmp" -o -iname "*.gif" \) | rofi -dmenu -p "Select a Wallpaper")
+# Open Thunar and let the user select a file
+wallpaper=$(thunar --no-desktop --select "$default_folder" | tail -n 1)
 
 # Check if the user selected a file
 if [ -n "$wallpaper" ]; then
