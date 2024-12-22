@@ -16,7 +16,8 @@ EOF
 NOTIFY_ID="brightness_notification"
 
 function notify_brightness {
-    brightness=$(brightnessctl g | awk '{print int($1/100*100)}')  # Get brightness in percentage
+    brightness=$(brightnessctl g | awk '{print int($1/100*100)}')  # Get current brightness in percentage
+    max_brightness=$(brightnessctl m)  # Get the maximum brightness
     bar=$(seq -s "." $(($brightness / 10)) | sed 's/[0-9]//g')  # Build the progress bar with dots
     
     # Use font-based symbols for brightness
@@ -52,9 +53,9 @@ shift $((OPTIND -1))
 step="${2:-10}"
 
 case $1 in
-    i) brightnessctl set +${step}%  
+    i) brightnessctl s +${step}%  
         notify_brightness ;;
-    d) brightnessctl set -${step}%  
+    d) brightnessctl s -${step}%  
         notify_brightness ;;
     *) print_error ;;
 esac
