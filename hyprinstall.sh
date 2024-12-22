@@ -77,7 +77,6 @@ sudo pacman -Syu --noconfirm \
     cairo \
     gcc-libs
 
-
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
 yay -Syu --noconfirm \
