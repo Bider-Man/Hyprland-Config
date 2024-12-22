@@ -19,7 +19,13 @@ NOTIFY_ID="volume_notification"
 
 function notify_vol {
     vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
-    bar=$(seq -s "." $(($vol / 5)) | sed 's/[0-9]//g')
+    # Calculate the number of dots for the progress bar
+    bar_length=20  # Total length of the progress bar (number of characters)
+    filled=$(($vol * $bar_length / 100))  # Calculate how many dots to fill
+    bar=$(printf "%${filled}s" | tr ' ' '.')
+    
+    # Ensure the progress bar is filled to the correct length (20 characters)
+    bar=$(printf "%-${bar_length}s" "$bar")
     
     # Use font-based symbols for the notification
     if [ "$vol" -ge 66 ]; then
