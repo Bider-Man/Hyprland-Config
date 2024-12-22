@@ -80,7 +80,7 @@ sudo pacman -Syu --noconfirm \
     ttf-fira-code \
     feh \
     wofi \
-    thunar
+    ranger
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
