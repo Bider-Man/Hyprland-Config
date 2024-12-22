@@ -59,19 +59,16 @@ function notify_vol {
         icon="🔈"  
     fi
 
-    # Send the notification with the dynamically sized progress bar
-    notify-send -h int:transient:1 -h string:x-canonical-private-synchronous:"$NOTIFY_ID" \
-                "$icon Volume: $vol%" "$bar"
+    # Send the notification with volnoti
+    volnoti -s "$vol%" -p "$icon" -m "$bar"
 }
 
 function notify_mute {
     mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
     if [ "$mute" == "yes" ]; then
-        notify-send -h int:transient:1 -h string:x-canonical-private-synchronous:"$NOTIFY_ID" \
-                    "🔇 Muted"
+        volnoti -s "Muted" -p "🔇" -m "Volume is muted"
     else
-        notify-send -h int:transient:1 -h string:x-canonical-private-synchronous:"$NOTIFY_ID" \
-                    "🔊 Unmuted"
+        volnoti -s "Unmuted" -p "🔊" -m "Volume is unmuted"
     fi
 }
 
