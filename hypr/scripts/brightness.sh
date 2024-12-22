@@ -1,47 +1,60 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
-# Notification ID to update the notification instead of stacking
+# Define functions
+function print_error {
+cat << "EOF"
+    ./brightness.sh -[device] <action>
+    ...valid device are...
+        b -- [b]rightness device
+    ...valid actions are...
+        i -- <i>ncrease brightness [+10]
+        d -- <d>ecrease brightness [-10]
+EOF
+}
+
+# Initialize notification ID
 NOTIFY_ID="brightness_notification"
 
-# Function to update the notification
-notify_brightness() {
-    current_brightness=$(brightnessctl g | awk '{print int($1/100*100)}')
-    bar=$(seq -s "." $(($current_brightness / 10)) | sed 's/[0-9]//g')  # Build the progress bar with dots
-
-    # Use font-based symbol for brightness icon
-    if [ "$current_brightness" -ge 66 ]; then
-        icon="☀"  # Full brightness
-    elif [ "$current_brightness" -ge 33 ]; then
+function notify_brightness {
+    brightness=$(brightnessctl g | awk '{print int($1/100*100)}')  # Get brightness in percentage
+    bar=$(seq -s "." $(($brightness / 10)) | sed 's/[0-9]//g')  # Build the progress bar with dots
+    
+    # Use font-based symbols for brightness
+    if [ "$brightness" -ge 66 ]; then
+        icon="☀️"  # Full brightness
+    elif [ "$brightness" -ge 33 ]; then
         icon="🌞"  # Medium brightness
     else
         icon="🌑"  # Low brightness
     fi
 
-    # Send or update the notification with brightness percentage and bar
-    notify-send -r "$NOTIFY_ID" "$icon Brightness: $current_brightness%" "[$bar]" -u low
+    # Send the notification using notify-send
+    notify-send -h int:transient:1 -h string:x-canonical-private-synchronous:"$NOTIFY_ID" \
+                "$icon Brightness: $brightness%" "$bar"
 }
 
-# Increase brightness
-brightness_up() {
-    brightnessctl set +10% -m
-    notify_brightness
-}
+# Set device source
+while getopts b SetSrc
+do
+    case $SetSrc in
+    b) nsink="brightnessctl"  # Use brightnessctl for brightness control
+       srce=""
+       dvce="brightness" ;;
+    esac
+done
 
-# Decrease brightness
-brightness_down() {
-    brightnessctl set -10% -m
-    notify_brightness
-}
+if [ $OPTIND -eq 1 ] ; then
+    print_error
+fi
 
-# Detect the type of brightness action
-case "$1" in
-    "brightness-up")
-        brightness_up
-        ;;
-    "brightness-down")
-        brightness_down
-        ;;
-    *)
-        echo "Invalid argument. Use 'brightness-up' or 'brightness-down'."
-        ;;
+# Set device action
+shift $((OPTIND -1))
+step="${2:-10}"
+
+case $1 in
+    i) brightnessctl set +${step}%  
+        notify_brightness ;;
+    d) brightnessctl set -${step}%  
+        notify_brightness ;;
+    *) print_error ;;
 esac
