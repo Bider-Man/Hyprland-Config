@@ -81,12 +81,6 @@ sudo pacman -Syu --noconfirm \
     feh \
     wofi \
     ranger \
-    qt5ct \
-    adw-gtk-theme \
-    qt5ct \
-    qt6ct \
-    kvantum \
-    breeze-icons
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
