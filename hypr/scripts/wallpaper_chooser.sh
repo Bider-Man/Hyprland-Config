@@ -9,12 +9,15 @@ wallpaper=$(foot -e ranger --choosefile="$default_folder")
 # Trim any spaces or newlines from the selection
 wallpaper=$(echo "$wallpaper" | tr -d '\n' | tr -d ' ')
 
-# Check if a valid file was selected and not a directory
+# Check if the selected path is a valid file and not a directory
 if [ -f "$wallpaper" ]; then
   # Set the wallpaper using swww
   swww img "$wallpaper"
   echo "Wallpaper changed to: $wallpaper"
+elif [ -d "$wallpaper" ]; then
+  # If a directory was selected
+  echo "Selected path is a directory, not a file."
 else
-  # If the selection was not a valid file or directory was selected
-  echo "Selected path is not a valid file or it is a directory."
+  # If the selection was invalid
+  echo "Selected path is not a valid file."
 fi
