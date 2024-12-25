@@ -1,0 +1,33 @@
+/*******************************************************
+ * ROFI Cyberpunk Colors - Neon Translucent Theme
+ *******************************************************/
+* {
+    selected-normal-foreground:  rgba ( 0, 255, 127, 100 % ); /* Neon green */
+    foreground:                  rgba ( 196, 203, 212, 90 % ); /* Soft gray for general text */
+    normal-foreground:           @foreground;
+    alternate-normal-background: rgba ( 25, 25, 60, 10 % ); /* Subtle dark blue tint */
+    red:                         rgba ( 255, 0, 0, 100 % ); /* Bright neon red */
+    selected-urgent-foreground:  rgba ( 255, 255, 255, 100 % ); /* Pure white for emphasis */
+    blue:                        rgba ( 0, 191, 255, 100 % ); /* Neon blue */
+    urgent-foreground:           rgba ( 255, 69, 0, 100 % ); /* Orange-red for urgency */
+    alternate-urgent-background: rgba ( 60, 0, 60, 90 % ); /* Deep magenta with transparency */
+    active-foreground:           rgba ( 138, 43, 226, 100 % ); /* Bright neon purple */
+    lightbg:                     rgba ( 40, 44, 52, 80 % ); /* Soft translucent dark gray */
+    selected-active-foreground:  rgba ( 255, 255, 255, 100 % ); /* Pure white */
+    alternate-active-background: rgba ( 20, 20, 50, 88 % ); /* Darker blue tint with transparency */
+    background:                  rgba ( 10, 10, 30, 80 % ); /* Deep blue background with translucency */
+    alternate-normal-foreground: @foreground;
+    normal-background:           rgba ( 20, 20, 50, 10 % ); /* Subtle translucent blue */
+    lightfg:                     rgba ( 0, 255, 255, 100 % ); /* Cyan for accents */
+    selected-normal-background:  rgba ( 15, 0, 30, 100 % ); /* Deep purple for selected items */
+    border-color:                rgba ( 255, 20, 147, 100 % ); /* Neon pink for borders */
+    spacing:                     2;
+    separatorcolor:              rgba ( 45, 48, 59, 50 % ); /* Semi-transparent dark separator */
+    urgent-background:           rgba ( 60, 0, 0, 20 % ); /* Dark translucent red for urgency */
+    selected-urgent-background:  rgba ( 165, 0, 66, 100 % ); /* Bright magenta-red */
+    alternate-urgent-foreground: @urgent-foreground;
+    background-color:            rgba ( 0, 0, 0, 0 % ); /* Fully transparent background (fallback) */
+    alternate-active-foreground: @active-foreground;
+    active-background:           rgba ( 30, 30, 60, 17 % ); /* Subtle dark purple for active items */
+    selected-active-background:  rgba ( 20, 0, 50, 100 % ); /* Vibrant deep blue for selected active */
+}
