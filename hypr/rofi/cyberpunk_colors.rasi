@@ -1,33 +1,34 @@
 /*******************************************************
- * ROFI Cyberpunk Colors - Neon Translucent Theme
+ * ROFI Cyberpunk Colors - Fixed Neon Translucent Theme
  *******************************************************/
 * {
-    selected-normal-foreground:  rgba ( 0, 255, 127, 100 % ); /* Neon green */
-    foreground:                  rgba ( 196, 203, 212, 90 % ); /* Soft gray for general text */
-    normal-foreground:           @foreground;
-    alternate-normal-background: rgba ( 25, 25, 60, 10 % ); /* Subtle dark blue tint */
-    red:                         rgba ( 255, 0, 0, 100 % ); /* Bright neon red */
-    selected-urgent-foreground:  rgba ( 255, 255, 255, 100 % ); /* Pure white for emphasis */
-    blue:                        rgba ( 0, 191, 255, 100 % ); /* Neon blue */
-    urgent-foreground:           rgba ( 255, 69, 0, 100 % ); /* Orange-red for urgency */
-    alternate-urgent-background: rgba ( 60, 0, 60, 90 % ); /* Deep magenta with transparency */
-    active-foreground:           rgba ( 138, 43, 226, 100 % ); /* Bright neon purple */
-    lightbg:                     rgba ( 40, 44, 52, 80 % ); /* Soft translucent dark gray */
-    selected-active-foreground:  rgba ( 255, 255, 255, 100 % ); /* Pure white */
-    alternate-active-background: rgba ( 20, 20, 50, 88 % ); /* Darker blue tint with transparency */
-    background:                  rgba ( 10, 10, 30, 80 % ); /* Deep blue background with translucency */
-    alternate-normal-foreground: @foreground;
-    normal-background:           rgba ( 20, 20, 50, 10 % ); /* Subtle translucent blue */
-    lightfg:                     rgba ( 0, 255, 255, 100 % ); /* Cyan for accents */
-    selected-normal-background:  rgba ( 15, 0, 30, 100 % ); /* Deep purple for selected items */
-    border-color:                rgba ( 255, 20, 147, 100 % ); /* Neon pink for borders */
-    spacing:                     2;
-    separatorcolor:              rgba ( 45, 48, 59, 50 % ); /* Semi-transparent dark separator */
-    urgent-background:           rgba ( 60, 0, 0, 20 % ); /* Dark translucent red for urgency */
-    selected-urgent-background:  rgba ( 165, 0, 66, 100 % ); /* Bright magenta-red */
-    alternate-urgent-foreground: @urgent-foreground;
-    background-color:            rgba ( 0, 0, 0, 0 % ); /* Fully transparent background (fallback) */
-    alternate-active-foreground: @active-foreground;
-    active-background:           rgba ( 30, 30, 60, 17 % ); /* Subtle dark purple for active items */
-    selected-active-background:  rgba ( 20, 0, 50, 100 % ); /* Vibrant deep blue for selected active */
+    /* Define custom colors */
+    neon-blue: rgba(0, 191, 255, 100%);
+    neon-yellow: rgba(255, 223, 0, 100%);
+    neon-red: rgba(255, 0, 0, 100%);
+    neon-green: rgba(0, 255, 127, 100%);
+    
+    /* General colors */
+    selected-normal-foreground: var(neon-green);
+    foreground: rgba(255, 255, 255, 100%);
+    normal-foreground: @foreground;
+    background: rgba(15, 15, 40, 95%); /* Darker and less transparent */
+    normal-background: rgba(20, 20, 50, 95%);
+    
+    /* Highlights and active colors */
+    selected-normal-background: rgba(25, 0, 50, 100%); /* Deep purple */
+    active-foreground: var(neon-blue);
+    active-background: rgba(30, 30, 60, 80%);
+    
+    /* Urgency */
+    urgent-foreground: var(neon-red);
+    urgent-background: rgba(60, 0, 0, 80%);
+    selected-urgent-background: rgba(120, 0, 50, 100%);
+    
+    /* Borders and separators */
+    border-color: rgba(255, 20, 147, 100%); /* Neon pink */
+    separatorcolor: rgba(45, 48, 59, 50%);
+    
+    /* Spacing */
+    spacing: 2;
 }
