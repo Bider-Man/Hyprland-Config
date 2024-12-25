@@ -81,13 +81,13 @@ sudo pacman -Syu --noconfirm \
     feh \
     wofi \
     ranger \
-    papirus-icon-theme
+    papirus-icon-theme \
+    flameshot
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
 yay -Syu --noconfirm \
     hyprsunset \
-    hyprshot \
     swaync \
     hyprland-qtutils \
     volnoti \
