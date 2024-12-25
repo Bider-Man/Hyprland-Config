@@ -82,7 +82,6 @@ sudo pacman -Syu --noconfirm \
     wofi \
     ranger \
     papirus-icon-theme \
-    flameshot
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
@@ -91,6 +90,7 @@ yay -Syu --noconfirm \
     swaync \
     hyprland-qtutils \
     volnoti \
+    hyprshot
 
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
