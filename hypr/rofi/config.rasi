@@ -1,63 +1,90 @@
+/*******************************************************
+ * ROFI config for a Cyberpunk-Japanese Aesthetic
+ * Modified for a futuristic and vibrant theme
+ *******************************************************/
+
 configuration {
-    modi: "drun,run";
-    font: "Noto Sans JP 12";
+    font: "Mononoki Nerd Font 14"; /* Futuristic font with a hint of Japanese style */
     show-icons: true;
-    lines: 10;
-    columns: 1;
-    fixed-num-lines: true;
-    terminal: "alacritty";
+    icon-theme: "Papirus-Dark";
+    display-drun: "Cyber Apps";
+    drun-display-format: "{name}";
+    scroll-method: 0;
+    disable-history: false;
+    sidebar-mode: false;
 }
 
-* {
-    background: #1a1a2e;  // Dark navy for a cyberpunk vibe
-    border: #0f3460;      // Subtle blue border
-    text: #e94560;        // Neon pink text
-    selected: #16213e;    // Slightly lighter for selection
-    selected-text: #0df6d9; // Neon cyan for selected text
-    spacing: 10px;
-    border-radius: 10px;
-    padding: 20px;
-    border-width: 2px;
-}
+@import "~/.config/rofi/cyberpunk_colors.rasi" /* External file for defining neon colors */
 
 window {
-    background-color: @background;
-    border-color: @border;
-    border-radius: 20px;
-    padding: 20px;
-}
-
-mainbox {
-    spacing: @spacing;
-    children: [prompt, inputbar, listview];
-}
-
-prompt {
-    text-color: @text;
-    font: "Noto Sans JP Bold 16";
-}
-
-inputbar {
-    text-color: @text;
-    padding: 5px;
+    background-color: rgba(15, 15, 40, 0.9); /* Dark bluish background with transparency */
+    border: 2;
+    border-color: @neon-pink;
+    padding: 30;
 }
 
 listview {
+    lines: 10;
+    columns: 2;
+    spacing: 10px;
+    scrollbar: false;
+    padding: 4px;
+}
+
+textbox {
+    text-color: @neon-green;
+    font: "Mononoki Nerd Font Bold 14";
+}
+
+element.normal.normal {
+    background-color: @neon-blue;
+    text-color: @neon-yellow;
+}
+element.normal.urgent {
+    background-color: @neon-red;
+    text-color: @white;
+}
+element.normal.active {
+    background-color: @neon-purple;
+    text-color: @white;
+}
+element.selected.normal {
+    background-color: @neon-pink;
+    text-color: @black;
+}
+element.selected.urgent {
+    background-color: @neon-orange;
+    text-color: @black;
+}
+element.selected.active {
+    background-color: @neon-green;
+    text-color: @black;
+}
+
+scrollbar {
+    width: 6px;
+    border: 1px;
+    border-color: @neon-blue;
+    handle-color: @neon-pink;
+    handle-width: 10px;
+}
+
+button {
+    text-color: @neon-cyan;
     spacing: 5px;
-    scrollbar: true;
-    scrollbar-width: 8px;
-    scrollbar-color: @selected-text;
+}
+button.selected {
+    background-color: @neon-pink;
+    text-color: @white;
 }
 
-element {
-    text-color: @text;
-    background-color: transparent;
+inputbar {
     padding: 5px;
-    border: none;
+    text-color: @neon-cyan;
+    background-color: rgba(20, 20, 50, 0.8);
 }
 
-element.selected {
-    background-color: @selected;
-    text-color: @selected-text;
-    border-radius: 10px;
+textbox-prompt-colon {
+    text-color: @neon-yellow;
+    margin: 0px 5px;
 }
