@@ -46,7 +46,7 @@ listview {
     spacing: 5px;
     scrollbar: true;
     scrollbar-width: 8px;
-    scrollbar-color: @selected; @selected-text;
+    scrollbar-color: @selected-text;
 }
 
 element {
