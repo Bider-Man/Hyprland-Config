@@ -12,11 +12,11 @@
     selected-normal-foreground: var(neon-green);
     foreground: rgba(255, 255, 255, 100%);
     normal-foreground: @foreground;
-    background: rgba(15, 15, 40, 95%); /* Darker and less transparent */
-    normal-background: rgba(20, 20, 50, 95%);
+    background: rgba(20, 20, 40, 98%); /* Darker and less transparent */
+    normal-background: rgba(25, 25, 50, 98%);
     
     /* Highlights and active colors */
-    selected-normal-background: rgba(25, 0, 50, 100%); /* Deep purple */
+    selected-normal-background: rgba(50, 0, 70, 100%); /* Deep purple */
     active-foreground: var(neon-blue);
     active-background: rgba(30, 30, 60, 80%);
     
@@ -30,5 +30,5 @@
     separatorcolor: rgba(45, 48, 59, 50%);
     
     /* Spacing */
-    spacing: 2;
+    spacing: 4;  /* Increased for better readability */
 }
