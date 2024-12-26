@@ -14,7 +14,7 @@ window#waybar {
     color: #a678d3;
     transition-property: background-color;
     transition-duration: 0.5s;
-    height: 28px; /* Reduced height */
+    min-height: 28px; /* Adjust bar size with min-height */
     padding: 2px 10px; /* Adjust padding for a compact look */
 }
 
