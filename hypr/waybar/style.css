@@ -8,12 +8,14 @@
 }
 
 window#waybar {
-    background: linear-gradient(270deg, #3d3540, #1c1b1f, #3d3540); /* Gradient background */
-    background-size: 400% 400%; /* Animate the gradient */
-    animation: symbiote-flow 10s ease infinite; /* Apply symbiote animation */
+    background: linear-gradient(270deg, #3d3540, #1c1b1f, #3d3540); /* Base gradient */
+    background-size: 400% 400%;
+    animation: symbiote-flow 6s ease-in-out infinite; /* Moving gradient */
+    position: relative;
     color: #a678d3;
     transition-property: background-color;
     transition-duration: .5s;
+    overflow: hidden; /* To contain tendrils */
 }
 
 /* Symbiote flow animation */
@@ -29,35 +31,58 @@ window#waybar {
     }
 }
 
+/* Symbiote tendrils effect */
+window#waybar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent, rgba(0, 0, 0, 0.6));
+    opacity: 0.7;
+    animation: tendrils 3s ease-in-out infinite;
+    z-index: -1;
+}
+
+/* Tendrils animation */
+@keyframes tendrils {
+    0% {
+        clip-path: circle(10% at 50% 50%);
+    }
+    50% {
+        clip-path: ellipse(60% 50% at 50% 50%);
+    }
+    100% {
+        clip-path: circle(10% at 50% 50%);
+    }
+}
+
 #workspaces button {
-    background-color: rgba(0, 0, 0, 0.5); /* Default background for inactive workspaces */
-    color: #ffffff; /* White text for better visibility */
-    padding: 0 10px; /* Adjust padding for better spacing */
-    transition: background-color 0.3s ease; /* Smooth transitions */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    padding: 0 10px;
+    transition: background-color 0.3s ease;
 }
 
 #workspaces button.active {
-    background-color: #8ec07c; /* Highlight active workspace */
-    color: #282828; /* Dark text for active workspace */
-    box-shadow: 0 0 10px #8ec07c; /* Glowing effect for the active workspace */
+    background-color: #8ec07c;
+    color: #282828;
+    box-shadow: 0 0 10px #8ec07c;
 }
 
-.modules-left {
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
+.modules-left,
 .modules-right {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding: 20px;
 }
 
 .modules-center {
-    background-color: rgba(61, 53, 64, 0.8); /* Translucent purple background */
-    border-radius: 10px; /* Smooth edges */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    background-color: rgba(61, 53, 64, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
+/* Pulseaudio, network, etc. */
 #pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window {
     padding-left: 8px;
     padding-right: 8px;
@@ -65,30 +90,27 @@ window#waybar {
     color: inherit;
     font-weight: 400;
     border: none;
-    transition: color 0.3s ease; /* Replace unsupported properties */
+    transition: color 0.3s ease, transform 0.3s ease; /* Slight hover effect */
 }
 
 #pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #temperature:hover, #clock:hover, #window:hover {
-    color: #ff79c6; /* Highlight modules on hover */
+    color: #ff79c6; /* Highlight color on hover */
+}
+
+/* Enhanced pulsing clock effect */
+@keyframes clock-pulse {
+    0% {
+        text-shadow: 0 0 5px #ff79c6, 0 0 10px #ff79c6;
+    }
+    50% {
+        text-shadow: 0 0 20px #ff79c6, 0 0 30px #ff79c6;
+    }
+    100% {
+        text-shadow: 0 0 5px #ff79c6, 0 0 10px #ff79c6;
+    }
 }
 
 #clock {
     font-size: 14px;
-}
-
-/* Optional: Add pulsating effect to the clock using supported properties */
-@keyframes pulse {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.8;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-#clock {
-    animation: pulse 3s infinite;
+    animation: clock-pulse 2s infinite ease-in-out;
 }
