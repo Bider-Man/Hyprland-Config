@@ -3,7 +3,7 @@
     border: none;
     border-radius: 0;
     font-family: Inter Light;
-    font-size: 16px;
+    font-size: 14px; /* Reduced font size */
     min-height: 0;
 }
 
@@ -14,6 +14,8 @@ window#waybar {
     color: #a678d3;
     transition-property: background-color;
     transition-duration: 0.5s;
+    height: 28px; /* Reduced height */
+    padding: 2px 10px; /* Adjust padding for a compact look */
 }
 
 /* Symbiote flow animation */
@@ -32,31 +34,32 @@ window#waybar {
 #workspaces button {
     background-color: rgba(0, 0, 0, 0.5);
     color: #ffffff;
-    padding: 0 10px;
+    padding: 0 6px; /* Reduced padding */
     transition: background-color 0.3s ease;
+    margin: 0 2px; /* Slight margin between buttons */
 }
 
 #workspaces button.active {
     background-color: #8ec07c;
     color: #282828;
-    box-shadow: 0 0 10px #8ec07c;
+    box-shadow: 0 0 8px #8ec07c;
 }
 
 .modules-left,
 .modules-right {
-    padding: 20px;
+    padding: 5px 10px; /* Reduced padding */
 }
 
 .modules-center {
     background-color: rgba(61, 53, 64, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    padding: 3px 8px; /* Reduced padding */
 }
 
 /* Pulseaudio, network, etc. */
 #pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 2px 6px; /* Reduced padding */
     background-color: transparent;
     color: inherit;
     font-weight: 400;
@@ -82,6 +85,6 @@ window#waybar {
 }
 
 #clock {
-    font-size: 14px;
+    font-size: 12px; /* Slightly smaller font */
     animation: clock-pulse 2s infinite ease-in-out;
 }
