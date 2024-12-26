@@ -68,8 +68,8 @@
         "format-charging": "Charging: {percentage}%",
         "format-discharging": "Discharging: {percentage}%",
         "format-full": "Fully charged",
-        "ac": "AC",
-        "bat": "BAT0",
+        "ac": "ADP1", // AC adapter
+        "bat": "BAT0", // Battery name
         "percentage-cutoff": 5
     },
     "clock": {
