@@ -33,13 +33,12 @@ window#waybar {
     background-color: rgba(0, 0, 0, 0.5); /* Default background for inactive workspaces */
     color: #ffffff; /* White text for better visibility */
     padding: 0 10px; /* Adjust padding for better spacing */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    transition: background-color 0.3s ease; /* Smooth transitions */
 }
 
 #workspaces button.active {
     background-color: #8ec07c; /* Highlight active workspace */
     color: #282828; /* Dark text for active workspace */
-    transform: scale(1.1); /* Slightly enlarge the active workspace */
     box-shadow: 0 0 10px #8ec07c; /* Glowing effect for the active workspace */
 }
 
@@ -66,11 +65,10 @@ window#waybar {
     color: inherit;
     font-weight: 400;
     border: none;
-    transition: transform 0.3s ease;
+    transition: color 0.3s ease; /* Replace unsupported properties */
 }
 
 #pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #temperature:hover, #clock:hover, #window:hover {
-    transform: scale(1.1); /* Slight hover effect */
     color: #ff79c6; /* Highlight modules on hover */
 }
 
@@ -78,16 +76,16 @@ window#waybar {
     font-size: 14px;
 }
 
-/* Optional: Add pulsating effect to the clock */
+/* Optional: Add pulsating effect to the clock using supported properties */
 @keyframes pulse {
     0% {
-        transform: scale(1);
+        opacity: 1;
     }
     50% {
-        transform: scale(1.05);
+        opacity: 0.8;
     }
     100% {
-        transform: scale(1);
+        opacity: 1;
     }
 }
 
