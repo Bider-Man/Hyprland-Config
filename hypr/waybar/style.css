@@ -8,21 +8,39 @@
 }
 
 window#waybar {
-    background-color: rgba(61, 53, 64, 0.8); /* Translucent background */
+    background: linear-gradient(270deg, #3d3540, #1c1b1f, #3d3540); /* Gradient background */
+    background-size: 400% 400%; /* Animate the gradient */
+    animation: symbiote-flow 10s ease infinite; /* Apply symbiote animation */
     color: #a678d3;
     transition-property: background-color;
     transition-duration: .5s;
+}
+
+/* Symbiote flow animation */
+@keyframes symbiote-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 #workspaces button {
     background-color: rgba(0, 0, 0, 0.5); /* Default background for inactive workspaces */
     color: #ffffff; /* White text for better visibility */
     padding: 0 10px; /* Adjust padding for better spacing */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
 }
 
 #workspaces button.active {
     background-color: #8ec07c; /* Highlight active workspace */
     color: #282828; /* Dark text for active workspace */
+    transform: scale(1.1); /* Slightly enlarge the active workspace */
+    box-shadow: 0 0 10px #8ec07c; /* Glowing effect for the active workspace */
 }
 
 .modules-left {
@@ -37,6 +55,8 @@ window#waybar {
 
 .modules-center {
     background-color: rgba(61, 53, 64, 0.8); /* Translucent purple background */
+    border-radius: 10px; /* Smooth edges */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
 
 #pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window {
@@ -46,8 +66,31 @@ window#waybar {
     color: inherit;
     font-weight: 400;
     border: none;
+    transition: transform 0.3s ease;
+}
+
+#pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #temperature:hover, #clock:hover, #window:hover {
+    transform: scale(1.1); /* Slight hover effect */
+    color: #ff79c6; /* Highlight modules on hover */
 }
 
 #clock {
     font-size: 14px;
+}
+
+/* Optional: Add pulsating effect to the clock */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#clock {
+    animation: pulse 3s infinite;
 }
