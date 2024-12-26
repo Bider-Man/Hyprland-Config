@@ -14,7 +14,6 @@ window#waybar {
     color: #a678d3;
     transition-property: background-color;
     transition-duration: .5s;
-    overflow: hidden; /* Contain child elements */
 }
 
 /* Symbiote flow animation */
@@ -62,11 +61,12 @@ window#waybar {
     color: inherit;
     font-weight: 400;
     border: none;
-    transition: color 0.3s ease, transform 0.3s ease; /* Slight hover effect */
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 #pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #temperature:hover, #clock:hover, #window:hover {
     color: #ff79c6; /* Highlight color on hover */
+    transform: scale(1.1); /* Slight zoom effect */
 }
 
 /* Enhanced pulsing clock effect */
