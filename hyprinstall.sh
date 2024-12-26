@@ -82,6 +82,7 @@ sudo pacman -Syu --noconfirm \
     wofi \
     ranger \
     papirus-icon-theme \
+    calcurse
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
