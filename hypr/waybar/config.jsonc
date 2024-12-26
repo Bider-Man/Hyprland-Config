@@ -64,7 +64,10 @@
     },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
-        "interval": 1  // Updates every second
+        "interval": 1,  // Updates every second
+        "on-click": "calcurse"
+    }
+          
     },
     "style": {
         "background": "rgba(0, 0, 0, 0.5)",  // Translucent background
