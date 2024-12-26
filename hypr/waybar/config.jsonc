@@ -69,7 +69,7 @@
         "format-discharging": "Discharging: {percentage}%",
         "format-full": "Fully charged",
         "ac": "ADP1", // AC adapter
-        "bat": "BAT0", // Battery name
+        "bat": "BAT0" // Battery name
     },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
