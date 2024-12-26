@@ -58,7 +58,7 @@ window#waybar {
 }
 
 /* Pulseaudio, network, etc. */
-#pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window {
+#pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window, #battery {
     padding: 2px 6px; /* Reduced padding */
     background-color: transparent;
     color: inherit;
@@ -67,7 +67,7 @@ window#waybar {
     transition: color 0.3s ease;
 }
 
-#pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #temperature:hover, #clock:hover, #window:hover {
+#pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #temperature:hover, #clock:hover, #window:hover, #battery:hover {
     color: #ff79c6; /* Highlight color on hover */
 }
 
@@ -95,4 +95,27 @@ window#waybar {
     background-color: rgba(255, 121, 198, 0.2); /* Add subtle background highlight */
     border-radius: 5px; /* Rounded highlight */
     text-decoration: underline; /* Underline to signify interactivity */
+}
+
+#battery {
+    padding: 0 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+#battery.charging {
+    color: #8ec07c; /* Green when charging */
+}
+
+#battery.discharging {
+    color: #fb4934; /* Red when discharging */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
