@@ -70,7 +70,6 @@
         "format-full": "Fully charged",
         "ac": "ADP1", // AC adapter
         "bat": "BAT0", // Battery name
-        "percentage-cutoff": 5
     },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
