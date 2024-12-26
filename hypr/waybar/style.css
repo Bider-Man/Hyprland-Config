@@ -11,11 +11,10 @@ window#waybar {
     background: linear-gradient(270deg, #3d3540, #1c1b1f, #3d3540); /* Base gradient */
     background-size: 400% 400%;
     animation: symbiote-flow 6s ease-in-out infinite; /* Moving gradient */
-    position: relative;
     color: #a678d3;
     transition-property: background-color;
     transition-duration: .5s;
-    overflow: hidden; /* To contain tendrils */
+    overflow: hidden; /* Contain child elements */
 }
 
 /* Symbiote flow animation */
@@ -28,33 +27,6 @@ window#waybar {
     }
     100% {
         background-position: 0% 50%;
-    }
-}
-
-/* Symbiote tendrils effect */
-window#waybar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, transparent, rgba(0, 0, 0, 0.6));
-    opacity: 0.7;
-    animation: tendrils 3s ease-in-out infinite;
-    z-index: -1;
-}
-
-/* Tendrils animation */
-@keyframes tendrils {
-    0% {
-        clip-path: circle(10% at 50% 50%);
-    }
-    50% {
-        clip-path: ellipse(60% 50% at 50% 50%);
-    }
-    100% {
-        clip-path: circle(10% at 50% 50%);
     }
 }
 
