@@ -12,6 +12,7 @@
         "memory",
         "pulseaudio",
         "network",
+        "battery",
         "clock"
     ],
     "hyprland/workspaces": {
