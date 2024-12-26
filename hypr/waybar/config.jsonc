@@ -55,7 +55,8 @@
     },
     "cpu": {
         "format": "CPU: {usage}% ",
-        "tooltip": false
+        "tooltip": false,
+        "interval": 5
     },
     "memory": {
         "format": "RAM: {used} MiB / {total} MiB ",
