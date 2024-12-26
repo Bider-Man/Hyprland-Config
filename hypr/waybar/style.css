@@ -86,11 +86,13 @@ window#waybar {
 
 #clock {
     font-size: 14px; /* Adjust font size */
+    color: #a678d3; /* Default color */
     animation: clock-pulse 2s infinite ease-in-out; /* Existing animation */
 }
 
 #clock:hover {
-    color: #ff79c6; /* Change color on hover to indicate interactivity */
-    text-shadow: 0 0 5px #ff79c6, 0 0 10px #ff79c6; /* Add glow effect */
-    transform: scale(1.1); /* Slightly enlarge the clock on hover */
+    color: #ff79c6; /* Change text color on hover */
+    background-color: rgba(255, 121, 198, 0.2); /* Add subtle background highlight */
+    border-radius: 5px; /* Rounded highlight */
+    text-decoration: underline; /* Underline to signify interactivity */
 }
