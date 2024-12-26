@@ -113,9 +113,3 @@ window#waybar {
 #battery.discharging {
     color: #fb4934; /* Red when discharging */
 }
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
