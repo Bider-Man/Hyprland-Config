@@ -62,6 +62,16 @@
         "format": "RAM: {used} MiB / {total} MiB ",
         "tooltip": false
     },
+    "battery": {
+        "format": "{percentage}%",
+        "tooltip-format": "Battery: {capacity}%",
+        "format-charging": "Charging: {percentage}%",
+        "format-discharging": "Discharging: {percentage}%",
+        "format-full": "Fully charged",
+        "ac": "AC",
+        "bat": "BAT0",
+        "percentage-cutoff": 5
+    },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
         "interval": 1,  // Updates every second
