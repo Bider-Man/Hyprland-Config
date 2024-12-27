@@ -103,32 +103,34 @@ window#waybar {
     transition: background-color 0.3s ease;
     padding: 4px 10px;
     border-radius: 5px;
+    background-color: transparent;  /* Ensure no background color is set */
 }
 
 #battery i {
-    color: #a678d3;  /* Purple color for the battery icon */
+    color: #a678d3;  /* Purple color for the battery icon itself */
+    background-color: transparent;  /* Ensure the icon's background remains transparent */
 }
 
 #battery.charging {
-    background-color: #26A65B; /* Green when charging */
+    background-color: transparent; /* No background color for charging */
 }
 
 #battery.full {
-    background-color: #4CAF50; /* Green when fully charged */
+    background-color: transparent; /* No background color when fully charged */
 }
 
 #battery.good {
-    background-color: #4CAF50; /* Green when battery is good */
+    background-color: transparent; /* No background color when battery is good */
 }
 
 #battery.warning {
-    background-color: #FFEB3B; /* Yellow when battery is in warning range */
+    background-color: transparent; /* No background color when battery is in warning range */
 }
 
 #battery.critical {
-    background-color: #f53c3c; /* Red when battery is critical */
+    background-color: transparent; /* No background color when battery is critical */
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c; /* Solid red when critical without charging */
+    background-color: transparent; /* No background color when critical and not charging */
 }
