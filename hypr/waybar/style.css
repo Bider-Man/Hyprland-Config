@@ -104,24 +104,17 @@ window#waybar {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: conic-gradient(
-        #00FF00 0% 100%, /* Green at 100% */
-        #FF0000 100% 0% /* Red at 0% */
-    );
+    background-color: var(--battery-color, #333);
     color: white;
     font-size: 14px;
     text-align: center;
     line-height: 1;
-    transition: background-image 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
 }
 
 #battery.battery {
-    background-image: conic-gradient(
-        #00FF00 0% {percentage}%,
-        #FF0000 {percentage}% 100%
+    --battery-color: conic-gradient(
+        #00FF00 0% 100%,
+        #FF0000 0% 100%
     );
-}
-
-#battery {
-    background-color: #333; /* fallback color */
 }
