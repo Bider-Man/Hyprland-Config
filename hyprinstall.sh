@@ -84,7 +84,8 @@ sudo pacman -Syu --noconfirm \
     papirus-icon-theme \
     calcurse \
     imagemagick \
-    acpi
+    acpi \
+    pavucontrol
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
