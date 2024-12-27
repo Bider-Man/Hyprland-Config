@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Get the battery percentage
+# Get the current battery percentage
 battery_percentage=$(cat /sys/class/power_supply/BAT0/capacity)
 
 # Set the size of the circle and font for percentage
