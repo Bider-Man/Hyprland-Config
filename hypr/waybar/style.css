@@ -104,17 +104,18 @@ window#waybar {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--battery-color, #333);
+    background-color: #333; /* Fallback color */
     color: white;
     font-size: 14px;
     text-align: center;
     line-height: 1;
-    transition: background-color 0.5s ease-in-out;
+    transition: background-image 0.5s ease-in-out;
 }
 
+/* Make sure you apply the background-gradient properly */
 #battery.battery {
-    --battery-color: conic-gradient(
-        #00FF00 0% 100%,
+    background-image: conic-gradient(
+        #00FF00 0% 100%,   /* Green to red gradient */
         #FF0000 0% 100%
     );
 }
