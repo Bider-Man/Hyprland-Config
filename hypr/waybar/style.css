@@ -98,21 +98,19 @@ window#waybar {
 }
 
 #battery {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    /* Basic styles for the indicator */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #333; /* Fallback color */
     color: white;
     font-size: 14px;
     text-align: center;
     line-height: 1;
+    background-color: #333; /* Fallback color in case gradient fails */
     transition: background-image 0.5s ease-in-out;
 }
 
-/* Make sure you apply the background-gradient properly */
+/* Apply the gradient directly */
 #battery.battery {
     background-image: conic-gradient(
         #00FF00 0% 100%,   /* Green to red gradient */
