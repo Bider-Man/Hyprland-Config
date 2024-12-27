@@ -99,10 +99,14 @@ window#waybar {
 
 #battery {
     /* Default color for the battery module */
-    color: #fff;
+    color: #a678d3;  /* Purple color for the battery text */
     transition: background-color 0.3s ease;
     padding: 4px 10px;
     border-radius: 5px;
+}
+
+#battery i {
+    color: #a678d3;  /* Purple color for the battery icon */
 }
 
 #battery.charging {
