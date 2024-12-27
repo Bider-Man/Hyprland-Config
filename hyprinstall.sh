@@ -83,7 +83,8 @@ sudo pacman -Syu --noconfirm \
     ranger \
     papirus-icon-theme \
     calcurse \
-    imagemagick
+    imagemagick \
+    acpi
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
