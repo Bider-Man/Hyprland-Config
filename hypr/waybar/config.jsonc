@@ -64,7 +64,7 @@
         "tooltip": false
     },
     "battery": {
-        "exec": "/path/to/your/script.py",
+        "exec": "~/.config/hypr/scripts/battery_updates.py",
         "interval": 1,
         "format": "{text}",
         "tooltip": false
