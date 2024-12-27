@@ -100,60 +100,31 @@ window#waybar {
 #battery {
     /* Default color for the battery module */
     color: #fff;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease;
     padding: 4px 10px;
     border-radius: 5px;
 }
 
 #battery.charging {
     background-color: #26A65B; /* Green when charging */
-    animation: battery-pulse 1.5s infinite ease-in-out;
 }
 
 #battery.full {
     background-color: #4CAF50; /* Green when fully charged */
-    animation: battery-pulse 2s infinite ease-in-out; /* Slight slower pulse for full battery */
 }
 
 #battery.good {
     background-color: #4CAF50; /* Green when battery is good */
-    animation: battery-pulse 2s infinite ease-in-out; /* Slight slower pulse */
 }
 
 #battery.warning {
     background-color: #FFEB3B; /* Yellow when battery is in warning range */
-    animation: battery-pulse 3s infinite ease-in-out; /* Slower pulse */
 }
 
 #battery.critical {
     background-color: #f53c3c; /* Red when battery is critical */
-    animation: none; /* No pulse when battery is critical */
-}
-
-@keyframes battery-pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1); /* Slightly bigger scale */
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes blink {
-    0% {
-        background-color: #f53c3c; /* Red color for critical battery */
-    }
-    50% {
-        background-color: #ffffff; /* Blink to white */
-    }
-    100% {
-        background-color: #f53c3c; /* Stay red for critical battery */
-    }
 }
 
 #battery.critical:not(.charging) {
-    animation: blink 1s infinite; /* Blinking effect for critical battery */
+    background-color: #f53c3c; /* Solid red when critical without charging */
 }
