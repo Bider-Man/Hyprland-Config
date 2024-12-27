@@ -142,5 +142,4 @@ window#waybar {
   
   [data-capacity="10"] .circle {
     stroke: #f44336; /* Red at 10% */
-  }
-  
+  }  
