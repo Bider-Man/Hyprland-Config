@@ -98,18 +98,28 @@ window#waybar {
 }
 
 #battery {
-    /* Fallback background color */
-    background-color: #333;   /* Default color */
-    color: white;             /* Text color */
-    font-size: 14px;          /* Text size */
-    line-height: 1;           /* Ensures text is centered vertically */
-    transition: background-color 0.5s ease-in-out;  /* Smooth color transition */
+    /*background-color: #ffffff;*/
+    color: #000000;
 }
 
-#battery.battery {
-    background-color: #00FF00;  /* Green when fully charged */
+#battery.charging {
+    /*color: #ffffff;*/
+    background-color: #26A65B;
 }
 
-#battery.battery.low {
-    background-color: #FF0000;  /* Red when low */
+@keyframes blink {
+    to {
+        /*background-color: #ffffff;*/
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    /*background-color: #f53c3c;*/
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
