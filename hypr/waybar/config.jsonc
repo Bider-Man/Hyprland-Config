@@ -77,9 +77,6 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
         "interval": 1,  // Updates every second
