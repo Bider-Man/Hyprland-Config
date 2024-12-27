@@ -78,5 +78,5 @@
             "border": "1px solid rgba(255, 255, 255, 0.3)",  // Light border
             "border-radius": 5,  // Rounded corners
             "padding": 5  // Padding for better spacing
-        }   
+        } 
 }
