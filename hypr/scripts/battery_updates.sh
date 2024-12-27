@@ -1,28 +1,19 @@
-import psutil
-import json
+#!/bin/bash
 
-def get_battery_percentage():
-    """Fetch the battery percentage."""
-    battery = psutil.sensors_battery()
-    return battery.percent
+# Get the battery percentage
+battery_percentage=$(cat /sys/class/power_supply/BAT0/capacity)
 
-def calculate_gradient_color(percentage):
-    """Calculate color based on percentage (green to red gradient)."""
-    red = int(255 * (1 - (percentage / 100)))
-    green = int(255 * (percentage / 100))
-    return f"#{red:02x}{green:02x}00"
+# Set the size of the circle and font for percentage
+size=100
+font_size=20
 
-def main():
-    battery_percentage = get_battery_percentage()
-    color = calculate_gradient_color(battery_percentage)
+# Create an image with a circle and the percentage inside
+convert -size ${size}x${size} xc:white \
+  -draw "fill blue circle $((size / 2)),$((size / 2)) $((size / 2)),$((size / 2 - 10))" \
+  -font DejaVu-Sans -pointsize $font_size \
+  -draw "text $((size / 3)),$((size / 2 + font_size / 3)) '$battery_percentage%'" \
+  -background transparent -trim \
+  /tmp/battery-icon.png
 
-    # Output the percentage and color in JSON format for Waybar
-    print(json.dumps({
-        "text": f"{battery_percentage}%",
-        "class": "battery",
-        "color": color,
-        "percentage": battery_percentage
-    }))
-
-if __name__ == "__main__":
-    main()
+# Output the image file
+echo "/tmp/battery-icon.png"
