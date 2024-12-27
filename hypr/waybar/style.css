@@ -97,19 +97,50 @@ window#waybar {
     text-decoration: underline; /* Underline to signify interactivity */
 }
 
-#battery {
-    padding: 0 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #ffffff;
-    border-radius: 5px;
-    font-weight: bold;
-    animation: pulse 2s infinite;
-}
-
-#battery.charging {
-    color: #8ec07c; /* Green when charging */
-}
-
-#battery.discharging {
-    color: #fb4934; /* Red when discharging */
-}
+.circular-chart {
+    width: 50px;
+    height: 50px;
+    transform: rotate(-90deg); /* Rotate for progress bar to start at the top */
+  }
+  
+  .circle-bg {
+    fill: none;
+    stroke: #eee; /* Background color for the progress bar */
+    stroke-width: 3.8;
+  }
+  
+  .circle {
+    fill: none;
+    stroke: #4caf50; /* Default green color */
+    stroke-width: 2.8;
+    stroke-linecap: round; /* Rounded edges for the progress */
+    transition: stroke-dasharray 0.3s ease, stroke 0.3s ease;
+  }
+  
+  .percentage {
+    fill: #4caf50; /* Text color */
+    font-size: 0.5em;
+    text-anchor: middle;
+    dominant-baseline: middle;
+  }
+  
+  [data-capacity="100"] .circle {
+    stroke: #4caf50; /* Green at 100% */
+  }
+  
+  [data-capacity="75"] .circle {
+    stroke: #81c784; /* Light green at 75% */
+  }
+  
+  [data-capacity="50"] .circle {
+    stroke: #ffeb3b; /* Yellow at 50% */
+  }
+  
+  [data-capacity="25"] .circle {
+    stroke: #ff9800; /* Orange at 25% */
+  }
+  
+  [data-capacity="10"] .circle {
+    stroke: #f44336; /* Red at 10% */
+  }
+  
