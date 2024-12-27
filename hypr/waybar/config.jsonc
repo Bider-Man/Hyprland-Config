@@ -41,6 +41,7 @@
     "network": {
         "format-wifi": "{signalStrength}% ",
         "format-disconnected": "Disconnected ⚠",
+        "on-click":"foot -e nmtui" ,
         "icon-size": 18,
         "tooltip": true
     },
