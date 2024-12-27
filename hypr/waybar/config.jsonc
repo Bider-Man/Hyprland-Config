@@ -64,10 +64,21 @@
         "tooltip": false
     },
     "battery": {
-        "exec": "~/.config/hypr/scripts/battery_updates.py",
-        "interval": 1,
-        "format": "{text}",
-        "tooltip": false
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
     },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
