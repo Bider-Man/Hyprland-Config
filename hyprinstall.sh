@@ -94,7 +94,8 @@ yay -Syu --noconfirm \
     swaync \
     hyprland-qtutils \
     volnoti \
-    hyprshot
+    hyprshot \
+    wlogout
 
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
