@@ -43,7 +43,7 @@
         "format": "{icon}",
         "on-click": "exec -wlogout",
         "format-icons": "⏻"
-    }    
+    },
     "network": {
         "format-wifi": "{signalStrength}% ",
         "format-disconnected": "Disconnected ⚠",
