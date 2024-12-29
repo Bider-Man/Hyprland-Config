@@ -2,7 +2,8 @@
     "height": 30,
     "spacing": 12, // Slightly increased spacing for visual appeal
     "modules-left": [
-        "hyprland/window"
+        "hyprland/window",
+        "custom/power"
     ],
     "modules-center": [
         "hyprland/workspaces"  // Workspace display will appear here
@@ -38,6 +39,11 @@
     "hyprland/window": {
         "format": "{title}"
     },
+    "custom/power": {
+        "format": "{icon}",
+        "on-click": "exec -wlogout",
+        "format-icons": "⏻"
+    }    
     "network": {
         "format-wifi": "{signalStrength}% ",
         "format-disconnected": "Disconnected ⚠",
