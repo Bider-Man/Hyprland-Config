@@ -38,7 +38,7 @@
     },
     "custom/power": {
         "format": "{icon}",
-        "on-click": "exec -e wlogout",
+        "on-click": "wlogout --protool layer-shell",
         "format-icons": "⏻"
     },
     "hyprland/window": {
