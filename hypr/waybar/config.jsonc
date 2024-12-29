@@ -2,8 +2,8 @@
     "height": 30,
     "spacing": 12, // Slightly increased spacing for visual appeal
     "modules-left": [
-        "hyprland/window",
-        "custom/power"
+        "custom/power",
+        "hyprland/window"
     ],
     "modules-center": [
         "hyprland/workspaces"  // Workspace display will appear here
