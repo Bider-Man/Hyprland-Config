@@ -38,7 +38,7 @@
     },
     "custom/power": {
         "format": "{icon}",
-        "on-click": "exec -wlogout",
+        "on-click": "exec -e wlogout",
         "format-icons": "⏻"
     },
     "hyprland/window": {
