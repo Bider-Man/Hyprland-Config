@@ -1,22 +1,24 @@
+/* Generic Waybar styling */
 * {
     border: none;
     border-radius: 0;
     font-family: Inter Light;
-    font-size: 14px;
+    font-size: 14px; /* Reduced font size */
     min-height: 0;
 }
 
 window#waybar {
-    background: linear-gradient(270deg, #3d3540, #1c1b1f, #3d3540);
+    background: linear-gradient(270deg, #3d3540, #1c1b1f, #3d3540); /* Base gradient */
     background-size: 400% 400%;
-    animation: symbiote-flow 6s ease-in-out infinite;
+    animation: symbiote-flow 6s ease-in-out infinite; /* Moving gradient */
     color: #a678d3;
     transition-property: background-color;
     transition-duration: 0.5s;
-    min-height: 28px;
-    padding: 2px 10px;
+    min-height: 28px; /* Adjust bar size with min-height */
+    padding: 2px 10px; /* Adjust padding for a compact look */
 }
 
+/* Symbiote flow animation */
 @keyframes symbiote-flow {
     0% {
         background-position: 0% 50%;
@@ -32,9 +34,9 @@ window#waybar {
 #workspaces button {
     background-color: rgba(0, 0, 0, 0.5);
     color: #ffffff;
-    padding: 0 6px;
+    padding: 0 6px; /* Reduced padding */
     transition: background-color 0.3s ease;
-    margin: 0 2px;
+    margin: 0 2px; /* Slight margin between buttons */
 }
 
 #workspaces button.active {
@@ -45,18 +47,19 @@ window#waybar {
 
 .modules-left,
 .modules-right {
-    padding: 5px 10px;
+    padding: 5px 10px; /* Reduced padding */
 }
 
 .modules-center {
     background-color: rgba(61, 53, 64, 0.8);
     border-radius: 8px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-    padding: 3px 8px;
+    padding: 3px 8px; /* Reduced padding */
 }
 
+/* Pulseaudio, network, etc. */
 #pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window, #battery {
-    padding: 2px 6px;
+    padding: 2px 6px; /* Reduced padding */
     background-color: transparent;
     color: inherit;
     font-weight: 400;
@@ -65,9 +68,10 @@ window#waybar {
 }
 
 #pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #temperature:hover, #clock:hover, #window:hover, #battery:hover {
-    color: #ff79c6;
+    color: #ff79c6; /* Highlight color on hover */
 }
 
+/* Enhanced pulsing clock effect */
 @keyframes clock-pulse {
     0% {
         text-shadow: 0 0 5px #ff79c6, 0 0 10px #ff79c6;
@@ -81,35 +85,52 @@ window#waybar {
 }
 
 #clock {
-    font-size: 14px;
-    color: #a678d3;
-    animation: clock-pulse 2s infinite ease-in-out;
+    font-size: 14px; /* Adjust font size */
+    color: #a678d3; /* Default color */
+    animation: clock-pulse 2s infinite ease-in-out; /* Existing animation */
 }
 
 #clock:hover {
-    color: #ff79c6;
-    background-color: rgba(255, 121, 198, 0.2);
-    border-radius: 5px;
-    text-decoration: underline;
+    color: #ff79c6; /* Change text color on hover */
+    background-color: rgba(255, 121, 198, 0.2); /* Add subtle background highlight */
+    border-radius: 5px; /* Rounded highlight */
+    text-decoration: underline; /* Underline to signify interactivity */
 }
 
 #battery {
-    color: #a678d3;
+    /* Default color for the battery module */
+    color: #a678d3;  /* Purple color for the battery text */
     transition: background-color 0.3s ease;
     padding: 4px 10px;
     border-radius: 5px;
-    background-color: transparent;
+    background-color: transparent;  /* Ensure no background color is set */
 }
 
 #battery i {
-    color: #a678d3;
-    background-color: transparent;
+    color: #a678d3;  /* Purple color for the battery icon itself */
+    background-color: transparent;  /* Ensure the icon's background remains transparent */
 }
 
-#battery.charging, #battery.full, #battery.good, #battery.warning, #battery.critical {
-    background-color: transparent;
+#battery.charging {
+    background-color: transparent; /* No background color for charging */
+}
+
+#battery.full {
+    background-color: transparent; /* No background color when fully charged */
+}
+
+#battery.good {
+    background-color: transparent; /* No background color when battery is good */
+}
+
+#battery.warning {
+    background-color: transparent; /* No background color when battery is in warning range */
+}
+
+#battery.critical {
+    background-color: transparent; /* No background color when battery is critical */
 }
 
 #battery.critical:not(.charging) {
-    background-color: transparent;
+    background-color: transparent; /* No background color when critical and not charging */
 }
