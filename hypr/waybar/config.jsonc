@@ -1,12 +1,12 @@
 {
     "height": 30,
-    "spacing": 12, // Slightly increased spacing for visual appeal
+    "spacing": 12,
     "modules-left": [
         "custom/power",
         "hyprland/window"
     ],
     "modules-center": [
-        "hyprland/workspaces"  // Workspace display will appear here
+        "hyprland/workspaces"
     ],
     "modules-right": [
         "cpu",
@@ -47,7 +47,7 @@
     "network": {
         "format-wifi": "{signalStrength}% ",
         "format-disconnected": "Disconnected ⚠",
-        "on-click":"foot -e nmtui" ,
+        "on-click": "foot -e nmtui",
         "icon-size": 18,
         "tooltip": true
     },
@@ -86,13 +86,13 @@
     },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
-        "interval": 1,  // Updates every second
+        "interval": 1,
         "on-click": "foot -e calcurse"
-        },
-        "style": {
-            "background": "rgba(0, 0, 0, 0.5)",  // Translucent background
-            "border": "1px solid rgba(255, 255, 255, 0.3)",  // Light border
-            "border-radius": 5,  // Rounded corners
-            "padding": 5  // Padding for better spacing
-        } 
+    },
+    "style": {
+        "background": "rgba(0, 0, 0, 0.5)",
+        "border": "1px solid rgba(255, 255, 255, 0.3)",
+        "border-radius": 5,
+        "padding": 5
+    }
 }
