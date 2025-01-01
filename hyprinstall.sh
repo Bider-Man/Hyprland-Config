@@ -66,6 +66,8 @@ sudo pacman -Syu --noconfirm \
     brightnessctl \
     pamixer \
     blueman \
+    bluez \
+    bluez-utils \
     python \
     obsidian \
     wlroots \
