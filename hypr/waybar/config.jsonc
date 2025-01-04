@@ -39,7 +39,7 @@
     "custom/power": {
         "format": "{icon}",
         "on-click": "wlogout",
-        "format-icons": "⏻"
+        "format-icons": "⏻4"
     },
     "hyprland/window": {
         "format": "{title}"
