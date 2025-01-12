@@ -87,7 +87,8 @@ sudo pacman -Syu --noconfirm \
     calcurse \
     imagemagick \
     acpi \
-    pavucontrol
+    pavucontrol \
+    timeshift
 
 # Install additional AUR packages using yay
 echo "Installing additional AUR packages with yay..."
