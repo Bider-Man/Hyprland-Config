@@ -189,7 +189,6 @@ else
   exit 1
 fi
 
-
 # Handle Dunst configuration
 echo "Checking for Dunst configuration..."
 if [ -d "/etc/dunst" ]; then
