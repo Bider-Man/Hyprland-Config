@@ -26,7 +26,7 @@
   (label :text "{{date +\"%H:%M:%S\"}}" :class "label"))
 
 (widget volume
-  (label :text "Volume: {{exec ~/.config/eww/powermenu/scripts/getvol}}" :class "label"))
+  (label :text "Volume: {{exec ~/.config/eww/scripts/getvol}}" :class "label"))
 
 (widget battery
   (label :text "Battery: {{exec cat /sys/class/power_supply/BAT*/capacity}}%" :class "label"))
