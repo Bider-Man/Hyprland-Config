@@ -66,4 +66,139 @@ $surface-red: #f87070;
   font-family: "Poiret One";
 }
 
-// vim:ft=scss
+.wifi {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.5em;
+  color: rgba($surface-fg, 0.8);
+  label {
+    padding-right: 0.5em;
+  }
+}
+
+.audio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  color: rgba($surface-fg, 0.8);
+  label {
+    padding-right: 0.5em;
+  }
+
+  .metric {
+    font-size: 1.2em;
+    color: rgba($surface-fg, 0.6);
+    .scale {
+      margin-left: 0.5em;
+    }
+  }
+}
+
+.cpu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  color: rgba($surface-fg, 0.8);
+  label {
+    padding-right: 0.5em;
+  }
+
+  .metric {
+    font-size: 1.2em;
+    color: rgba($surface-fg, 0.6);
+  }
+}
+
+.ram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  color: rgba($surface-fg, 0.8);
+  label {
+    padding-right: 0.5em;
+  }
+
+  .metric {
+    font-size: 1.2em;
+    color: rgba($surface-fg, 0.6);
+  }
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1.5em;
+  color: rgba($surface-fg, 0.8);
+}
+
+.power {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.5em;
+  color: rgba($surface-fg, 0.8);
+
+  button {
+    margin-left: 1em;
+    padding: 0.5em;
+    background-color: rgba($surface-darkgrey, 0.4);
+    border-radius: 0.2em;
+    font-size: 1.2em;
+    color: rgba($surface-fg, 0.8);
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($surface-lightgrey, 0.6);
+      transition: background-color 200ms linear;
+    }
+
+    &:first-child {
+      color: rgba($surface-red, 0.8);
+    }
+  }
+}
+
+// Additional tweaks for responsiveness
+.powermenu-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  background-color: rgba($surface-darkgrey, 0.7);
+  color: rgba($surface-fg, 0.8);
+  padding: 0 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  .wifi,
+  .audio,
+  .cpu,
+  .ram,
+  .time,
+  .power {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wifi {
+    justify-content: flex-start;
+  }
+
+  .time {
+    justify-content: flex-end;
+  }
+
+  .btns-box {
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
