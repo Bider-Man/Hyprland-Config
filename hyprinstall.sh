@@ -174,21 +174,22 @@ echo "Creating Rofi configuration directory and dumping default config..."
 mkdir -p ~/.config/rofi
 rofi -dump-config > ~/.config/rofi/config.rasi
 
-# Handle Waybar configuration
-if command -v waybar &> /dev/null; then
-  echo "Waybar is installed. Configuring Waybar..."
-  
-  if [ -d "$WAYBAR_SRC_DIR" ]; then
-    echo "Copying Waybar configuration from $WAYBAR_SRC_DIR to $WAYBAR_DIR..."
-    mkdir -p "$WAYBAR_DIR"
-    cp -r "$WAYBAR_SRC_DIR"/* "$WAYBAR_DIR/"
-  else
-    echo "Error: Waybar configuration folder $WAYBAR_SRC_DIR not found!"
-    exit 1
-  fi
+# Create and copy eww configuration
+if [ -d "$EWW_DIR" ]; then
+  echo "Eww configuration directory already exists at $EWW_DIR."
 else
-  echo "Waybar is not installed. Skipping Waybar configuration."
+  echo "Creating eww configuration directory at $EWW_DIR..."
+  mkdir -p "$EWW_DIR"
 fi
+
+if [ -d "./hypr/eww" ]; then
+  echo "Copying eww folder from ./hypr/eww/ to $EWW_DIR..."
+  cp -r ./hypr/eww/* "$EWW_DIR/"
+else
+  echo "Error: Provided eww folder not found in ./hypr/eww!"
+  exit 1
+fi
+
 
 # Handle Dunst configuration
 echo "Checking for Dunst configuration..."
