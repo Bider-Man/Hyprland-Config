@@ -28,7 +28,6 @@ sudo pacman -Syu --noconfirm \
     noto-fonts-cjk \
     noto-fonts-emoji \
     foot \
-    waybar \
     vala \
     meson \
     git \
