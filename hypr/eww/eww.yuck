@@ -1,97 +1,70 @@
+(defwidget powermenu_bar []
+  (centerbox :orientation "h"
+    (wifi)
+    (audio)
+    (cpu)
+    (ram)
+    (time)
+    (power)))
+
+(defwidget wifi []
+  (box :class "wifi" :orientation "h" :space-evenly false :halign "start"
+    (label :text "WiFi: ")
+    (label :text {net != "" ? net : "Disconnected"})))
+
+(defwidget audio []
+  (box :class "audio" :orientation "h" :space-evenly false :halign "center"
+    (label :text "🔊 ")
+    (metric :label "Volume"
+            :value volume
+            :onchange "amixer -D pulse sset Master {}%")))
+
+(defwidget cpu []
+  (box :class "cpu" :orientation "h" :space-evenly false :halign "center"
+    (label :text "CPU: ")
+    (metric :label "CPU Usage"
+            :value {round(EWW_CPU.usage, 0)}
+            :onchange "")))
+
+(defwidget ram []
+  (box :class "ram" :orientation "h" :space-evenly false :halign "center"
+    (label :text "RAM: ")
+    (metric :label "RAM Usage"
+            :value {round((EWW_RAM.used_mem_perc), 0)}
+            :onchange "")))
+
+(defwidget time []
+  (box :class "time" :orientation "h" :space-evenly false :halign "end"
+    (label :text {time != "" ? time : ""})))
+
+(defwidget power []
+  (box :class "power" :orientation "h" :space-evenly false :halign "end"
+    (button :onclick "poweroff" :label "Power Off")
+    (button :onclick "reboot" :label "Reboot")
+    (button :onclick "logout" :label "Logout")))
+
+(defpoll net :interval "30s"
+  "nmcli -t -f SIGNAL,ACTIVE device wifi | awk -F':' '{if($2==\"yes\")print$1}'")
+
+(defpoll volume :interval "1s"
+  "scripts/getvol")
+
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
+
+(defpoll cpu :interval "1s"
+  "cat /proc/stat | awk 'NR==1 {print $2}'")
+
+(defpoll ram :interval "1s"
+  "free | grep Mem | awk '{print $3/$2 * 100.0}'")
+
 (defwindow powermenu
   :monitor 0
-  :stacking "bg" ;; ensure the bar stays in the background, not on top of other windows
-  :windowtype "normal"
-  :wm-ignore true
-  :geometry (geometry :width "100%" :height "30") ;; height set to 30 for a thin bar
-  :pos (position :x 0 :y 0) ;; bar positioned at the top
-  :sticky true ;; makes the bar always visible
-  :opacity 0.8 ;; Set the opacity for the bar (0.0 = fully transparent, 1.0 = fully opaque)
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "90%"
+                      :height "30px"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "5%")
   (powermenu_bar))
-
-(defpoll time :interval "5s"
-  :initial `date +'{"hour":"%H","min":"%M"}'`
-  `date +'{"hour":"%H","min":"%M"}'`)
-
-(defpoll net :interval "100s"
-  :initial `N/A`
-  `nmcli -t -f SIGNAL,ACTIVE device wifi \
-    | awk -F':' '{if($2=="yes")print$1}'`)
-
-(defwidget powermenu_bar []
-  (box :class "bar" :orientation "horizontal"
-    :space-evenly true
-    :style "background-color: rgba(0, 0, 0, 0.6); color: white; padding: 5px;"
-    ;; Add widgets to the bar
-    (_sundial)
-    (_battery :status {EWW_BATTERY.BAT0.status}
-              :battery {EWW_BATTERY.BAT0.capacity}
-              :charge "" :one "" :two "" :three "" :four ""
-              :five "" :six "" :seven "")
-    (_network :strength net :offline "" :excellent "" :good ""
-              :okay "" :slow "")
-    (label :text "|" :class "sep")
-    (label :text "${time.hour}:${time.min}" :class "time-label")
-    (button :onclick "eww close powermenu" :class "close-btn" "")
-    (_buttons :shutdown "poweroff" :reboot "reboot"
-              :logout "loginctl kill-session self"
-              :shutdown_icon "" :reboot_icon ""
-              :logout_icon "")))
-
-(defwidget _battery [battery status one two three
-                    four five six seven charge]
-  (box :class "bat-box" :space-evenly false :spacing 8
-    (label :text {status == 'Charging' ? charge :
-      battery < 15 ? seven :
-        battery < 30 ? six :
-          battery < 45 ? five :
-            battery < 60 ? four :
-              battery < 75 ? three :
-                battery < 95 ? two : one})))
-
-(defwidget _network [strength offline excellent
-                    good okay slow]
-  (box :class "net-box"
-       :space-evenly false
-       :spacing 8
-    (label :text {strength == "" ? offline :
-      strength < 26 ? slow :
-        strength < 51 ? okay :
-          strength < 76 ? good : excellent})))
-
-(defwidget _buttons [shutdown shutdown_icon reboot
-                    reboot_icon logout logout_icon]
-  (box :class "btns-box" :spacing 5
-       :vexpand true :hexpand true
-       :valign "end" :halign "end"
-       :space-evenly false
-    (button :onclick shutdown shutdown_icon)
-    (button :onclick reboot reboot_icon)
-    (button :onclick logout logout_icon)))
-
-(defwidget _sundial []
-  (label :class "sundial-lbl" :halign "end" :hexpand true
-         :text {time.hour >= 2 && time.hour <= 4 ? "Early Morning" :
-               time.hour <= 5 ? "Dawn" :
-               time.hour >= 6
-                && (time.hour <= 8 && time.min <= 59)
-                  ? "Morning" :
-               time.hour >= 9
-                 && (time.hour <= 11 && time.min <= 59)
-                   ? "Late Morning" :
-               time.hour == 12 && time.min <= 29
-                 ? "Midday" :
-               time.hour >= 12 && time.hour <= 16
-                 ? "Afternoon" :
-               time.hour > 16 && time.hour <= 17
-                 ? "Late Afternoon" :
-               (time.hour >= 17 && time.min <= 1)
-                 || (time.hour <= 18 && time.min <= 20)
-                   ? "Early Evening" :
-               time.hour >= 18 && time.hour <= 19
-                 ? "Dusk" :
-               time.hour > 19 && time.hour <= 21
-                 ? "Late Evening" :
-               time.hour > 21 ? "Night" : "Midnight"}))
-
-;; vim:ft=yuck
