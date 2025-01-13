@@ -1,50 +1,61 @@
-(defwidget powermenu_bar []
+(defwidget bar []
   (centerbox :orientation "h"
-    (wifi)
-    (audio)
-    (cpu)
-    (ram)
-    (time)
-    (power)))
+    (workspaces)
+    (music)
+    (sidestuff)))
 
-(defwidget wifi []
-  (box :class "wifi" :orientation "h" :space-evenly false :halign "start"
-    (label :text "WiFi: ")
-    (label :text {net != "" ? net : "Disconnected"})))
-
-(defwidget audio []
-  (box :class "audio" :orientation "h" :space-evenly false :halign "center"
-    (label :text "🔊 ")
-    (metric :label "Volume"
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (metric :label "🔊"
             :value volume
-            :onchange "amixer -D pulse sset Master {}%")))
+            :onchange "amixer -D pulse sset Master {}%")
+    (metric :label ""
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label "💾"
+            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+            :onchange "")
+    time))
 
-(defwidget cpu []
-  (box :class "cpu" :orientation "h" :space-evenly false :halign "center"
-    (label :text "CPU: ")
-    (metric :label "CPU Usage"
-            :value {round(EWW_CPU.usage, 0)}
-            :onchange "")))
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+       :spacing 10
+    (button :onclick "wmctrl -s 0" 1)
+    (button :onclick "wmctrl -s 1" 2)
+    (button :onclick "wmctrl -s 2" 3)
+    (button :onclick "wmctrl -s 3" 4)
+    (button :onclick "wmctrl -s 4" 5)
+    (button :onclick "wmctrl -s 5" 6)
+    (button :onclick "wmctrl -s 6" 7)
+    (button :onclick "wmctrl -s 7" 8)
+    (button :onclick "wmctrl -s 8" 9)))
 
-(defwidget ram []
-  (box :class "ram" :orientation "h" :space-evenly false :halign "center"
-    (label :text "RAM: ")
-    (metric :label "RAM Usage"
-            :value {round((EWW_RAM.used_mem_perc), 0)}
-            :onchange "")))
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+    {music != "" ? "🎵${music}" : ""}))
 
-(defwidget time []
-  (box :class "time" :orientation "h" :space-evenly false :halign "end"
-    (label :text {time != "" ? time : ""})))
 
-(defwidget power []
-  (box :class "power" :orientation "h" :space-evenly false :halign "end"
-    (button :onclick "poweroff" :label "Power Off")
-    (button :onclick "reboot" :label "Reboot")
-    (button :onclick "logout" :label "Logout")))
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
 
-(defpoll net :interval "30s"
-  "nmcli -t -f SIGNAL,ACTIVE device wifi | awk -F':' '{if($2==\"yes\")print$1}'")
+
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 
 (defpoll volume :interval "1s"
   "scripts/getvol")
@@ -52,19 +63,13 @@
 (defpoll time :interval "10s"
   "date '+%H:%M %b %d, %Y'")
 
-(defpoll cpu :interval "1s"
-  "cat /proc/stat | awk 'NR==1 {print $2}'")
-
-(defpoll ram :interval "1s"
-  "free | grep Mem | awk '{print $3/$2 * 100.0}'")
-
-(defwindow powermenu
+(defwindow bar
   :monitor 0
   :windowtype "dock"
   :geometry (geometry :x "0%"
                       :y "0%"
                       :width "90%"
-                      :height "30px"
+                      :height "10px"
                       :anchor "top center")
-  :reserve (struts :side "top" :distance "5%")
-  (powermenu_bar))
+  :reserve (struts :side "top" :distance "4%")
+  (bar))
