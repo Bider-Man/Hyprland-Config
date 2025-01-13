@@ -254,10 +254,7 @@ chmod -R 755 "$CONFIG_DIR"
 chmod +x "$SCRIPTS_DIR/"*
 
 # Restart Waybar and Hyprland to apply the new configurations
-echo "Restarting Waybar and Hyprland..."
-
-# Restart Waybar
-pkill waybar && waybar &
+echo "Restarting Hyprland..."
 
 # Reload Hyprland
 hyprctl reload
