@@ -7,7 +7,4 @@
                                :anchor "top center")
            :stacking "fg"
            :exclusive "true"
-           :reserve (struts :distance "40px" :side "top")
-           :windowtype "dock"
-           :wm-ignore false
   "Status Bar")
