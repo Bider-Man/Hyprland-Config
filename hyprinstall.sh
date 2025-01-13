@@ -174,6 +174,11 @@ mkdir -p ~/.config/rofi
 rofi -dump-config > ~/.config/rofi/config.rasi
 
 # Create and copy eww configuration
+EWW_DIR="$HOME/.config/eww"
+
+echo "Setting up eww configuration..."
+
+# Check if the target eww directory exists, if not, create it
 if [ -d "$EWW_DIR" ]; then
   echo "Eww configuration directory already exists at $EWW_DIR."
 else
@@ -181,13 +186,17 @@ else
   mkdir -p "$EWW_DIR"
 fi
 
+# Check if the source eww folder exists and copy its contents
 if [ -d "./hypr/eww" ]; then
-  echo "Copying eww folder from ./hypr/eww/ to $EWW_DIR..."
+  echo "Copying eww folder from ./hypr/eww to $EWW_DIR..."
   cp -r ./hypr/eww/* "$EWW_DIR/"
 else
   echo "Error: Provided eww folder not found in ./hypr/eww!"
   exit 1
 fi
+
+echo "Eww configuration setup completed successfully!"
+
 
 # Handle Dunst configuration
 echo "Checking for Dunst configuration..."
