@@ -7,4 +7,4 @@
                                :anchor "top center")
            :stacking "fg"
            :exclusive "true"
-  "Status Bar")
+)
