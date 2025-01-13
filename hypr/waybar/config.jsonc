@@ -1,6 +1,6 @@
 {
     "height": 35,  // Increased height for better spacing
-    "spacing": 10,  // Adjusted spacing for consistent visuals
+    "spacing": 30,  // Adjusted spacing for consistent visuals
     "modules-left": [
         "custom/power",
         "hyprland/window"
