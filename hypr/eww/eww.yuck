@@ -1,5 +1,5 @@
 (defwindow powermenu
-  monitor eDP-1 ;; wayland users may need this
+  monitor "eDP-1" ;; wayland users may need this
   :stacking "fg"
   :windowtype "normal"
   :wm-ignore true
