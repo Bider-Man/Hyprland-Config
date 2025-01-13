@@ -1,4 +1,4 @@
-(defwindow powermenu
+(defwindow powerbar
   :monitor 0 ;; wayland users may need this
   :stacking "fg"
   :windowtype "normal"
