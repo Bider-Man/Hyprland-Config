@@ -1,96 +1,75 @@
-(defwindow powermenu
-  :monitor 0 ;; wayland users may need this
-  :stacking "fg"
-  :windowtype "normal"
-  :wm-ignore true
-  :geometry (geometry :width "100%" :height "100%")
-  (powermenu_layout))
+(defwidget bar []
+  (centerbox :orientation "h"
+    (workspaces)
+    (music)
+    (sidestuff)))
 
-(defpoll time :interval "5s"
-  :initial `date +'{"hour":"%H","min":"%M"}'`
-  `date +'{"hour":"%H","min":"%M"}'`)
-(defpoll net :interval "100s"
-  :initial `N/A`
-  `nmcli -t -f SIGNAL,ACTIVE device wifi \
-    | awk -F':' '{if($2=="yes")print$1}'`)
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (metric :label "🔊"
+            :value volume
+            :onchange "amixer -D pulse sset Master {}%")
+    (metric :label ""
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label "💾"
+            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+            :onchange "")
+    time))
 
-(defwidget powermenu_layout []
-  (box :class "layout-box" :space-evenly false :orientation "vertical"
-       :style "background-image: url('./wallpaper')"
-    (box :valign "start" :space-evenly false :spacing 25
-      (_sundial)
-      (_battery :status {EWW_BATTERY.BAT0.status}
-                :battery {EWW_BATTERY.BAT0.capacity}
-                :charge "" :one "" :two "" :three "" :four ""
-                :five "" :six "" :seven "")
-      (_network :strength net :offline "" :excellent "" :good ""
-                :okay "" :slow "")
-      (label :text "|" :class "sep")
-      (button :onclick "eww close powermenu" :class "close-btn" ""))
-    (box :space-evenly false :hexpand true :vexpand true
-      (box :spacing 15 :class "tm-box" :space-evenly false
-            :valign "end" :halign "start"
-        (label :text "")
-        (label :text "${time.hour}  ${time.min}"))
-      (_buttons :shutdown "poweroff" :reboot "reboot"
-                :logout "loginctl kill-session self"
-                :shutdown_icon "" :reboot_icon ""
-                :logout_icon ""))))
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+       :spacing 10
+    (button :onclick "wmctrl -s 0" 1)
+    (button :onclick "wmctrl -s 1" 2)
+    (button :onclick "wmctrl -s 2" 3)
+    (button :onclick "wmctrl -s 3" 4)
+    (button :onclick "wmctrl -s 4" 5)
+    (button :onclick "wmctrl -s 5" 6)
+    (button :onclick "wmctrl -s 6" 7)
+    (button :onclick "wmctrl -s 7" 8)
+    (button :onclick "wmctrl -s 8" 9)))
 
-(defwidget _battery [battery status one two three
-                    four five six seven charge]
-  (box :class "bat-box" :space-evenly false :spacing 8
-    (label :text {status == 'Charging' ? charge :
-      battery < 15 ? seven :
-        battery < 30 ? six :
-          battery < 45 ? five :
-            battery < 60 ? four :
-              battery < 75 ? three :
-                battery < 95 ? two : one})))
-
-(defwidget _network [strength offline excellent
-                    good okay slow]
-  (box :class "net-box"
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
        :space-evenly false
-       :spacing 8
-    (label :text {strength == "" ? offline :
-      strength < 26 ? slow :
-        strength < 51 ? okay :
-          strength < 76 ? good : excellent})))
+       :halign "center"
+    {music != "" ? "🎵${music}" : ""}))
 
-(defwidget _buttons [shutdown shutdown_icon reboot
-                    reboot_icon logout logout_icon]
-  (box :class "btns-box" :spacing 5
-       :vexpand true :hexpand true
-       :valign "end" :halign "end"
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
        :space-evenly false
-    (button :onclick shutdown shutdown_icon)
-    (button :onclick reboot reboot_icon)
-    (button :onclick logout logout_icon)))
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
 
-(defwidget _sundial []
-  (label :class "sundial-lbl" :halign "end" :hexpand true
-         :text {time.hour >= 2 && time.hour <= 4 ? "Early Morning" :
-               time.hour <= 5 ? "Dawn" :
-               time.hour >= 6
-                && (time.hour <= 8 && time.min <= 59)
-                  ? "Morning" :
-               time.hour >= 9
-                 && (time.hour <= 11 && time.min <= 59)
-                   ? "Late Morning" :
-               time.hour == 12 && time.min <= 29
-                 ? "Midday" :
-               time.hour >= 12 && time.hour <= 16
-                 ? "Afternoon" :
-               time.hour > 16 && time.hour <= 17
-                 ? "Late Afternoon" :
-               (time.hour >= 17 && time.min <= 1)
-                 || (time.hour <= 18 && time.min <= 20)
-                   ? "Early Evening" :
-               time.hour >= 18 && time.hour <= 19
-                 ? "Dusk" :
-               time.hour > 19 && time.hour <= 21
-                 ? "Late Evening" :
-               time.hour > 21 ? "Night" : "Midnight"}))
 
-;; vim:ft=yuck
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+
+(defpoll volume :interval "1s"
+  "scripts/getvol")
+
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
+
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "90%"
+                      :height "10px"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "4%")
+  (bar))
