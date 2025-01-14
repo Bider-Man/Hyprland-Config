@@ -97,7 +97,17 @@ yay -Syu --noconfirm \
     hyprland-qtutils \
     volnoti \
     hyprshot \
-    wlogout
+    wlogout \
+    aylurs-gtk-shell-git \
+    wireplumber \
+    libgtop \
+    bluez \
+    bluez-utils \
+    networkmanager \
+    dart-sass \
+    wl-clipboard \
+    upower \
+    gvfs \
 
 # Copy Hyprland folder
 if [ -d "./hypr/hyprland" ]; then
