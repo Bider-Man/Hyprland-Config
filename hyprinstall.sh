@@ -92,7 +92,6 @@ echo "Installing additional AUR packages with yay..."
 yay -Syu --noconfirm \
     ags-hyprpanel-git \
     hyprsunset \
-    swaync \
     hyprland-qtutils \
     volnoti \
     hyprshot \
