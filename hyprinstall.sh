@@ -58,7 +58,6 @@ sudo pacman -Syu --noconfirm \
     nautilus \
     kate \
     neovim \
-    dunst \
     brightnessctl \
     pamixer \
     blueman \
