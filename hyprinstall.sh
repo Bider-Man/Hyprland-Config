@@ -41,7 +41,6 @@ sudo pacman -Syu --noconfirm \
     libgee \
     json-glib \
     libhandy \
-    gvfs \
     granite \
     libpulse \
     libnotify \
@@ -98,14 +97,9 @@ yay -Syu --noconfirm \
     volnoti \
     hyprshot \
     wlogout \
-    aylurs-gtk-shell-git \
-    wireplumber \
     libgtop \
-    bluez \
-    bluez-utils \
     networkmanager \
     dart-sass \
-    wl-clipboard \
     upower \
     gvfs \
 
