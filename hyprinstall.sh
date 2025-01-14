@@ -5,9 +5,7 @@ CONFIG_DIR="$HOME/.config/hypr"
 HYPRLAND_DIR="$CONFIG_DIR/hyprland"
 SCRIPTS_DIR="$CONFIG_DIR/scripts"
 HYPRLOCK_DIR="$CONFIG_DIR/hyprlock"
-WAYBAR_DIR="$HOME/.config/waybar"
 FOOT_DIR="$HOME/.config/foot"
-WAYBAR_SRC_DIR="./hypr/waybar"
 
 # Clean up old configurations
 echo "Cleaning up old configurations in $CONFIG_DIR..."
@@ -60,6 +58,7 @@ sudo pacman -Syu --noconfirm \
     nautilus \
     kate \
     neovim \
+    dunst \
     brightnessctl \
     pamixer \
     blueman \
@@ -100,58 +99,58 @@ yay -Syu --noconfirm \
     networkmanager \
     dart-sass \
     upower \
-    gvfs \
+    gvfs
 
 # Copy Hyprland folder
-if [ -d "./hypr/hyprland" ]; then
+if [ -d "./HYPRLAND-CONFIG/hypr/hyprland" ]; then
   echo "Copying hyprland folder to $HYPRLAND_DIR..."
-  cp -r ./hypr/hyprland/* "$HYPRLAND_DIR/"
+  cp -r ./HYPRLAND-CONFIG/hypr/hyprland/* "$HYPRLAND_DIR/"
 else
-  echo "Error: ./hypr/hyprland directory not found!"
+  echo "Error: ./HYPRLAND-CONFIG/hypr/hyprland directory not found!"
   exit 1
 fi
 
 # Copy hyprlock folder
-if [ -d "./hypr/hyprlock" ]; then
+if [ -d "./HYPRLAND-CONFIG/hypr/hyprlock" ]; then
   echo "Copying hyprlock folder to $HYPRLOCK_DIR..."
-  cp -r ./hypr/hyprlock/* "$HYPRLOCK_DIR/"
+  cp -r ./HYPRLAND-CONFIG/hypr/hyprlock/* "$HYPRLOCK_DIR/"
 else
-  echo "Error: ./hypr/hyprlock directory not found!"
+  echo "Error: ./HYPRLAND-CONFIG/hypr/hyprlock directory not found!"
   exit 1
 fi
 
 # Copy scripts folder
-if [ -d "./hypr/scripts" ]; then
+if [ -d "./HYPRLAND-CONFIG/hypr/scripts" ]; then
   echo "Copying scripts to $SCRIPTS_DIR..."
-  cp -r ./hypr/scripts/* "$SCRIPTS_DIR/"
+  cp -r ./HYPRLAND-CONFIG/hypr/scripts/* "$SCRIPTS_DIR/"
 else
-  echo "Error: ./hypr/scripts directory not found!"
+  echo "Error: ./HYPRLAND-CONFIG/hypr/scripts directory not found!"
   exit 1
 fi
 
 # Overwrite the auto-generated hyprland.conf
-if [ -f "./hypr/hyprland.conf" ]; then
+if [ -f "./HYPRLAND-CONFIG/hypr/hyprland.conf" ]; then
   echo "Overwriting hyprland.conf with the provided file..."
-  cp ./hypr/hyprland.conf "$CONFIG_DIR/hyprland.conf"
+  cp ./HYPRLAND-CONFIG/hypr/hyprland.conf "$CONFIG_DIR/hyprland.conf"
 else
-  echo "Error: Provided hyprland.conf file not found in ./hypr!"
+  echo "Error: Provided hyprland.conf file not found in ./HYPRLAND-CONFIG/hypr!"
   exit 1
 fi
 
 # Copy hyprlock.conf and hypridle.conf
-if [ -f "./hypr/hyprlock.conf" ]; then
+if [ -f "./HYPRLAND-CONFIG/hypr/hyprlock.conf" ]; then
   echo "Copying hyprlock.conf to $CONFIG_DIR..."
-  cp ./hypr/hyprlock.conf "$CONFIG_DIR/hyprlock.conf"
+  cp ./HYPRLAND-CONFIG/hypr/hyprlock.conf "$CONFIG_DIR/hyprlock.conf"
 else
-  echo "Error: Provided hyprlock.conf file not found in ./hypr!"
+  echo "Error: Provided hyprlock.conf file not found in ./HYPRLAND-CONFIG/hypr!"
   exit 1
 fi
 
-if [ -f "./hypr/hypridle.conf" ]; then
+if [ -f "./HYPRLAND-CONFIG/hypr/hypridle.conf" ]; then
   echo "Copying hypridle.conf to $CONFIG_DIR..."
-  cp ./hypr/hypridle.conf "$CONFIG_DIR/hypridle.conf"
+  cp ./HYPRLAND-CONFIG/hypr/hypridle.conf "$CONFIG_DIR/hypridle.conf"
 else
-  echo "Error: Provided hypridle.conf file not found in ./hypr!"
+  echo "Error: Provided hypridle.conf file not found in ./HYPRLAND-CONFIG/hypr!"
   exit 1
 fi
 
@@ -163,99 +162,12 @@ else
   mkdir -p "$FOOT_DIR"
 fi
 
-if [ -f "./hypr/foot/foot.ini" ]; then
-  echo "Copying foot.ini from ./hypr/foot/ to $FOOT_DIR..."
-  cp ./hypr/foot/foot.ini "$FOOT_DIR/foot.ini"
+if [ -f "./HYPRLAND-CONFIG/hypr/foot/foot.ini" ]; then
+  echo "Copying foot.ini from ./HYPRLAND-CONFIG/hypr/foot/ to $FOOT_DIR..."
+  cp ./HYPRLAND-CONFIG/hypr/foot/foot.ini "$FOOT_DIR/foot.ini"
 else
-  echo "Error: Provided foot.ini file not found in ./hypr/foot!"
+  echo "Error: Provided foot.ini file not found in ./HYPRLAND-CONFIG/hypr/foot!"
   exit 1
-fi
-
-# Create Rofi configuration
-echo "Creating Rofi configuration directory and dumping default config..."
-mkdir -p ~/.config/rofi
-rofi -dump-config > ~/.config/rofi/config.rasi
-
-# Create and copy eww configuration
-EWW_DIR="$HOME/.config/eww"
-
-echo "Setting up eww configuration..."
-
-# Check if the target eww directory exists, if not, create it
-if [ -d "$EWW_DIR" ]; then
-  echo "Eww configuration directory already exists at $EWW_DIR."
-else
-  echo "Creating eww configuration directory at $EWW_DIR..."
-  mkdir -p "$EWW_DIR"
-fi
-
-# Check if the source eww folder exists and copy its contents
-if [ -d "./hypr/eww" ]; then
-  echo "Copying eww folder from ./hypr/eww to $EWW_DIR..."
-  cp -r ./hypr/eww/* "$EWW_DIR/"
-else
-  echo "Error: Provided eww folder not found in ./hypr/eww!"
-  exit 1
-fi
-
-echo "Eww configuration setup completed successfully!"
-
-
-# Handle Dunst configuration
-echo "Checking for Dunst configuration..."
-if [ -d "/etc/dunst" ]; then
-  echo "Dunst configuration found. Copying to ~/.config/dunst..."
-  mkdir -p "$HOME/.config/dunst"
-  cp -r /etc/dunst/* "$HOME/.config/dunst/"
-else
-  echo "Dunst configuration not found in /etc/dunst/. Skipping."
-fi
-
-# Handle Dunst configuration from local directory
-echo "Copying Dunst configuration..."
-if [ -d "./hypr/dunst" ]; then
-  echo "Copying Dunst configuration from ./hypr/dunst to ~/.config/dunst..."
-  mkdir -p "$HOME/.config/dunst"
-  cp -r ./hypr/dunst/* "$HOME/.config/dunst/"
-else
-  echo "Error: ./hypr/dunst directory not found!"
-  exit 1
-fi
-
-# Handle swaync configuration
-echo "Checking for swaync configuration..."
-if [ -d "/etc/xdg/swaync" ]; then
-  echo "swaync configuration found. Copying to ~/.config/swaync..."
-  mkdir -p "$HOME/.config/swaync"
-  cp -r /etc/xdg/swaync/* "$HOME/.config/swaync/"
-else
-  echo "swaync configuration not found in /etc/xdg/swaync/. Skipping."
-fi
-
-# Handle Dunst configuration from local directory
-echo "Copying swaync configuration..."
-if [ -d "./hypr/swaync" ]; then
-  echo "Copying Dunst configuration from ./hypr/swaync to ~/.config/swaync..."
-  mkdir -p "$HOME/.config/swaync"
-  cp -r ./hypr/swaync/* "$HOME/.config/swaync/"
-else
-  echo "Error: ./hypr/swaync directory not found!"
-  exit 1
-fi
-
-# Create and handle Rofi configuration
-echo "Setting up Rofi configuration..."
-
-# Ensure the Rofi configuration directory exists
-mkdir -p "$HOME/.config/rofi"
-
-# Check if a local Rofi directory exists and copy its contents
-if [ -d "./hypr/rofi" ]; then
-  echo "Copying Rofi configuration from ./hypr/rofi to ~/.config/rofi..."
-  cp -r ./hypr/rofi/* "$HOME/.config/rofi/"
-else
-  echo "No local Rofi configuration directory found. Dumping default Rofi configuration..."
-  rofi -dump-config > "$HOME/.config/rofi/config.rasi"
 fi
 
 # Set correct permissions
@@ -263,7 +175,7 @@ echo "Setting permissions for configuration files..."
 chmod -R 755 "$CONFIG_DIR"
 chmod +x "$SCRIPTS_DIR/"*
 
-# Restart Waybar and Hyprland to apply the new configurations
+# Restart Hyprland to apply the new configurations
 echo "Restarting Hyprland..."
 
 # Reload Hyprland
