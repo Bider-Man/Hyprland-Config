@@ -5,7 +5,6 @@ CONFIG_DIR="$HOME/.config/hypr"
 HYPRLAND_DIR="$CONFIG_DIR/hyprland"
 SCRIPTS_DIR="$CONFIG_DIR/scripts"
 HYPRLOCK_DIR="$CONFIG_DIR/hyprlock"
-FOOT_DIR="$HOME/.config/foot"
 
 # Clean up old configurations
 echo "Cleaning up old configurations in $CONFIG_DIR..."
