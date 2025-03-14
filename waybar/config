@@ -1,0 +1,59 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    "modules-left": ["custom/logo", "cpu", "memory", "temperature"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "battery", "tray"],
+    "custom/logo": {
+        "format": "", // You can replace this with any icon or text
+        "tooltip": false
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "interval": 5
+    },
+    "memory": {
+        "format": " {used:0.1f}G/{total:0.1f}G",
+        "interval": 5
+    },
+    "temperature": {
+        "format": " {temperatureC}°C",
+        "critical-threshold": 80,
+        "interval": 5
+    },
+    "clock": {
+        "format": " {:%H:%M}",
+        "tooltip-format": "{:%A, %B %d, %Y}"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "headphones": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol"
+    },
+    "network": {
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {ipaddr}",
+        "format-disconnected": " Disconnected",
+        "interval": 5
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 5,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        }
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 4
+    }
+}
