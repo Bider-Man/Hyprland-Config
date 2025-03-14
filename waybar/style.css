@@ -1,90 +1,90 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "JetBrains Mono", "Font Awesome 5 Free";
-    font-size: 12px;
+    font-family: "JetBrains Mono", "Font Awesome 5 Free", sans-serif; /* Fallback to sans-serif */
+    font-size: 14px; /* Increased font size for better readability */
     min-height: 0;
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 0.8);
-    color: #00ff00;
+    background: rgba(40, 40, 40, 0.9); /* Dark semi-transparent background */
+    color: #ffffff; /* White text for contrast */
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 8px; /* Increased padding for better spacing */
     background: transparent;
-    color: #00ff00;
+    color: #c792ea; /* Soft pink-purple for workspace icons */
     border-bottom: 2px solid transparent;
 }
 
 #workspaces button.focused {
-    background: #00ff00;
-    color: #000000;
-    border-bottom: 2px solid #00ff00;
+    background: #89ddff; /* Soft blue for focused workspace */
+    color: #000000; /* Black text for better contrast */
+    border-bottom: 2px solid #89ddff;
 }
 
 #workspaces button.urgent {
-    background: #ff0000;
-    color: #000000;
+    background: #ff5370; /* Soft pink for urgent workspaces */
+    color: #ffffff;
 }
 
 #custom-logo, #cpu, #memory, #temperature, #clock, #pulseaudio, #network, #battery, #tray {
-    padding: 0 8px;
-    margin: 0 4px;
-    background: rgba(0, 0, 0, 0.6);
-    color: #00ff00;
-    border-bottom: 2px solid #00ff00;
+    padding: 0 10px; /* Increased padding for better spacing */
+    margin: 0 6px; /* Increased margin for better spacing */
+    background: rgba(60, 60, 60, 0.8); /* Dark semi-transparent background for modules */
+    color: #c792ea; /* Soft pink-purple text */
+    border-bottom: 2px solid #89ddff; /* Soft blue border */
 }
 
 #cpu {
-    color: #00ff00;
+    color: #89ddff; /* Soft blue for CPU */
 }
 
 #memory {
-    color: #00ff00;
+    color: #c792ea; /* Soft pink-purple for memory */
 }
 
 #temperature {
-    color: #00ff00;
+    color: #89ddff; /* Soft blue for temperature */
 }
 
 #temperature.critical {
-    color: #ff0000;
+    color: #ff5370; /* Soft pink for critical temperature */
 }
 
 #clock {
-    color: #00ff00;
+    color: #c792ea; /* Soft pink-purple for clock */
 }
 
 #pulseaudio {
-    color: #00ff00;
+    color: #89ddff; /* Soft blue for audio */
 }
 
 #pulseaudio.muted {
-    color: #ff0000;
+    color: #ff5370; /* Soft pink for muted audio */
 }
 
 #network {
-    color: #00ff00;
+    color: #c792ea; /* Soft pink-purple for network */
 }
 
 #network.disconnected {
-    color: #ff0000;
+    color: #ff5370; /* Soft pink for disconnected network */
 }
 
 #battery {
-    color: #00ff00;
+    color: #89ddff; /* Soft blue for battery */
 }
 
 #battery.warning {
-    color: #ffa500;
+    color: #ff5370; /* Soft pink for low battery */
 }
 
 #battery.critical {
-    color: #ff0000;
+    color: #ff5370; /* Soft pink for critical battery */
 }
 
 #tray {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(60, 60, 60, 0.8); /* Dark semi-transparent background */
 }

@@ -1,8 +1,8 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
-    "spacing": 4,
+    "height": 36, /* Increased height for better readability */
+    "spacing": 6, /* Increased spacing for better readability */
     "modules-left": ["custom/logo", "cpu", "memory", "temperature"],
     "modules-center": ["clock"],
     "modules-right": ["pulseaudio", "network", "battery", "tray"],
@@ -53,7 +53,7 @@
         }
     },
     "tray": {
-        "icon-size": 16,
-        "spacing": 4
+        "icon-size": 18, /* Increased icon size for better readability */
+        "spacing": 6
     }
 }
