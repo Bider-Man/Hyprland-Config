@@ -1,90 +1,84 @@
 * {
     border: none;
-    border-radius: 0;
-    font-family: "JetBrains Mono", "Font Awesome 5 Free", sans-serif; /* Fallback to sans-serif */
-    font-size: 14px; /* Increased font size for better readability */
     min-height: 0;
+    font-family: "JetBrains Nerd Font Mono";
+    font-weight: 500;
+    font-size: 12px; /* Reduced font size for a smaller bar */
+    padding: 0;
 }
 
 window#waybar {
-    background: rgba(40, 40, 40, 0.9); /* Dark semi-transparent background */
-    color: #ffffff; /* White text for contrast */
+    background: #1f1c27;
+    border: 2px solid #b6a0ff;
+    border-radius: 4px;
+}
+
+tooltip {
+    background-color: #1f1c27;
+    border: 2px solid #e9e4ff;
+    font-size: 12px; /* Adjusted font size for tooltips */
+}
+
+#cpu,
+#memory,
+#temperature,
+#pulseaudio,
+#network,
+#battery {
+    margin: 4px 4px 4px 0px; /* Adjusted margins for a smaller bar */
+    padding: 1px 6px; /* Adjusted padding for a smaller bar */
+    border-radius: 4px;
+}
+
+#workspaces {
+    margin: 4px 0px 4px 4px; /* Adjusted margins for a smaller bar */
+    border-radius: 4px;
 }
 
 #workspaces button {
-    padding: 0 8px; /* Increased padding for better spacing */
-    background: transparent;
-    color: #c792ea; /* Soft pink-purple for workspace icons */
-    border-bottom: 2px solid transparent;
+    all: initial;
+    min-width: 0;
+    box-shadow: inset 0 -3px transparent;
+    padding: 1px 3px; /* Adjusted padding for a smaller bar */
+    color: #b6a0ff;
+    background-color: #353146;
+    border: 2px solid #b6a0ff;
+    border-radius: 4px;
+    margin-right: 2px;
 }
 
-#workspaces button.focused {
-    background: #89ddff; /* Soft blue for focused workspace */
-    color: #000000; /* Black text for better contrast */
-    border-bottom: 2px solid #89ddff;
+#workspaces button.active {
+    color: #1f1c27;
+    background-color: #b6a0ff;
 }
 
 #workspaces button.urgent {
-    background: #ff5370; /* Soft pink for urgent workspaces */
-    color: #ffffff;
+    background-color: #e542c0;
+    color: #1f1c27;
+    border: 2px solid #e542c0;
 }
 
-#custom-logo, #cpu, #memory, #temperature, #clock, #pulseaudio, #network, #battery, #tray {
-    padding: 0 10px; /* Increased padding for better spacing */
-    margin: 0 6px; /* Increased margin for better spacing */
-    background: rgba(60, 60, 60, 0.8); /* Dark semi-transparent background for modules */
-    color: #c792ea; /* Soft pink-purple text */
-    border-bottom: 2px solid #89ddff; /* Soft blue border */
-}
-
-#cpu {
-    color: #89ddff; /* Soft blue for CPU */
-}
-
-#memory {
-    color: #c792ea; /* Soft pink-purple for memory */
-}
-
-#temperature {
-    color: #89ddff; /* Soft blue for temperature */
-}
-
-#temperature.critical {
-    color: #ff5370; /* Soft pink for critical temperature */
-}
-
-#clock {
-    color: #c792ea; /* Soft pink-purple for clock */
-}
-
-#pulseaudio {
-    color: #89ddff; /* Soft blue for audio */
-}
-
-#pulseaudio.muted {
-    color: #ff5370; /* Soft pink for muted audio */
-}
-
-#network {
-    color: #c792ea; /* Soft pink-purple for network */
-}
-
-#network.disconnected {
-    color: #ff5370; /* Soft pink for disconnected network */
-}
-
+#cpu,
+#memory,
+#temperature,
+#pulseaudio,
+#network,
 #battery {
-    color: #89ddff; /* Soft blue for battery */
+    background-color: #353146;
+    border: 2px solid #b6a0ff;
+    color: #b6a0ff;
 }
 
-#battery.warning {
-    color: #ff5370; /* Soft pink for low battery */
+#cpu.critical,
+#memory.critical,
+#temperature.critical {
+    color: #e542c0;
+    border: 2px solid #e542c0;
 }
 
-#battery.critical {
-    color: #ff5370; /* Soft pink for critical battery */
-}
-
-#tray {
-    background: rgba(60, 60, 60, 0.8); /* Dark semi-transparent background */
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+    color: #e542c0;
+    border: 2px solid #e542c0;
 }

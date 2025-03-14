@@ -1,59 +1,106 @@
 {
     "layer": "top",
-    "position": "top",
-    "height": 36, /* Increased height for better readability */
-    "spacing": 6, /* Increased spacing for better readability */
-    "modules-left": ["custom/logo", "cpu", "memory", "temperature"],
-    "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "battery", "tray"],
-    "custom/logo": {
-        "format": "", // You can replace this with any icon or text
-        "tooltip": false
-    },
+    "spacing": 0,
+    "height": 24, // Reduced height for a smaller bar
+
+    "margin-top": 4, // Adjusted margins for a smaller bar
+    "margin-right": 4,
+    "margin-bottom": 0,
+    "margin-left": 4,
+
+    "modules-left": [
+        "cpu",
+        "memory",
+        "temperature"
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "battery"
+    ],
+
     "cpu": {
-        "format": " {usage}%",
-        "interval": 5
+        "format": "CPU {usage}%",
+        "interval": 2,
+        "states": {
+            "critical": 90
+        }
     },
+
     "memory": {
-        "format": " {used:0.1f}G/{total:0.1f}G",
-        "interval": 5
+        "format": "RAM {percentage}%",
+        "interval": 2,
+        "states": {
+            "critical": 80
+        }
     },
+
     "temperature": {
-        "format": " {temperatureC}°C",
+        "format": "TEMP {temperatureC}°C",
         "critical-threshold": 80,
         "interval": 5
     },
-    "clock": {
-        "format": " {:%H:%M}",
-        "tooltip-format": "{:%A, %B %d, %Y}"
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": " Muted",
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
         "format-icons": {
-            "headphones": "",
-            "default": ["", ""]
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "十"
         },
-        "scroll-step": 5,
-        "on-click": "pavucontrol"
-    },
-    "network": {
-        "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": " {ipaddr}",
-        "format-disconnected": " Disconnected",
-        "interval": 5
-    },
-    "battery": {
-        "format": "{icon} {capacity}%",
-        "format-icons": ["", "", "", "", ""],
-        "interval": 5,
-        "states": {
-            "warning": 30,
-            "critical": 15
+        "disable-scroll": true,
+        "all-outputs": true,
+        "tooltip": false,
+        "persistent_workspaces": { // Show all 10 workspaces
+            "1": {},
+            "2": {},
+            "3": {},
+            "4": {},
+            "5": {},
+            "6": {},
+            "7": {},
+            "8": {},
+            "9": {},
+            "10": {}
         }
     },
-    "tray": {
-        "icon-size": 18, /* Increased icon size for better readability */
-        "spacing": 6
+
+    "pulseaudio": {
+        "format": "VOL {volume}%",
+        "format-muted": "MUTED",
+        "scroll-step": 5,
+        "max-volume": 150,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi": "WiFi",
+        "format-ethernet": "ETH",
+        "format-disconnected": "NO NET",
+        "interval": 5,
+        "tooltip": false
+    },
+
+    "battery": {
+        "format": "BAT {capacity}%",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "tooltip": false
     }
 }
