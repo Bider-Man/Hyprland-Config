@@ -64,4 +64,3 @@ end
 lspconfig.pylsp.setup({
 	on_attach = on_attach,
 })
-

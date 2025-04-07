@@ -1,7 +1,7 @@
 -- Setting up Lazypath
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath =vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    vim.fn.system({
+   vim.fn.system({
         "git",
         "clone",
         "--filter=blob:none",
@@ -16,6 +16,26 @@ vim.opt.rtp:prepend(lazypath)
 plugins = {
     -- Colour Scheme
     "tanvirtin/monokai.nvim",
+
+    --NVim Web Dev Icons
+    {
+        "nvim-tree/nvim-web-devicons",
+        opts = {},
+        url = "https://github.com/nvim-tree/nvim-web-devicons.git",
+    },
+
+    --Nvim Bar
+    {
+        'romgrk/barbar.nvim',
+        dependencies = {
+            'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+            'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+        },
+        init = function() vim.g.barbar_auto_setup = false end,
+        opts = {
+        },
+        version = '^1.0.0', -- optional: only update when a new 1.x version is released
+    },
 
     -- Vscode-like pictograms
     {
@@ -64,11 +84,64 @@ plugins = {
             "nvim-lua/plenary.nvim", -- Required dependency
         },
         keys = {
-            { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" } -- Keybinding
+            { "<leader>lg", "w<cmd>LazyGit<cr>", desc = "LazyGit" } -- Keybinding
         },
+    },
+
+    --Multicursor
+    {
+        "smoka7/multicursors.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "nvimtools/hydra.nvim",
+        },
+        opts = {},
+        cmd = {"MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPatten", "MCunderCursor"},
+        keys = {
+            {
+                mode = {"v", "n"},
+                "<Leader>m",
+                "<cmd>MCstart<cr>",
+                desc = "Select or choose a word under cursor",
+            },
+        },
+    },
+    
+    --nvim-tree
+    {
+        "nvim-tree/nvim-tree.lua",
+        dependencies = {"nvim-tree/nvim-web-devicons"},
+        config = function()
+            --Disable netrw (MUST be before setup)
+           vim.g.loaded_netrw = 1
+           vim.g.loaded_netrwPlugin = 1
+
+            --Enable 24 bit colours
+           vim.opt.termguicolors = true
+
+            --Setup custom options
+            require("nvim-tree").setup({
+                sort = {
+                    sorter = "case_sensitive",
+                },
+                view = {
+                    width = 30,
+                },
+                renderer = {
+                    group_empty = true,
+                },
+                filters = {
+                    dotfiles = true,
+                },
+            })
+        end,
+        --Optional: Lazy-load when opening NvimTree
+        cmd = {"NvimTreeToggle", "NvimTreeFocus"},
+        keys = {
+            {"<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer"}
+        }
     },
 }
 
 -- Installing the plugins
 require("lazy").setup(plugins)
-

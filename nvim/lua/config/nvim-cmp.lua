@@ -77,4 +77,3 @@ cmp.setup({
       { name = 'path' },        -- For path completion
   })
 })
-

@@ -6,4 +6,3 @@ if not is_ok then
     vim.notify('colorscheme ' .. colorscheme .. ' not found!')
     return
 end
-
