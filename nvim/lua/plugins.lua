@@ -24,6 +24,29 @@ plugins = {
         url = "https://github.com/nvim-tree/nvim-web-devicons.git",
     },
 
+    --Treesitter
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            local configs = require("nvim-treesitter.configs")
+
+            configs.setup({
+                ensure_installed = {"c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html"},
+                sync_install = false,
+                highlight = {enabled = true},
+                indent = {enabled = true},
+            })
+        end
+    },
+
+    --Luarocks
+    {
+        "vhyrro/luarocks.nvim",
+        priority = 1000, --Very high required
+        config = true,
+    },
+
     --Nvim Bar
     {
         'romgrk/barbar.nvim',
@@ -106,7 +129,19 @@ plugins = {
             },
         },
     },
-    
+
+    --Nvim Orgmode
+    {
+        "nvim-orgmode/orgmode",
+        event = "VeryLazy",
+        config = function()
+            require("orgmode").setup({
+                org_agenda_files = "~/orgfiles/**/*",
+                org_default_notes_files = "~orgfiles/refile.org",
+            })
+        end,
+    },
+
     --nvim-tree
     {
         "nvim-tree/nvim-tree.lua",

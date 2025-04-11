@@ -7,7 +7,8 @@ local opts = {
 -- Keybinds --
 --------------
 
-vim.g.mapleader = "," --Mapleader is <Space>
+vim.g.mapleader = "," --Mapleader is <comma>
+vim.g.mallocalleader = "." --Localleader is <fullstop>
 
 -----------------
 -- Normal mode --
