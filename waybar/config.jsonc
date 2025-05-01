@@ -89,6 +89,7 @@
     "custom/spidey-user": {
         "format": "🕷 {}",
         "exec": "echo 'Welcome, Bider-Man'",
+        "on-click": "wlogout",
         "tooltip": true,
         "tooltip-format": "Identity: [REDACTED] \nCodenames: Friendly Neighborhood Bider-Man \nStatus: Swinging both ways"
     }
