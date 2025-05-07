@@ -1,0 +1,44 @@
+{
+  "$schema": "~/.config/swaync/configSchema.json",
+
+
+  "positionX": "right",
+  "positionY": "top",
+  "control-center-margin-top": 20,
+  "control-center-margin-right": 20,
+  "control-center-width": 500,
+  "control-center-height": 600,
+  "fit-to-screen": false,
+
+
+  "layer": "top",
+  "cssPriority": "user",
+  "notification-icon-size": 64,
+  "notification-body-image-height": 100,
+  "notification-body-image-width": 200,
+  "notification-window-width": 500,
+
+
+  "timeout": 10,
+  "timeout-low": 5,
+  "timeout-critical": 0,
+  "keyboard-shortcuts": true,
+  "hide-on-clear": true,
+
+
+  "widgets": ["title", "dnd", "mpris", "notifications"],
+  "widget-config": {
+    "title": {
+      "text": "🕸️ Spider-Alerts 🕷️",
+      "clear-all-button": true,
+      "button-text": "Clear Webs"
+    },
+    "dnd": {
+      "text": "Silence Venom"
+    },
+    "mpris": {
+      "image-size": 96,
+      "image-radius": 12
+    }
+  }
+}

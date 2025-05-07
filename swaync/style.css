@@ -1,0 +1,47 @@
+* {
+  font-family: "Comic Sans MS", "Arial", sans-serif; /* Fun comic-style font */
+}
+
+.notification {
+  background-color: #b22222; /* Dark red */
+  color: #ffffff; /* White text */
+  border: 2px solid #000080; /* Blue border */
+  border-radius: 8px;
+  margin: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.notification:hover {
+  background-color: #8b0000; /* Darker red on hover */
+}
+
+.notification .summary {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.notification .body {
+  color: #e0e0e0; /* Light gray */
+}
+
+.notification .icon {
+  filter: invert(1); /* Make icons white */
+}
+
+.control-center {
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+  border: 2px solid #000080; /* Blue border */
+}
+
+.notification-action {
+  background-color: #000080; /* Blue button */
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.notification-action:hover {
+  background-color: #0000cd; /* Lighter blue on hover */
+}
