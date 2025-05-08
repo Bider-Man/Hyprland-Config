@@ -5,8 +5,8 @@
     "spacing": 0,
     "modules-left": ["cpu", "memory", "temperature"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["wireplumber", "network", "battery", "clock", "custom/spidey-user"],
-    "spacing": 4,
+    "modules-right": ["wireplumber", "network", "battery", "clock", "custom/notifications"],
+    "spacing": 2,
 
     // MODULES
     "cpu": {
@@ -86,11 +86,8 @@
         }
     },
     
-    "custom/spidey-user": {
-        "format": "🕷 {}",
-        "exec": "echo 'Welcome, Bider-Man'",
-        "on-click": "wlogout",
-        "tooltip": true,
-        "tooltip-format": "Identity: [REDACTED] \nCodenames: Friendly Neighborhood Bider-Man \nStatus: Swinging both ways"
+    "custom/notifications": {
+        "on-click": "swaync-client -t",
+        "format": " "
     }
 }

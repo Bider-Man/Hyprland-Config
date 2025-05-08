@@ -1,47 +1,116 @@
+/* Base Spider-Man Theme */
 * {
-  font-family: "Comic Sans MS", "Arial", sans-serif; /* Fun comic-style font */
+  all: unset;
+  font-family: 'FiraCode Nerd Font', 'Symbols Nerd Font', sans-serif;
+  font-size: 16px;
+  transition: 200ms ease-in-out;
+}
+
+/* Main Container */
+.control-center {
+  background-color: rgba(18, 18, 18, 0.95);
+  border: 2px solid #cc0000;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 0 15px rgba(204, 0, 0, 0.5);
+}
+
+/* Widget Containers */
+.widget-mpris,
+.widget-title,
+.widget-buttons-grid {
+  background-color: rgba(30, 30, 30, 0.8);
+  border: 1px solid rgba(204, 0, 0, 0.3);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Power Buttons - Bottom Bar */
+.widget-buttons-grid {
+  margin-top: 15px;
+  padding: 10px 15px;
+}
+
+.widget-buttons-grid > flowbox {
+  padding: 0;
+  margin: 0 -5px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild {
+  margin: 0 5px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background-color: rgba(204, 0, 0, 0.2);
+  border: 1px solid rgba(204, 0, 0, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 24px;
+  min-height: 24px;
+  font-size: 1.5em;
+  transition: all 0.2s ease;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background-color: rgba(204, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(204, 0, 0, 0.5);
+}
+
+/* Notifications */
+.notification-row {
+  margin: 8px 0;
+}
+
+.notification-background {
+  background-color: rgba(30, 30, 30, 0.9);
+  border: 1px solid rgba(204, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 0;
 }
 
 .notification {
-  background-color: #b22222; /* Dark red */
-  color: #ffffff; /* White text */
-  border: 2px solid #000080; /* Blue border */
-  border-radius: 8px;
-  margin: 10px;
   padding: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-left: 3px solid #cc0000;
 }
 
-.notification:hover {
-  background-color: #8b0000; /* Darker red on hover */
+.notification.critical {
+  animation: spider-sense 2s infinite;
 }
 
-.notification .summary {
+@keyframes spider-sense {
+  0% { border-left-color: #cc0000; }
+  50% { border-left-color: #ff6666; }
+  100% { border-left-color: #cc0000; }
+}
+
+/* Title Bar */
+.widget-title {
+  padding: 10px 15px;
+}
+
+.widget-title label {
   color: #ffffff;
+  font-size: 1.3em;
   font-weight: bold;
-  font-size: 1.2em;
+  text-shadow: 0 0 5px rgba(204, 0, 0, 0.7);
 }
 
-.notification .body {
-  color: #e0e0e0; /* Light gray */
+.widget-title button {
+  background-color: rgba(204, 0, 0, 0.3);
+  border: 1px solid rgba(204, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 8px 16px;
 }
 
-.notification .icon {
-  filter: invert(1); /* Make icons white */
+.widget-title button:hover {
+  background-color: rgba(204, 0, 0, 0.5);
 }
 
-.control-center {
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
-  border: 2px solid #000080; /* Blue border */
-}
-
-.notification-action {
-  background-color: #000080; /* Blue button */
-  color: #ffffff;
-  border-radius: 4px;
-  padding: 4px;
-}
-
-.notification-action:hover {
-  background-color: #0000cd; /* Lighter blue on hover */
+/* Music Player */
+.widget-mpris-player {
+  padding: 10px;
+  border-left: 3px solid #cc0000;
 }
