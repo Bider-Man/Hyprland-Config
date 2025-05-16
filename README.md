@@ -1,4 +1,4 @@
- # Hyprland-Config
+ # Hyprland Config
  ## Introduction
 My very first Hyprland rice. It's not really good or anything, I have just made a github config just so that I can easily access it whenever I change my laptop/desktop in the future and to test out the rice (in case something goes wrong, I can just clone this and fix the mistake rather than retyping everything from scratch).
 
