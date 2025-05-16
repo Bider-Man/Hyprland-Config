@@ -1,7 +1,5 @@
-# Hyprland-Config
-
-##  I AM NOT PROFICIENT in Hyprland or Linux.
-
+ # Hyprland-Config
+ ## Introduction
 My very first Hyprland rice. It's not really good or anything, I have just made a github config just so that I can easily access it whenever I change my laptop/desktop in the future and to test out the rice (in case something goes wrong, I can just clone this and fix the mistake rather than retyping everything from scratch).
 
 You are welcome to use it, but I'm not really gonna solve any bugs you might encounter or anything.
@@ -16,8 +14,4 @@ I plan to make this a fully-configured setup. But since I'm new, it'll be slow p
 
 I'm doing this in my free time, so as you can expect it'll be slow to update (major updates at least).
 
-Any criticism is also welcome :D
-
-# Installation Process
-
-Just make sure to have hyprutils and yay already installed before running the script. Everything else should be installed without any problems.
+Any criticism is also welcome :3
