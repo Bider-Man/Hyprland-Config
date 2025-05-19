@@ -176,6 +176,34 @@ plugins = {
             {"<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer"}
         }
     },
+
+    --Scientific Note-taking
+    {
+        "jbyuki/nabla.nvim",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "williamboman/mason.nvim",
+        },
+        lazy = true,
+
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {"latex"},
+                auto_install = true,
+                sync_install = false,
+            })
+        end,
+
+        keys = function()
+            return {
+                {
+                    "<leader>p",
+                    ':lua require("nabla").popup()<cr>',
+                    desc = "NablaPopUp",
+                },
+            }
+        end,
+    },
 }
 
 -- Installing the plugins
