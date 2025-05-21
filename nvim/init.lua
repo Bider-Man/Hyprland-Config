@@ -1,7 +1,10 @@
---Load all the *.lua files
+--Loading Core Configurations
 require("options")
 require("keymaps")
+
+--Loading Plugin Manager and Plugins
 require("plugins")
+
+--Loading Color Scheme (Tokyo Night)
 require("colorscheme")
-require("lsp")
-vim.env.PATH = vim.fn.expand("$HOME/.cargo/bin") .. ":" .. vim.env.PATH
+
