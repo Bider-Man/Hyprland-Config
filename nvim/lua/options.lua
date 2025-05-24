@@ -1,91 +1,80 @@
-local opt = vim.opt
-local g = vim.g
+--------------------------------------------
+-------- GENERAL OPTIONS FOR NEOVIM --------
+--------------------------------------------
 
--- Disable netrw (we'll use nvim-tree instead)
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
+-------- GLOBAL VARIABLES --------
 
--- Set space as leader key
-g.mapleader = ' '
-g.maplocalleader = ' '
+local g = vim.g -- Global Variables
+local opt = vim.opt -- Set the options
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- General options
-opt.number = true          -- Show absolute line numbers
-opt.relativenumber = true  -- Show relative line numbers
-opt.mouse = 'a'           -- Enable mouse in all modes
-opt.showmode = false       -- Don't show mode since we have a statusline
-opt.clipboard = 'unnamedplus' -- Use system clipboard
-opt.breakindent = true     -- Maintain indentation on wrapped lines
-opt.undofile = true       -- Persistent undo
-opt.ignorecase = true     -- Case insensitive searching
-opt.smartcase = true      -- Case sensitive if uppercase present
-opt.signcolumn = 'yes'    -- Always show sign column
-opt.updatetime = 250      -- Faster completion
-opt.timeoutlen = 300      -- Time to wait for mapped sequence
-opt.splitright = true     -- Vertical splits to the right
-opt.splitbelow = true     -- Horizontal splits below
-opt.list = true           -- Show some invisible characters
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-opt.inccommand = 'split'  -- Show substitution effects incrementally
-opt.cursorline = true     -- Highlight current line
-opt.scrolloff = 10        -- Minimum lines to keep above/below cursor
-opt.hlsearch = true       -- Highlight search matches
-opt.termguicolors = true  -- Enable 24-bit RGB colors
+--------- GENERAL ---------
 
--- Tab/indentation
-opt.tabstop = 4           -- Number of spaces a tab counts for
-opt.shiftwidth = 4        -- Size of an indent
-opt.expandtab = true      -- Use spaces instead of tabs
-opt.autoindent = true     -- Autoindent new lines
-opt.smartindent = true    -- Smart autoindenting
+opt.mouse = "a" -- Enable Mouse Support
+opt.clipboard = "unnamedplus" -- Use System Clipboard
+opt.swapfile = true -- Use Swapfile
 
--- Remove ~ on empty lines and show numbers instead
-opt.fillchars:append({
-  eob = ' ',              -- Empty end-of-buffer characters
-})
+-------- NEOVIM UI --------
 
--- Persistent line numbers (no ~ on empty lines)
-vim.api.nvim_create_autocmd('BufEnter', {
-  callback = function()
-    vim.opt.relativenumber = true
-    vim.opt.number = true
-  end,
-})
+opt.number = true -- Show Line Number
+opt.relativenumber = true -- Show Relative Line Number
+opt.foldmethod = "marker" -- Enable Folding
+opt.colorcolumn = "80" -- Length of the Line is 80 Columns
+opt.splitright = true -- Vertical Split to the Right
+opt.splitbelow = true -- Horizontal Split to the Bottom
+opt.ignorecase = true -- Ignore Case Sensitivity During Search
+opt.smartcase = true -- Ignore Lower Case for the Whole Pattern
+opt.linebreak = true -- Wrap Around on the Boundary
+opt.termguicolors = true -- Enable 24-bit RGB Colors
+opt.laststatus = 3 -- Set Global Status Line
 
--- Markdown specific
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'markdown',
-  callback = function()
-    opt_local = vim.opt_local
-    opt_local.wrap = true
-    opt_local.linebreak = true
-    opt_local.spell = true
-    opt_local.conceallevel = 2 -- for LaTeX concealment
-  end
-})
+-------- TABS & INDENTS --------
 
--- Disable some builtin plugins
+opt.expandtab = false -- Use Spaces Instead of Tabs
+opt.shiftwidth = 4 -- Shift Four Spaces When Tabbing
+opt.tabstop = 4 -- One Tab = Four Spaces
+opt.smartindent = true -- Autoindent New Lines
+
+-------- MEMORY & CPU --------
+
+opt.hidden = true -- Enable Background Buffers
+opt.history = 100 -- Remember X Lines in History
+opt.lazyredraw = true -- Faster Scrolling
+opt.synmaxcol = 240 -- Max Columns for Syntax Highlight
+opt.updatetime = 250 -- Update Time in ms for Event Trigger
+
+-------- DISABLE BUILT-IN PLUGINS --------
+
 local disabled_built_ins = {
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "gzip",
-  "zip",
-  "zipPlugin",
-  "tar",
-  "tarPlugin",
-  "getscript",
-  "getscriptPlugin",
-  "vimball",
-  "vimballPlugin",
-  "2html_plugin",
-  "logipat",
-  "rrhelper",
-  "spellfile_plugin",
-  "matchit"
+	"2html_plugin",
+	"getscript",
+	"getsscriptPlugin",
+	"gzip",
+	"logipat",
+	"netrw",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
+	"matchit",
+	"tar",
+	"tarPlugin",
+	"rrhelper",
+	"spellfile_plugin",
+	"vimball",
+	"vimballPlugin",
+	"zip",
+	"zipPlugin",
+	"tutor",
+	"rplugin",
+	"synmenu",
+	"optwin",
+	"compiler",
+	"bugreport",
+	"ftplugin",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-  g["loaded_" .. plugin] = 1
+	g["loaded_" .. plugin] = 1
 end
+
