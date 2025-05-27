@@ -169,6 +169,15 @@ plugins = {
 	{
 		"renerocksai/telekasten.nvim",
 		dependencies = {"nvim-telescope/telescope.nvim"}
+	},
+
+	---- BUFFERLINES ----
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons"
+		}
 	}
 }
 
