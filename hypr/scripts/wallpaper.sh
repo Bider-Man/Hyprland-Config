@@ -1,8 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-WALLPAPER_DIR="$HOME/Wallpapers/"
-CURRENT_WALL=$(hyprctl hyprpaper listloaded)
+WALLPAPER_DIRECTORY=~/Wallpapers/
 
-WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+WALLPAPER=$(find "$WALLPAPER_DIRECTORY" -type f | shuf -n 1)
 
-hyprctl hyprpaper reload ,"$WALLPAPER"
+hyprctl hyprpaper preload "$WALLPAPER"
+hyprctl hyprpaper wallpaper ", $WALLPAPER"
+
+sleep 1
+
+hyprctl hyprpaper unload unused
