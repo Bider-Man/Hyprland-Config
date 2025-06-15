@@ -2,8 +2,8 @@
 import { App } from "astal/gtk3"
 import style from "./style.scss"
 import bar from "./modules/bar/bar.tsx"
-import osd from "./osd/osd"
-import popups from "./notifications/popups"
+import osd from "./modules/osd/osd"
+import popups from "./modules/notifications/popups"
 
 //Main Config
 App.start({
