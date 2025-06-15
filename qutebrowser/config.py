@@ -44,21 +44,31 @@ c.content.cookies.accept = "no-3rdparty"  # Changed from "never" to allow 1st-pa
 c.content.cookies.store = True  # Changed to True to maintain sessions
 
 # Tracking protection
-c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 c.content.canvas_reading = False
 c.content.webrtc_ip_handling_policy = "disable-non-proxied-udp"  # Fixed typo
 
 # Ad blocking
-c.content.blocking.method = "both"
-c.content.blocking.adblock.lists = [
-    "https://easylist.to/easylist/easylist.txt",
-    "https://easylist.to/easylist/easyprivacy.txt",
-    "https://secure.fanboy.co.nz/fanboy-annoyance.txt"
-]
-c.content.blocking.hosts.lists = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"]  # Fixed typo
 c.content.blocking.enabled = True
-c.content.javascript.clipboard = "none"
-c.content.hyperlink_auditing = False  # Fixed typo
+c.content.blocking.method = "adblock"
+c.content.blocking.adblock.lists = [
+        "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2024.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-cookies.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-others.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
 
 # Privacy exceptions for login domains
 with config.pattern('*://accounts.google.com/*') as p:

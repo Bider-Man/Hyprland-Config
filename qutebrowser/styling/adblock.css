@@ -1,0 +1,9 @@
+/* Hide common ad elements */
+div[class*="ad"], iframe[src*="ads"], [id*="Ad"], [id*="ad_"],
+.ad-container, .ad-wrapper, .ad-unit, .ad-banner,
+.advert, .advertisement, .ad-placeholder {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0px !important;
+    width: 0px !important;
+}
