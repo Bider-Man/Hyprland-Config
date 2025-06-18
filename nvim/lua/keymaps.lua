@@ -10,6 +10,8 @@ keymap.set("n", "<leader>sv", "<C-w>v", {desc = "Split window vertically"})
 keymap.set("n", "<leader>sh", "<C-w>s", {desc = "Split window horizontally"})
 keymap.set("n", "<leader>se", "<C-w>=", {desc = "Makes splits equal"})
 keymap.set("n", "<leader>sx", ":close<CR>", {desc = "Close current split"})
+keymap.set("n", "j", "gj")
+keymap.set("n", "k", "gk")
 
 ---- Tab Management ----
 keymap.set("n", "<leader>to", ":tabnew<CR>", {desc = "Open new tab"})

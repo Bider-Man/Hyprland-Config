@@ -1,3 +1,0 @@
-#!/bin/sh
-echo "document.querySelector(\"$QUTE_TEXT\").style.display = \"none\"" > "$QUTE_FIFO"
-

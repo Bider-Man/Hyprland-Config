@@ -32,6 +32,15 @@ plugins = {
 		build = ":TSUpdate",
 	},
 
+	-------- FRIENDLY-SNIPPETS --------
+	{
+		"L3MON4D3/LuaSnip",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+		end,
+	},
+
 	---- BLINK-CMP ----
 	{
 		"saghen/blink.cmp",
@@ -134,7 +143,12 @@ plugins = {
 	---- MASON ----
 	{
 		"williamboman/mason.nvim",
-		opts = { ensure_installed = { "tree-sitter-cli" } },
+		opts = { 
+			ensure_installed = { 
+				"tree-sitter-cli",
+				"texlab",
+			},
+		},
 	},
 
 	---- NOTETAKING ----
@@ -178,6 +192,53 @@ plugins = {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons"
 		}
+	},
+
+	-------- QUARTO --------
+	{
+		"quarto-dev/quarto-nvim",
+		dependencies = {
+			"jmbuhr/otter.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
+
+	-------- VIMTEX --------
+	{
+		"lervag/vimtex",
+		ft = "tex",
+		config = function()
+			vim.g.vimtex_view_method = "zathura"
+			vim.g.vimtex_compiler_method = "latexmk"
+			vim.g.vimtex_compiler_latexmk = {
+				continuous = 1,
+				callback = 1,
+				options = {
+					"--pdf",
+					"--synctex=1",
+					"--interaction=nonstopmode",
+					"--file-line-error",
+					"--shell-escape",
+					"-pvc",
+				},
+				callback = 1,
+				continuous = 1,
+				build_dir = "build",
+			}
+			vim.g.vimtex_view_zathura = {
+				options = {"--synctex-forward", "%l:1:%f", "%p"},
+				refresh_rate = 50,
+				watch = true,
+			}
+			vim.g.vimtex_syntax_enabled = 1
+			vim.g.vimtex_compiler_latexmk_continuous = 1
+			vim.g.vimtex_quickfix_enabled = 1
+			vim.g.vimtex_indent_enabled = 1
+			vim.g.vimtex_main_file_auto = 1
+			vim.keymap.set("n", "<leader>ll", "<cmd>VimtexCompile<CR>", { desc = "Compile LaTeX" })
+			vim.keymap.set("n", "<leader>lv", "<cmd>VimtexView<CR>", { desc = "View PDF" })
+			vim.keymap.set("n", "<leader>le", "<cmd>VimtexErrors<CR>", { desc = "Show Errors" })
+		end
 	}
 }
 

@@ -14,6 +14,7 @@ require("telekasten").setup({
 })
 
 --Markdown Preview
-vim.g.mkdp_math = 1
-vim.g.mkdp_markdown_math_enable = 1
-vim.g.mkdp_markdown_math_engine = "mathjax"
+vim.g.mkdp_mathjax = 1 --Enables LaTeX Rendering
+
+--VimTex
+

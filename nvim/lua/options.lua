@@ -8,6 +8,7 @@ local g = vim.g -- Global Variables
 local opt = vim.opt -- Set the options
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.mkdp_mathjax = 1 --Enables LaTeX Rendering
 
 --------- GENERAL ---------
 
