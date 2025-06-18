@@ -31,7 +31,7 @@ plugins = {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 	},
-
+	-------- AUTO COMPLETE --------
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -40,30 +40,20 @@ plugins = {
 			"hrsh7th/cmp-nvim-lsp",
 			"saadparwaiz1/cmp_luasnip",
 		},
-
 		config = function()
 			local cmp = require("cmp")
 			cmp.setup({
-				snippet = {
-					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
-					end,
+				preselect = cmp.PreselectMode.None,
+				completion = {
+					completionopt = "menu,menuone,noinsert,noselect",
 				},
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-					{ name = "buffer" },
-					{ name = "path" },
-				}),
-				mapping = cmp.mapping.preset.insert({
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
-					["<Tab>"] = cmp.mapping.confirm({ select = true }),
-				}),
+				enabled = function()
+					return not require("cmp.config.context").in_treesitter_capture("comment")
+				end,
 			})
 		end,
 	},
-
+	
 	-------- FRIENDLY-SNIPPETS --------
 	{
 		"L3MON4D3/LuaSnip",
