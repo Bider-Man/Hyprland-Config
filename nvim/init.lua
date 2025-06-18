@@ -15,6 +15,3 @@ require("telekasten").setup({
 
 --Markdown Preview
 vim.g.mkdp_mathjax = 1 --Enables LaTeX Rendering
-
---VimTex
-

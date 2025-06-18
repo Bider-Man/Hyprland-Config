@@ -19,3 +19,5 @@ keymap.set("n", "<leader>tx", ":tabclose<CR>", {desc = "Close current tab"})
 keymap.set("n", "<leader>tn", ":tabn<CR>", {desc = "Go to next tab"})
 keymap.set("n", "<leader>tp", ":tabp<CR>", {desc = "Go to previous tab"})
 
+---- UltiSnip ----
+

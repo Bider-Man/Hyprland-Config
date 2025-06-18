@@ -32,6 +32,38 @@ plugins = {
 		build = ":TSUpdate",
 	},
 
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp",
+			"saadparwaiz1/cmp_luasnip",
+		},
+
+		config = function()
+			local cmp = require("cmp")
+			cmp.setup({
+				snippet = {
+					expand = function(args)
+						require("luasnip").lsp_expand(args.body)
+					end,
+				},
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "buffer" },
+					{ name = "path" },
+				}),
+				mapping = cmp.mapping.preset.insert({
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping.confirm({ select = true }),
+				}),
+			})
+		end,
+	},
+
 	-------- FRIENDLY-SNIPPETS --------
 	{
 		"L3MON4D3/LuaSnip",
@@ -239,6 +271,16 @@ plugins = {
 			vim.keymap.set("n", "<leader>lv", "<cmd>VimtexView<CR>", { desc = "View PDF" })
 			vim.keymap.set("n", "<leader>le", "<cmd>VimtexErrors<CR>", { desc = "Show Errors" })
 		end
+	},
+
+	-------- ULTISNIPS --------
+	{
+		"SirVer/ultisnips",
+		dependencies = {
+			"honza/vim-snippets",
+		},
+
+		ft = { "tex", "markdown" },
 	}
 }
 
