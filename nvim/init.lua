@@ -15,3 +15,21 @@ require("telekasten").setup({
 
 --Markdown Preview
 vim.g.mkdp_mathjax = 1 --Enables LaTeX Rendering
+
+--Autocomplete
+local function setup_completion()
+  local cmp = require('cmp')
+  cmp.setup({
+    mapping = {
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+      -- Optional: You might want to keep other mappings or adjust them
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    }
+  })
+end
+
+-- If you're using nvim-cmp or another completion plugin
+if pcall(require, 'cmp') then
+  setup_completion()
+end
